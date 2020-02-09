@@ -1,0 +1,6 @@
+# 忽略上传文件
+.DS_store
+
+# 忽略上传文件夹
+
+node_modules
