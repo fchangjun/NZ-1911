@@ -62,8 +62,22 @@ Node课程笔记
     + 一路next
 - nvm安装(有一个类似的工具：n)
     + Node Version Manager（Node版本管理工具）
+    
     + 由于以后的开发工作可能会在多个Node版本中测试，而且Node的版本也比较多，所以需要这么款工具来管理
-    +
+    
+    + [下载地址](https://github.com/coreybutler/nvm-windows/releases)
+    
+      ```
+      基本命令
+      nvm -v 查看版本号
+      nvm list 查看列表
+      nvm install 版本号  安装node
+      nvm uninstall 版本号  卸载node
+      ```
+    
+      
+    
+      
 ### 相关版本
 
 - node版本常识  

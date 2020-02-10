@@ -1,0 +1,18 @@
+{
+  "name": "node01",
+  "version": "1.0.0",
+  "description": "node 的特点 1.非阻塞的i（input）/o(output)模型 通过异步回调将阻塞操作变成非阻塞 一般情况下 io操作都是阻塞的（网络请求(同步和异步) 文件操作 数据库操作...） 2.事件驱动",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.4.1"
+  },
+  "dependencies": {
+    "swiper": "^5.3.1"
+  }
+}
