@@ -75,4 +75,43 @@ show collections 显示该库下所有的集合
 db.集合名.drop()
 
 #### 文档的curd
-  
+
++ 查询操作
+  db.集合名.find()  查询所有的数据
+  db.集合名.find().pretty()  查询数据并格式化
++ 添加操作
+  db.集合名.insert(要添加的数据对象) 添加  默认主键是 _id 不能重复的
+  db.集合名.save({要添加的数据对象})  要添加的主键_id是不存在的时候  save 相当于插入
++ 修改操作
+  db.集合名.update({找到要修改数据的条件},{$set:{要改成什么样}},{multi:true}) 参数3控制修改全部还是一条
+  db.集合名.save({要修改的数据}) 修改数据里的主键_id 如果已经存在表示修改
++ 删除操作
+  db.集合名.remove({要删除数据的查询条件}) 
+
++ 查询条件
+  1. 固值查询 固定字段查询值
+  2. 范值查询 某一个查询范围  $gt $gte $lt $lte $ne
+    ```
+    db.user.find({age:{$gt:5}})
+    ```
+  3. 交集查询 and
+     db.user.find({$and:[条件1 条件2 ...] })
+  4. 并集查询 or
+     db.user.find({$or:[{},{}]})
++ 限制条数
+  db.user.find().limit(2) 
++ 跳过
+  db.user.find().skip(2)
+瀑布流 分页  上拉加载
+5 条数据 一页显示2条 3页
+pageSize 每页多少条数据  page 当前的页码数
+
+1    db.user.find().skip(0).limit(2)
+2.   db.user.find().skip(2).limit(2)
+3.   db.user.find().skip(4).limit(2)
+
+db.user.find().skip((page-1)*pageSize).limit(pageSize)
+
+
+#### node 操作数据库 mongoose
+ 
