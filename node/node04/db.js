@@ -20,4 +20,34 @@ var foodSchema = new mongoose.Schema({
 var foodModel = mongoose.model('hehe', foodSchema)
 
 // 执行查询语句
-foodModel.insertMany({name:'你好'})
+// foodModel.insertMany({name:'你好',age:'hehe'})
+// .then((data)=>{
+//   console.log('then',data)
+// })
+// .catch((err)=>{
+//   console.log('catch',err)
+// })
+// 查询操作
+foodModel.find()
+.then((data)=>{
+  console.log('then',data)
+})
+.catch((err)=>{
+  console.log('catch',err)
+})
+// 删除操作
+// foodModel.remove({_id:'5e44ef744f66fe0eefcf0d8c'})
+// .then((data)=>{
+//   console.log('then',data)
+// })
+// .catch((err)=>{
+//   console.log('catch',err)
+// })
+// 更新
+// foodModel.updateOne({_id:'5e44efae11e5950efcc6f954'},{$set:{name:'咒怨'}})
+// .then((data)=>{
+//   console.log('then',data)
+// })
+// .catch((err)=>{
+//   console.log('catch',err)
+// })
