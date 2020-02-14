@@ -159,3 +159,19 @@ base64 是一种数据格式 就是一个字符串可以当成图片来使用
    分页查询
    模糊查询
    分类查询
+
+
+  #### nodemon 插件
+  npm install nodemon -g 
+  nodemon 要执行的文件 
+
+  #### 通过apidoc 插件生成接口文档
+  将代码注释（必须符合规范） 变成接口文档
+  1. 全局安装插件
+  npm install apidoc -g
+  2. 按照规范写注释 
+  3. 创建 apidoc.json 的文档 项目的根目录下 server.js
+  4. 执行编译命令
+     在 apidoc.json 的目录下执行命令
+     apidoc -i 写注释的文件夹路径  -o api文档的导出目录 
+     apidoc -i  ./router  -o  ./doc
