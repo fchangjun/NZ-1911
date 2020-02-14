@@ -125,4 +125,17 @@ db.user.find().skip((page-1)*pageSize).limit(pageSize)
 1.前端的实现
 2.后端的实现
   将本地的图片上传到服务器的静态资源路径里
-  multer
+  multer 相当于一个中间件 处理文件上传 req.file (req.files) 获得图片相关的数据信息
+  文件上传必须用post方法
+  ```
+  const multer = require('multer')
+  const uplaod =multer({})
+
+  app.post('/file',uplaod.single('hehe'),(req,res)=>{
+    req.file 上传的文件信息  文件的数据 buffer 文件的类型 文件的大小  文件原来文件名
+    将文件的数据写入到静态资源目录里
+    1.文件名不重复 时间戳+随机数
+    2.限制上传的类型 gif  png  jpg
+    3.限制上传的尺寸
+  }) 
+  ```

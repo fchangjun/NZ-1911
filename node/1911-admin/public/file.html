@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件上传案例</title>
+  <script src='https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'></script>
+  <style> 
+  img{
+    width: 100px;
+    height: 80px;
+  }
+  </style>
+</head>
+<body>
+  <input type="file" id='file'> 
+  <button onclick="upload()">上传</button>
+  缩略图:
+  <img src="" alt="">
+<script>
+/*
+1.用户选择图片
+2.通过ajax上传图片
+*/ 
+function upload(){
+// 获得用户选择的图片信息
+let file = document.getElementById('file').files[0]
+console.log(file)
+// 图片上传的格式 formdata  将图片添加到formdata对象
+let data = new FormData()
+// key 值和接口统一
+data.append('hehe',file)
+// formdata 对象 默认打印是空 通过get方法获取
+console.log(data.get('hehe'))
+// 调用ajax接口
+  $.ajax({
+    method:'post',
+    url:'http://qstest.natapp1.cc/admin/upload/img',
+    data:data,
+    contentType:false,    //ajax 有默认上传格式 取消默认
+    processData:false,     //默认将数据进行格式化处理  取消默认
+    success(res){
+      console.log(res)
+      let {err,path} = res
+      if(res.err==0){
+        $('img').attr('src',path)
+      }
+    }
+  })
+}
+</script>
+</body>
+</html>

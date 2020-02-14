@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件上传案例</title>
+  <script src='https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'></script>
+  <style> 
+  img{
+    width: 100px;
+    height: 80px;
+  }
+  </style>
+</head>
+<body>
+  <input type="file" id='file'> 
+  <button onclick="upload()">上传</button>
+  <img src="" alt="">
+<script>
+/*
+将图片在前端变成base64 
+1.先获取图片
+2. FileReader对象将图片进行转化
+*/ 
+function upload(){
+  let file  = document.getElementById('file').files[0]
+  //创建一个filereader对象
+  let fileReader = new FileReader() 
+  fileReader.onload=function(){
+    console.log('图片转化完毕')
+    console.log(fileReader.result)
+    $('img').attr('src',fileReader.result)
+  }
+  // 用filereadr对象转化图片
+  fileReader.readAsDataURL(file)
+}
+</script>
+</body>
+</html>
