@@ -70,6 +70,14 @@ function submit(){
   let mail =$('#mail').val()
   let pass =$('#pass').val() 
   console.log(mail,pass)
+  let url ='http://localhost:3000/admin/user/login'
+  $.post(url,{mail,pass},(res)=>{
+    if(res.err == 0){
+      window.location.href='./index.html'
+    }else{
+      alert(res.msg)
+    }
+  })
 } 
 </script>
 
