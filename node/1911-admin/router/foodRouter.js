@@ -136,23 +136,27 @@ router.post('/getInfosByType',(req,res)=>{
  .catch((err)=>{res.send({err:-1,msg:'查询失败请重试'})})
 
 })
-// 模糊查询 关键字查询
+// 模糊查询 关键字查询带分页功能
 // 也要和分页做关联
 /**
  * @api {post} /admin/food/getInfosByKw   关键字查询
  * @apiName getInfosByKw
  * @apiGroup Food
  *
- * @apiParam {String} kw 关键字 .
+ * @apiParam {String} kw 关键字 
+ * @apiParam {String} page 页码数 
+ * @apiParam {String} pageSize 每页条数.
  *
  * @apiSuccess {String} err 状态码r.
  * @apiSuccess {String} msg  信息提示.
  */
 router.post('/getInfosByKw',(req,res)=>{
-  let {kw} = req.body ||''
-  findFoodByKw(kw)
+  let kw = req.body.kw ||''
+  let page = req.body.page||1
+  let pageSize = req.body.pageSize||2
+  findFoodByKw(kw,page,pageSize)
   .then((data)=>{
-    res.send({err:0,msg:'查询成功',list:data})
+    res.send({err:0,msg:'查询成功',list:data.result,allCount:data.allCount})
   })
   .catch((err)=>{res.send({err:-1,msg:'查询失败请重试'})})
 })

@@ -26,7 +26,13 @@
 <div class="page-container">
 	<div class="text-c">
 		<button onclick="removeIframe()" class="btn btn-primary radius">关闭选项卡</button>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="添加资讯" data-href="article-add.html" onclick="Hui_admin_tab(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加资讯</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+	<span>关键字查询:</span>	<input type="text" id='kw'> <button onclick='getKw()'>查询</button>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+		<span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius">
+			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
+			<a class="btn btn-primary radius" data-title="添加菜品" data-href="food-add.html" onclick="Hui_admin_tab(this)" href="javascript:;">
+				<i class="Hui-iconfont">&#xe600;</i> 添加资讯</a>
+			</span> <span class="r">共有数据：<strong id='allCount'>54</strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-sort table-responsive">
 			<!-- 表头 -->
@@ -46,13 +52,13 @@
 			</tbody>
 		</table>
 		<div>
-			<span>首页</span>
-			<span>上一页</span>
-			<span>1/3</span>
-			<input type="text">
-			<span>go</span>
-			<span>下一夜</span>
-			<span>尾页</span>
+			<span  onclick="jump('frist')">首页</span>
+			<span onclick="jump('prev')">上一页</span>
+			<span id='pageInfo'>1/3</span>
+			<input type="text" id='goPage'>
+			<span onclick="jump('go')">go</span>
+			<span onclick="jump('next')">下一夜</span>
+			<span onclick="jump('last')">尾页</span>
 		</div>
 	</div>
 </div>
@@ -72,12 +78,12 @@
 	a 调用接口获取数据
 	b 把数据循环成表格
 	c 渲染显示
-2.分页 
+2.分页  v
 	用户点击按钮 
 	发起请求 需要的页码数
 	更新页面
-3.模糊查询
-4.分类查询
+3.模糊查询 v
+4.分类查询 委托任务
 5.添加新商品
 6.删除商品  v
 	a.获取删除id
@@ -87,11 +93,33 @@
 7.修改商品
 */
 // 获取数据
+
+let nowPage=1 //当前第几页
+let allPage=1 //总页数
+let pageSize = 3 //每页几条 
+let condition = 'all'//all查询所有  kw关键字   type 分类
 getFoodData()
 function getFoodData(){
+	// 根据不同的状态 调用不同的接口
  let url ='http://localhost:3000/admin/food/getInfos'
- $.post(url,{page:1,pageSize:3},(res)=>{
+ let kw = ''
+ switch (condition) {
+	 case 'kw':
+	    kw=$('#kw').val()
+	    url='http://localhost:3000/admin/food/getInfosByKw'
+		 break;
+		case 'type':
+		
+		break;
+	 default:
+		 break;
+ }
+ $.post(url,{page:nowPage,pageSize:pageSize,kw},(res)=>{
 	 if(res.err ==0){
+		//  计算总的页码数
+		allPage = Math.ceil(res.allCount/pageSize)
+		$('#allCount').html(res.allCount)
+		$('#pageInfo').html(`${nowPage}/${allPage}`)
 		 renderTable(res.list)
 	 }
  })
@@ -127,7 +155,6 @@ function renderTable(data){
 }
 
 //食品删除
-/*资讯-删除*/
 function food_del(obj,_id){
 
 	// 第三方库提供的确认确认弹框
@@ -141,6 +168,46 @@ function food_del(obj,_id){
 			getFoodData()
 		})
 	});
+}
+//分页跳转
+function jump(jumpType){
+	switch (jumpType) {
+		case 'frist':
+			nowPage=1
+			break;
+		case 'last':
+			nowPage=allPage
+			break;
+		case 'prev':
+			if(nowPage>1){
+			
+				nowPage=nowPage-1
+				console.log(nowPage)
+			}
+			break;
+		case 'next':
+			if(nowPage<allPage){
+				nowPage++
+			}
+			break;
+		default:
+			let val=$('#goPage').val()
+			if(val>=1&&val<=allPage){
+				nowPage=val
+			}else{
+				layer.msg('参数错误请重试!',{icon:2,time:500});
+			}
+			break;
+	}
+	// 根据最新的页码数请求数据 刷新界面
+	getFoodData()
+}
+
+// 关键字查询
+function getKw(){
+	// 更改请求类型
+	condition = 'kw'
+	getFoodData()
 }
 /*******   华丽的分割线   *********/ 
 /*资讯-添加*/
