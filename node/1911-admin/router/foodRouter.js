@@ -33,17 +33,18 @@ router.post('/add',(req,res)=>{
   // 返回数据
 })
 /**
- * @api {post} /admin/food/infos  查询全部
- * @apiName infos
+ * @api {post} /admin/food/getInfoById  查询全部
+ * @apiName getInfoById
  * @apiGroup Food
  *
  * @apiSuccess {String} err 状态码r.
  * @apiSuccess {String} msg  信息提示.
  * @apiSuccess {Array} list  查询到的数据.
  */
-// 查询全部食品 
-router.post('/infos',(req,res)=>{
-  findFood()
+// 根据id获取商品 
+router.post('/getInfoById',(req,res)=>{
+  let  {_id} = req.body
+  findFood(_id)
   .then((infos)=>{res.send({list:infos,err:0,msg:'查询成功'})})
   .catch((err)=>{res.send({err:-1,msg:'查询失败请重试'})})
 })

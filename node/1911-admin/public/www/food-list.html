@@ -84,13 +84,13 @@
 	更新页面
 3.模糊查询 v
 4.分类查询 委托任务
-5.添加新商品
+5.添加新商品  v
 6.删除商品  v
 	a.获取删除id
 	b.调用接口
 	c.获取最新的数据
 	d.根据最新的数据更新界面
-7.修改商品
+7.修改商品 v
 */
 // 获取数据
 
@@ -136,10 +136,12 @@ function renderTable(data){
 		<td>${item.foodType}</td>
 		<td>${item.price}</td>
 		<td>${item.desc}</td>
-		<td><img src ='${item.img}'></td>
+		<td><img width = '100' height='80' src ='${item.img}'></td>
 		<td class="f-14 td-manage">
 
-			<a style="text-decoration:none" class="ml-5" onClick="article_edit('资讯编辑','article-add.html','10001')" href="javascript:;" title="编辑">
+			<a style="text-decoration:none" class="ml-5" 
+			onClick="update_pop('${item._id}')" 
+			href="javascript:;" title="编辑">
 				<i class="Hui-iconfont">&#xe6df;</i>
 			</a> 
 			<a style="text-decoration:none" class="ml-5" onClick="food_del(this,'${item._id}')" href="javascript:;" title="删除">
@@ -208,6 +210,18 @@ function getKw(){
 	// 更改请求类型
 	condition = 'kw'
 	getFoodData()
+}
+
+// 修改页面
+function update_pop(_id){
+	console.log(_id)
+	localStorage.setItem('updateId',_id)
+	var index = layer.open({
+		type: 2,
+		title: '食品修改',
+		content: 'food-update.html'
+	});
+	layer.full(index);
 }
 /*******   华丽的分割线   *********/ 
 /*资讯-添加*/

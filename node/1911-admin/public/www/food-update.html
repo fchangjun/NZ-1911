@@ -107,17 +107,36 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
 /*
-1 获取数据
-  图片的处理
-2.提交
-3.处理返回结果
+修改功能
+1.先显示默认数据
+2.用户修改 等同于添加
+3.用户改完之后继续提交 等同于添加 接口缓一缓
+
 */ 
+
+let updateId=localStorage.getItem('updateId') //获取要修改的数据id
+init()
+function init(){
+	let url = 'http://localhost:3000/admin/food/getInfoById'
+	$.post(url,{_id:updateId},(res)=>{
+		if(res.err == 0) {
+			let data =res.list[0]
+			$('#name').val(data.name)
+			$('#price').val(data.price)
+			$('#desc').val(data.desc)
+			$('#foodType').val(data.foodType)
+			$('#img').attr('src',data.img)
+		}
+	})
+}
+
 let img = null 
 //表单处理
 function submit(){
 	// 判断图片是否已经上传
 	if(!img){ return alert('请先上传图片')}
 	let obj={
+		_id:updateId,
 		name:$('#name').val(),
 		price:$('#price').val(),
 		desc:$('#desc').val(),
@@ -125,9 +144,12 @@ function submit(){
 		img
 	}
 	// 调用接口添加数据
-	let url = 'http://localhost:3000/admin/food/add'
+	let url = 'http://localhost:3000/admin/food/update'
 	$.post(url,obj,(res)=>{
 		console.log(res)
+		//关掉页面 并返回首页
+		// 刷新父级页面 并且主动的关闭弹框
+		window.parent.location.reload();
 	})
 }
 // 图片处理

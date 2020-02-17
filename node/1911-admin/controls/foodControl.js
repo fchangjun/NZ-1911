@@ -7,9 +7,9 @@ let insertFood = async (obj)=>{
   return result
 }
 // 查询全部菜品
-let findFood  = async ()=>{
+let findFood  = async (_id)=>{
   
-  let result = await FoodModel.find()
+  let result = await FoodModel.find({_id})
   return result
 }
 // 删除菜品 
