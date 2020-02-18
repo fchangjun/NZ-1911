@@ -10,6 +10,7 @@
    我给邮箱发一个验证码
 3 登录
 */ 
+const {createToken} = require('../utils/jwt')
 const  express = require('express')
 const  {userReg,userLogin} = require("../controls/userControl.js")
 const  Mail = require('../utils/mail')
@@ -77,7 +78,11 @@ router.post('/reg',(req,res)=>{
 router.post('/login',(req,res)=>{
   let {mail,pass} = req.body 
   userLogin(mail,pass)
-  .then(()=>{ res.send({err:0,msg:'登录成功'})})
+  .then(()=>{ 
+    // 登录成功之后产生token 并返回
+    let token =createToken()
+    res.send({err:0,msg:'登录成功',token})
+  })
   .catch((err)=>{ res.send({err:-1,msg:err})})
 })
 module.exports = router
