@@ -73,7 +73,8 @@ function submit(){
   let url ='http://localhost:3000/admin/user/login'
   $.post(url,{mail,pass},(res)=>{
     if(res.err == 0){
-      // window.location.href='./index.html'
+       localStorage.setItem('userInfo',JSON.stringify(res.userInfo ))
+      window.location.href='./index.html'
     }else{
       alert(res.msg)
     }

@@ -200,6 +200,19 @@ token 使用永久有效？
  a.创建token的时候存入创建时间 和过期时间
  b.验证token的时候用当前时间-创建时间 和 过期时间做对比
 2.存入数据库设置过期时间 
+#### 问题3
+爱奇艺会员 单设备登录  多设备登录
+1.将token 和 用户关联
+2.登录的时候会产生一个新token 在数据库进行更新
+3.老token失效 使用老token的设备无法调用接口相当于下线 
+
+多设备登录 最多允许3个设备登录
+数据库token字段 是一个数组 [token2，token3，token4]
+
+#### 问题4 
+7天免登录
+退出登录 需不需要调用接口
+让当前的token失效 1.前端清楚 2. 后端数据清楚
 <!-- ##### 问题3 
 万能钥匙乎？只要产生token 任何一个用户都可以用
 希望结果 a产生token 只有a可以用 将token和用户系统进行关联
@@ -211,10 +224,15 @@ token 使用永久有效？
 localstorage 是永久存储，希望让localstorage 设置过期时间 
 思路和token 超时处理差不多
 
-1. 给api加锁 加上验证 通过中间件实现   v
+1. 给api加锁 加上验证 通过中间件实现   v   
 2. 后端给登录成功的用户 发送一把钥匙   v
 3. 调用接口的时候 携带钥匙开门  header cookie 参数
 4. 验证钥匙是真实有效的
+相关文件 
+1. tokenmiddleware.js
+2. userRouter.js 登录功能
+3. utils/jwt.js
+4. server.js 
 
 #### j(json)w(web)t(token) 令牌 钥匙
 jwt 是一种技术规范   
@@ -225,3 +243,7 @@ JWT.sign(加密的数据，秘钥)
 //验证token
 JWT.verify(要验证的token，产生token的秘钥)
 ```
+后端 token 核心逻辑
+前端 1登录获取token 存到本地 2.调用接口的发送token （参数 cookie  请求头）
+token 相关常用错误码  1.token丢失 2.token超时 3.token非法
+阉割版

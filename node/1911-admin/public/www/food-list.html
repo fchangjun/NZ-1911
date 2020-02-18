@@ -98,6 +98,7 @@ let nowPage=1 //当前第几页
 let allPage=1 //总页数
 let pageSize = 3 //每页几条 
 let condition = 'all'//all查询所有  kw关键字   type 分类
+let {_id,mail,token} = JSON.parse(localStorage.getItem('userInfo'))
 getFoodData()
 function getFoodData(){
 	// 根据不同的状态 调用不同的接口
@@ -114,7 +115,7 @@ function getFoodData(){
 	 default:
 		 break;
  }
- $.post(url,{page:nowPage,pageSize:pageSize,kw},(res)=>{
+ $.post(url,{page:nowPage,pageSize:pageSize,kw,token},(res)=>{
 	 if(res.err ==0){
 		//  计算总的页码数
 		allPage = Math.ceil(res.allCount/pageSize)
@@ -162,7 +163,7 @@ function food_del(obj,_id){
 	// 第三方库提供的确认确认弹框
 	layer.confirm('确认要删除吗？',function(index){
 		let url='http://localhost:3000/admin/food/del'
-		$.post(url,{_id},(res)=>{
+		$.post(url,{_id,token},(res)=>{
 			console.log(res)
 			// 关闭弹框
 			layer.msg('已删除!',{icon:1,time:1000});

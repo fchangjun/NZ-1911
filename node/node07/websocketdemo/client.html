@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id='msg'>
+  <button onclick="sendMsg()">发送消息</button>
+<script>
+let  ws = new WebSocket('ws://localhost:3003')
+// 客户端连接websocket 服务器
+ws.onopen=()=>{
+  console.log('服务端连接')
+}
+ws.onmessage=(msg)=>{
+  console.log('接受服务端的消息',msg)
+}
+ws.onclose =(msg)=>{
+  console.log('服务器端主动断开连接')
+}
+function sendMsg(){
+  let msg = document.getElementById('msg').value 
+  //客户端向服务端发消息
+  ws.send(msg)
+}
+</script>
+</body>
+</html>

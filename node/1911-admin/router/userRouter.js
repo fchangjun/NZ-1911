@@ -10,9 +10,10 @@
    我给邮箱发一个验证码
 3 登录
 */ 
-const {createToken} = require('../utils/jwt')
+
 const  express = require('express')
-const  {userReg,userLogin} = require("../controls/userControl.js")
+const  {userReg,userLogin,logOut} = require("../controls/userControl.js")
+const tokenMiddlWare = require('../middleware/tokenMiddleWare')
 const  Mail = require('../utils/mail')
 const  mails={} 
 const router = express.Router()
@@ -78,11 +79,22 @@ router.post('/reg',(req,res)=>{
 router.post('/login',(req,res)=>{
   let {mail,pass} = req.body 
   userLogin(mail,pass)
-  .then(()=>{ 
-    // 登录成功之后产生token 并返回
-    let token =createToken()
-    res.send({err:0,msg:'登录成功',token})
+  .then((info)=>{ 
+    // // 登录成功之后产生token 并返回
+    // let token =createToken()
+    res.send({err:0,msg:'登录成功',userInfo:info})
   })
   .catch((err)=>{ res.send({err:-1,msg:err})})
+})
+
+// 退出登录 也需要验证token 
+router.post('/logout',tokenMiddlWare,(req,res)=>{
+  let {_id} = req.body 
+  // 数据库里的token的清空
+  logOut(_id)
+  .then(()=>{
+    res.send({err:0,msg:'退出ok'})
+  })
+
 })
 module.exports = router
