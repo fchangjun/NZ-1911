@@ -54,7 +54,8 @@
     <input type="text" id = 'chartMsg'><button onclick="send()">send</button>
   </div>
 <script>
-let ws = new WebSocket('ws://localhost:3003')
+// let ws = new WebSocket('ws://localhost:3003')
+let ws= new WebSocket('ws://qstest.natapp1.cc')
 let contentEl =  document.getElementById('content')
 let name =null 
 function login(){
@@ -79,7 +80,7 @@ ws.onmessage=(res)=>{
   let {type,msg,name} = JSON.parse(res.data)
   switch (type) {
     case 'welcome':
-        alert(msg)
+        console.log(msg)
       break;
     case 'chart':
       // 接受到了聊天信息
