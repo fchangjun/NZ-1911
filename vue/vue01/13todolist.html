@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todolist</title>
+  <script src='../vue.js'></script>
+  <style>
+   .green{
+     background: green;
+   }
+   .red{
+     background: red;
+   }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+<input type="text" placeholder="请输入要做啥子类" 
+       v-model='inputValue'
+> 
+<!-- v-modol将input框的value 和 data里的数据进行绑定 -->
+<button @click='add'>添加</button>
+<ul>
+  <li v-for = '(item,index) in list'
+      v-bind:class = 'item.state?"green":"red"'
+  >
+    {{item.event}}
+    <button @click='del(index)'>del</button>
+    <!-- 已经完成显示 已完成文字  没完成显示按钮 -->
+    <span v-if='item.state'>已完成</span>
+    <button v-else @click='finish(index)'>待完成</button>
+  </li>
+  
+</ul>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    list:[{event:'今晚代码到天明',state:false},
+    {event:'明晚代码到天明',state:true},
+    {event:'明晚恐怖片到天明',state:false}],
+    inputValue:'呵呵哒'
+  },
+  methods: {
+    add(){
+      console.log(this.inputValue)
+      // 将用户输入的信息添加到list数据里  页面会自动发生改变
+      this.list.push({event:this.inputValue,state:false})
+    },
+    del(index){
+      console.log('要删除的下标',index)
+      // 数组里删除点击的数据
+      this.list.splice(index,1)
+    },
+    finish(index){
+      // 将点击项的状态值改成true 就是完成
+      this.list[index].state=true
+    }
+  },
+})
+/*
+能够添加代办实现  v
+显示代待办事项    v
+删除代办事项     v
+完成代办事项    v 
+
+1.寻找数据和页面的关系 
+2.通过指令将数据和页面绑定
+3.更改数据 页面会自动变化
+*/ 
+</script>
+</body>
+</html>

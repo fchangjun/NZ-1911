@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性绑定v-bind</title>
+  <script src='../vue.js'></script>
+
+</head>
+<body>
+<div id = 'app'>
+  <input type="text" @input='input' :value='value'> 
+  <p>
+   {{value}}
+  </p>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+     value:'你好'
+  },
+  methods: {
+      input(e){
+        console.log(e.target.value)
+        this.value=e.target.value
+      }
+  },
+
+})
+
+/*
+在input 框输入的内容可以在p元素显示出来
+*/ 
+</script>
+</body>
+</html>
