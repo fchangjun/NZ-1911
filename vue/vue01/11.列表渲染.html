@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性绑定v-bind</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id = 'app'>
+  <ul>
+    <!-- 循环数组 -->
+    <!-- <li v-for = 'item in lists'>{{item}}</li> -->
+    <!-- <li v-for = '(item,index) in lists'>{{item}}{{index}}</li> -->
+    <!-- <li v-for = '(hehe,xixi) in lists'>{{hehe}}{{xixi}}</li> -->
+    <!-- 循环对象 -->
+    <!-- <li v-for="(value,key,index) in obj">{{key}}:{{value}}-{{index}}</li> -->
+    <!-- <li v-for='item in num'>{{item}}</li> -->
+    <p v-for='item in string'> {{item}}</p>
+  </ul>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    lists:['午夜凶铃','咒怨','红色高跟鞋','真实魔鬼游戏','潜伏'],
+    obj:{us:'王一',ps:'12345',sex:'未知'},
+    num:100,
+    string:'周五晚上12点我们看恐怖片准备好小零食'
+  },
+})
+/*
+v-for 绑定一个标签 循环一个数据源
+<li v-for ='循环数据的每一项 in/of 要循环的数据'></li>
+<li v-for ='(循环数据的每一项,每一项的下标)in/of 要循环的数据'></li>
+<li v-for="(对象value,对象里的key,下标) in 要循环的对象">{{key}}:{{value}}-{{index}}</li>
+*/ 
+</script>
+</body>
+</html>

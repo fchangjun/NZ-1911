@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性绑定v-bind</title>
+  <script src='../vue.js'></script>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+   .box{
+     width: 400px;
+     height: 600px;
+     border: 1px solid red;
+   }
+   .nav {
+     list-style: none;
+     height: 80px;
+     width: 400px;
+     background: skyblue;
+     font-size: 0px;
+   }
+   .nav li{
+     display: inline-block;
+     height: 80px;
+     width: 100px;
+     border: 1px solid green;
+     box-sizing: border-box;
+     font-size: 16px;
+   }
+   .sel{
+     background: yellowgreen;
+   }
+   .content div{
+     width: 400px;
+     height: 420px;
+     background: pink;
+   }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+  <div class='box'>
+    <ul class="nav">
+      <!-- v -->
+       <li 
+       v-bind:class ='item===seleted?"sel":""' 
+       v-for='item in list'
+       v-on:click='change(item)'
+       >{{item}}</li>
+    </ul>
+    <div class='content'>
+       <div 
+       v-show='item===seleted?true:false'
+       v-for = 'item in list'>
+         {{item}}
+       </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    list:['爱情','动作','恐怖','科幻'],
+    seleted:'科幻' //默认选中的一项
+  },
+  methods: {
+    change(item){
+      console.log('点到了:'+item)
+      this.seleted = item
+    }
+  },
+})
+/*
+用 vue实现tab选项卡
+1. 渲染界面
+2. 点击切换tab
+3. 导航条高亮
+4. 内容要切换
+
+a. 先把静态处理出来
+b. 哪些元素可以用指令
+
+*/ 
+</script>
+</body>
+</html>
