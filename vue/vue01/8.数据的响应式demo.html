@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8数据的响应式demo</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+   <div v-if='show' class='test'></div>
+   <button @click='toggle'>toggle</button>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    show:true
+  },
+  methods: {
+    toggle(){
+      this.show=!this.show
+    }
+  }
+})
+
+/*
+用一个按钮控制div的显示隐藏
+1.先让div显示隐藏
+2.找到控制div显示隐藏的数据
+3.用按钮去修改他
+*/ 
+</script>
+</body>
+</html>

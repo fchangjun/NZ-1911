@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4条件渲染1</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+   {{name}}
+    <div v-if='show' class="test">
+
+    </div>
+
+    <div v-else class ='test2'>
+
+    </div>
+</div>
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    name:'韩梅梅',
+    show:false
+  }
+})
+/*
+v-if 是一个指令 条件渲染 控制一个元素的渲染不渲染 
+<目标元素 v-if='变量或者表达式'></目标元素>
+指令后面跟是变量或者表达式
+官方文档 文档查找 v-elseif 的用法
+*/ 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5
+    条件渲染2</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+
+    <div v-show ='show' class="test">
+
+    </div>
+</div>
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    show:false
+  }
+})
+
+/*
+v-show 可以控制元素的显示隐藏通过display none 不管显示还是隐藏元素都是存在
+v-if   控制元素的渲染  v-if为假 该元素都不会创建
+*/ 
+
+</script>
+</body>
+</html>

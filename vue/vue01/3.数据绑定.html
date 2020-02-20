@@ -9,15 +9,37 @@
 <body>
 <div id="app">
    {{text}}
+   <hr>
+   {{arr}}
+   <hr>
+   {{obj}}
+   <hr>
+   {{num}}
+   <hr>
+   {{null?'真的':'假的'}}
+   <hr>
+   {{undef?'真的':'假的'}}
+   <hr>
+   {{boolean}}
+
+
 </div>
 <script>
  let vm = new Vue({
    el:'#app',
    data:{
-     text:'这里是文本'
+     boolean:false,
+     text:'这里是文本',
+     arr:['呵呵','嘻嘻'],
+     obj:{us:123,ps:456},
+     num:123,
+     null:null,
+     undef:undefined
    }
  })
 // 将data中的数据在视图中使用（view） 这个过程叫数据绑定 方向 data->view
+// 正常的数据类型都可以绑定并显示  特殊的 null undefined 只能绑定不能显示
+// {{}} 插值法内部 放的是变量和表达式 
 </script>
 </body>
 </html>

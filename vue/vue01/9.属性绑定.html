@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性绑定v-bind</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+  <img src="url" alt="">
+  <img v-bind:src="url" alt="">
+  <img :src="url" alt="">
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    url:'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2164734927,1367682520&fm=26&gp=0.jpg'
+  }
+
+})
+
+/*
+属性绑定 v-bind
+<img src=''>
+<div width height class id > 
+src  width height class id .....都叫属性
+属性后面跟的是固定字符串
+属性绑定可以让属性后面跟变量或者表达式
+简写  v-bind:src === :src
+*/ 
+</script>
+</body>
+</html>

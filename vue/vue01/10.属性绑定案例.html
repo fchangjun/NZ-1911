@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性绑定v-bind</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+  <div v-bind:class='toggle?"test":"test2"'></div>
+  <button @click='change'>toggle</button>
+</div>
+
+<script>
+let vm  = new Vue({
+  el:"#app",
+  data:{
+    toggle:false
+  },
+  methods: {
+    change(){
+      this.toggle=!this.toggle
+    }
+  },
+
+
+})
+
+/*
+通过一个按钮控制div颜色的改变
+1.div 能改变颜色
+2.找一个数据和改变颜色做关联
+3.按钮控制这个数据的修改
+*/ 
+</script>
+</body>
+</html>

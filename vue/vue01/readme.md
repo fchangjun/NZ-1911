@@ -21,3 +21,15 @@ vue      尤玉溪  双向数据绑定+虚拟dom
 2.找一个dom元素 这个dom要被vue控制
 3.在js中实例化vue
 ```
+
+### 数据绑定
+
+
+### 指令 directive 
+条件渲染
+v-show 
+v-if 
+事件绑定
+v-on
+属性绑定 
+v-bind

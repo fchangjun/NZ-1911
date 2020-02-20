@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6事件绑定
+  </title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+    .test2{
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div id = 'app'>
+  <!-- <button onclick='fun()'>toggle</button> -->
+  <button v-on:click='toggle(1,2,$event)'>toggle</button>
+  <button @click = 'toggle2'>toggle2</button> 
+</div>
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    show:false
+  },
+  methods: {  //vue中写事件函数的地方
+    toggle:(num1,num2,e)=>{
+      console.log('点到我了',num1,num2,e)
+    },
+    toggle2(){
+      console.log('点到第二个了')
+    }
+  },
+})
+
+/*
+v-on:事件名='事件处理函数' 事件名和原生js一样 
+onclick  v-on:click
+onblur   v-on:blur
+事件处理函数一定要写在实例的 methods内部
+默认参数（啥参数都不传都有的参数）是事件对象  
+如果有其他参数 事件对象需要通过 $event 手动传递
+简写方式
+v-on:click  ===  @click 
+*/ 
+
+</script>
+</body>
+</html>
