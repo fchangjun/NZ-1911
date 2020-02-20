@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom操作
+  </title>
+</head>
+<body>
+<div id='test'>1</div>
+<script>
+//  耗时 60ms
+  // console.time('hehe')
+  // for (let index = 0; index < 10000; index++) {
+  //   let num = Number(document.getElementById('test').innerHTML)
+  //   num++ 
+  //   let div = document.getElementById('test')
+  //   div.innerHTML = num
+    
+  // }
+  // console.timeEnd('hehe')
+  // 0.3
+  console.time('hehe')
+  let num = Number(document.getElementById('test').innerHTML)
+  for (let index = 0; index < 10000; index++) {
+    num++ 
+  }
+  let div = document.getElementById('test')
+    div.innerHTML = num
+  console.timeEnd('hehe')
+
+  //dom操作是制约效率的关键，减少dom
+  //修改内存中的数据（变量）消耗的资源远远小于dom操作
+  // 虚拟dom 就是一个内存中的一个对象 该对象有一个特点和dom有相同的结构
+  /*
+
+  <div class='test' id='div1'>
+    <p>1</p>
+    <span>呵呵</span> 
+  </div>
+  obj={
+    tag:'div',
+    className:'test',
+    id：“div1”，
+    children:[
+      {
+        tag:'p',
+        text:10000
+      }，
+      {
+        tag：’span‘,
+        text:'呵呵'
+      }
+    ]
+  }
+  
+  */
+</script>
+</body>
+</html>
