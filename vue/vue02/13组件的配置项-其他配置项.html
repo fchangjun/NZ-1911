@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'> 
+    这里是实例
+    <hehe> </hehe> 
+  
+  </div> 
+
+
+  <!-- 组件模板 -->
+  <template id='hehe'>
+    <div class='hehe'>
+      这里是hehe组件
+      <xixi></xixi>
+    </div>
+  </template>
+<!-- hehe里的嘻嘻组件 -->
+  <template id='xixi'>
+    <div class='xixi'>
+      这里是嘻嘻组件
+    </div>
+  </template>
+<script>
+
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    name:'这里是实例'
+  },
+  components:{
+    hehe:{
+      template:'#hehe',
+      components:{
+        xixi:{template:'#xixi'}
+      }
+    }
+  }
+})
+/*
+ 组件继承自实例 实例有的组件都有 部分会发生改变  template el  data
+ el  template
+ data 
+ methods 
+ directives
+ components 组件里也有components 也可以注册组件 形成了组件嵌套
+ watch
+ computed
+ 不管嵌套多少级 在哪注册在哪用
+*/
+</script>
+</body>
+</html>

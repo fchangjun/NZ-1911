@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'> 
+     {{name}}
+     <hr>
+     <hehe></hehe> 
+  </div> 
+  <!-- 组件模板 -->
+  <template id='tp1'>
+    <div>
+      这里是模板
+      {{name}}
+    </div>
+  </template>
+<script>
+
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    name:'这里是实例'
+  },
+  components:{
+    hehe:{
+      template:'#tp1',
+      data(){
+        return{ name:'韩梅梅'}
+      }
+    }
+  }
+})
+/*
+组件正常情况下无法直接使用实例的数据 只能使用自己的数据
+实例里的data 是一个对象
+组件里的data是一个函数 返回一个对象返回的对象就是我们的数据
+为了保证每一个组件有单独的左右域
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id='app1'>
+  {{name}}
+  <input type="text" v-focus>
+</div>
+
+<hr>  
+<div id='app2'>
+{{name}}
+<input type="text" v-focus>
+</div>
+<script>
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    name:'实例1'
+  },
+  methods: {
+    
+  },
+  directives:{
+    'focus':{ 
+      inserted(el){
+        el.focus()
+      }
+    }
+  }
+})
+let vm2 = new Vue({
+  el:'#app2',
+  data:{
+    name:'实例2'
+  }
+})
+/*
+1. 通过实例配置项里的directives 创建的指令叫局部自定义指令
+2. 在那个实例里创建在哪使用
+*/ 
+</script>
+</body>
+</html>

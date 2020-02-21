@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'> 
+    <hehe></hehe>
+  </div> 
+  <!-- 组件模板 -->
+  <template id='tp1'>
+    <div class='tp1'>
+      <p v-for='item in 10'>{{item}}</p>
+    </div>
+  </template>
+<script>
+
+//  Vue.component('hehe',{
+//    template:'<h1>hehe</h1>'
+//  }) 
+
+ Vue.component('hehe',{
+   template:'#tp1'
+ }) 
+
+let vm1 = new Vue({
+  el:'#app1',
+})
+/*
+组件配置项template 
+和实例里的 el 类似 关联dom元素
+1. dom结构简单 直接使用字符串 
+2. dom复杂   template标签 该标签不会真正的渲染 值允许有一个根元素
+*/
+</script>
+</body>
+</html>

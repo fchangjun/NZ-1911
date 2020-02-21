@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'> 
+    {{name}}
+    <xixi></xixi>
+    <hehe></hehe>
+  </div> 
+  <hr>
+  <div id='app2'> 
+    {{name}}
+    <xixi></xixi>
+  </div> 
+<script>
+//创建局部组件
+let component = Vue.extend({template:"<h1>这里是局部组件</h1>"})
+let vm = new Vue({
+  el:'#app1',
+  data:{
+    name:'实例1'
+  },
+  components:{
+    'xixi':component,
+    'hehe':{template:"<h1>这里是局部组件hehe</h1>"}
+  }
+})
+let vm2 = new Vue({
+  el:'#app2',
+  data:{
+    name:'实例2'
+  }
+})
+/*
+ 局部组件和全局组件的创建方式是一致  注册方式不一样
+ 局部组件在哪注册在哪用
+ 局部组件注册在 实例里的配置项  components里
+
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id='app1'>
+  {{name}}
+  <!-- <input type="text" v-focus> -->
+</div>
+
+<hr>  
+<div id='app2'>
+{{name}}
+<input type="text" v-focus>
+</div>
+<script>
+Vue.directive('focus',{
+  inserted(el){
+    el.focus()
+  }
+})
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    name:'实例1'
+  }
+})
+let vm2 = new Vue({
+  el:'#app2',
+  data:{
+    name:'实例2'
+  }
+})
+/*
+1.通过 Vue.directive 创建的指令就叫全局自定义指令
+2.在所有的实例里都可以用
+3.指令的创建要放到实例化的前方
+*/ 
+</script>
+</body>
+</html>

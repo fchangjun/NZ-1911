@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'> 
+    这里是实例
+    <hehe> </hehe>
+    <hr>  
+  </div> 
+  <!-- 组件模板 -->
+  <template id='tp1'>
+    <div>
+      这里是组件
+      num:{{num}}
+      <button @click='add'> add</button>
+    </div>
+  </template>
+<script>
+
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    name:'这里是实例'
+  },
+  components:{
+    hehe:{
+      template:'#tp1',
+      data(){
+        return{
+          num:1
+        }
+      },
+      methods: {
+        add(){
+          // 组件里的this指向组件对象
+          this.num++
+        }
+      },
+    }
+  }
+})
+/*
+
+*/
+</script>
+</body>
+</html>
