@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'>  
+   这是是爸爸
+   爸爸的钱包余额:{{money}}
+  <hr>
+  <!--在组建上注册父组件的方法 -->
+  <son @xixi='fatherBuyCry'></son>
+  </div> 
+
+
+<template id='son'>
+  <div>
+     儿子看到玩具了 
+     <button @click='buy'>buybuybuy</button>
+  </div>
+</template>
+
+<script>
+
+Vue.component('son',{
+  template:'#son',
+  methods: {
+    buy(){
+      console.log('我想买玩具')
+      this.$emit('xixi',3)
+    }
+  },
+})
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    money:20
+  },
+  methods: {
+    fatherBuyCry(num){
+      //爸爸花钱的方法
+      this.money=this.money-num
+      alert('crycrycry')
+    }
+  },
+})
+/*
+
+*/ 
+</script>
+</body>
+</html>

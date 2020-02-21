@@ -23,11 +23,11 @@
     这里是实例
     {{money}}
     <hr>  
+    <!-- 在tp1组件标签上使用 xixi自定义属性 -->
     <tp1 :xixi='money'></tp1>
   </div> 
 
   <!-- 组件模板 -->
-
   <template id='tp1'>
     <div class='tp1'>
       这里是组件
@@ -42,7 +42,10 @@ Vue.component('tp1',{
       hehe:123
     }
   },
-  props:['xixi'] //接收自定义属性
+  props:{
+    xixi:{type:Number} //传值的同时检查数据的类型
+  }
+  // props:['xixi'] //接收自定义属性
 })
 
 let vm1 = new Vue({
@@ -53,7 +56,10 @@ let vm1 = new Vue({
 })
 /*
 不管是组件还是实例 自己的数据只能自己使用
-props 将父亲的数据传给儿子
+props 自定义属性 将父亲的数据传给儿子
+1.在组件标签上使用自定属性
+2.在组件内部通过props来接受自定义属性
+3.接受完了 既可以在组件里直接使用 只能用不能改
 */ 
 </script>
 </body>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+   .test{
+     width: 100px;
+     height: 100px;
+     background: red;
+   }
+  </style>
+</head>
+<body>
+  <div id='app1'>  
+    <!-- 将父亲的数据通过自定义属性传给组件1使用 -->
+    <son1 :show='state'></son1>
+    <hr>  
+     <!-- 将父亲的方法通过自定义事件传给组件2使用 -->
+    <son2 @custom='faToggle'></son2>
+  </div>
+  <hr>
+  <!-- 组件1 -->
+  <template id='son1'>
+    <div>
+       这里是组件1
+       <div class='test' v-show='show'>
+
+       </div>
+    </div>
+  </template>
+ <!-- 组件2 -->
+ <template id='son2'>
+  <div>
+     这里是组件2
+     <button @click='son2Click'>显示隐藏</button>
+  </div>
+</template>
+<script>
+/*
+组件1 和组件2 是兄弟
+组件1有div 可以显示隐藏
+组件2 有butoon 控制显示隐藏
+
+控制显示隐藏的值放在公有的爸爸上
+*/ 
+Vue.component('son1',{
+  template:'#son1',
+  props:['show']  //接受爸爸传来的数据
+})
+Vue.component('son2',{
+  template:'#son2',
+  methods: {
+    son2Click(){
+      this.$emit('custom') //触发爸爸传来的函数
+    }
+  },
+})
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    state:false
+  },
+  methods: {
+    faToggle(){
+      this.state=!this.state
+    }
+  },
+})
+/*
+
+*/ 
+</script>
+</body>
+</html>

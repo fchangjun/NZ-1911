@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id='app1'>
+     <button @click='toggle'>显示隐藏</button> 
+     {{show}}
+     <son :hehe='show'></son>
+  </div> 
+  
+  <!-- 子元素 -->
+  <template id='tp1'>
+    <div>
+      hehe:{{hehe}}
+       <div class='test' v-show ='hehe'>
+ 
+       </div>
+    </div>
+  </template>
+<script>
+Vue.component('son',{
+  template:'#tp1',
+  props:['hehe']
+})
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    show:true
+  },
+  methods: {
+    toggle(){
+      this.show=!this.show
+    }
+  },
+})
+/*
+写2个组件是一个嵌套关系
+父组件有一个按钮
+子组件有一个div
+父组件的按钮控制自己
+子组件div的显示隐藏
+
+
+*/
+</script>
+</body>
+</html>
