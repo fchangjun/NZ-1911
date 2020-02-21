@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id='app'> 
+   <select v-model ='xixi'>
+      <option value="0">苹果</option>
+      <option value="1">香蕉</option>
+      <option value="2">栗子</option>
+   </select>
+   {{xixi}}
+</div> 
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    xixi:'苹果'
+  },
+  methods: {
+  }
+})
+
+</script>
+</body>
+</html>

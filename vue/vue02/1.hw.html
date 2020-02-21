@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+    table,tr,td{
+      border: 1px solid red;
+    }
+    .green{
+      background: green;
+    }
+    .red{
+      background: red;
+    }
+    .blue{
+      background: blue;
+    }
+    .pink{
+      background: pink;
+    }
+    .yellow{
+      background: yellow;
+    }
+    .purple{
+      background: purple;
+    }
+  </style>
+</head>
+<body>
+<div id='app'> 
+<!-- 下拉菜单 -->
+<select @change='change'>
+  <option v-for='(item,index) in colors' 
+  :value='index'> {{item}}</option>
+</select>
+<!-- 表格 -->
+  <table>
+    <tr v-for ='(trItem,trIndex) in tables'
+        :class='trIndex%2?colors[colorSel][0]:colors[colorSel][1]'
+    >
+      <td v-for = "(tdItem,tdIndex) in trItem"
+          :style="{opacity:tdSel==tdItem?0.1:1}"
+          @mouseover="move(tdItem)"
+      >
+        {{tdItem}}
+      </td>
+    </tr> 
+  </table>
+</div> 
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    tables:[[11,12,13],[21,22,23],[31,32,33]],
+    trSel:1, //默认选中的是下标为0的行
+    tdSel:11,
+    colors:[['red','green'],['blue','pink'],['yellow','purple']],
+    colorSel:2  //控制隔行变色的下标
+  },
+  methods: {
+    move(index){
+      // this.trSel=index
+      this.tdSel=index
+    },
+    change(e){
+      // e 事件对象
+      console.log(e.target.value)
+      this.colorSel=e.target.value
+    }
+  },
+})
+/*
+1. 创建一个表格 v
+2. 表格隔行变色 v
+3. 鼠标滑过有特效 v
+4. 下拉菜单控制隔行变色的颜色
+*/ 
+</script>
+</body>
+</html>

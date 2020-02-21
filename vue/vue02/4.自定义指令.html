@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id='app'> 
+  <input  v-xixi='name'   type="text">
+  <!-- <div v-xixi></div> -->
+</div> 
+<script>
+// 自动聚焦的指令
+/*
+Vue.directive('指令名',配置项)
+使用自定义指令的时候  v-指令名
+inserted 被指令绑定的元素 插入到真实dom的时候自动执行
+*/
+Vue.directive('xixi',{
+  inserted(el,directive){
+    console.log('元素插入',el,data)
+    //el 被绑定的元素   directive 自定义指令对象
+    el.focus()
+  }
+})
+
+let vm = new Vue({
+  el:'#app',
+  data:{
+    name:'王一'
+  },
+  methods: {
+  }
+})
+/*
+input 有焦点  
+有一个指令可以让input 自动聚焦
+
+*/ 
+</script>
+</body>
+</html>

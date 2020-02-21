@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id='app'> 
+    <p v-html = 'string'></p>
+    <p v-text = 'string'></p>
+    <p>{{string}}</p>
+</div> 
+<script>
+let vm = new Vue({
+  el:'#app',
+  data:{
+    string : "<h1>你好</h1>"
+  },
+  methods: {
+  }
+})
+
+</script>
+</body>
+</html>
