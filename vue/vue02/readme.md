@@ -65,3 +65,63 @@ v-model 相当于 事件绑定v-on 和属性 v-bind 集合体
      a.隔行变色
      b.鼠标滑过有特效
      c.写一个下拉菜单 可以控制隔行变色的颜色
+
+v-html 相当于innerhtml
+v-text 相当于innerText
+#### 自定义指令
+全局自定义指令
+```
+Vue.directive('指令的名字',{
+  insterted(el){
+    el  自定义指令绑定的元素
+  }
+})
+v-自定义指令的名字
+```
+局部自定义指定 在哪注册在哪用 
+组件和实例都可以注册局部自定义指令
+```
+new Vue({
+  directives:{
+    自定义指令的名字:{
+      inserted(el){
+
+      }
+    }
+  }
+})
+```
+#### 组件
+1.创建组件 2.注册组件 3.使用组件
+局部组件 全局组件 的区分就是注册位置不同
+全局的
+Vue.component('组件名',{ 组件的配置项})
+局部的
+new Vue({
+  ...
+  components:{
+    组件名：{
+      配置项
+    },
+    hehe:{
+      template:'#hehe',
+      components:{
+        xixi:{
+          template:'#xixi',
+          components:{
+            ....
+          }
+        }
+      }
+    }
+  }
+})
+#### 组件的配置项和实例配置的区别
+绑定元素   el       template 
+数据      data 对象 data 函数
+自定义指令 directive  directive
+方法      methods    methods
+组件  
+计算属性
+监听
+....

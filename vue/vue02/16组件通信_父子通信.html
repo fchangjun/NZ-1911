@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+    #app1{
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    .tp1{
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id='app1'>  
+    这里是实例
+    {{money}}
+    <hr>  
+    <tp1 :xixi='money'></tp1>
+  </div> 
+
+  <!-- 组件模板 -->
+
+  <template id='tp1'>
+    <div class='tp1'>
+      这里是组件
+      {{xixi}}
+    </div>
+  </template>
+<script>
+Vue.component('tp1',{
+  template:'#tp1',
+  data(){
+    return{
+      hehe:123
+    }
+  },
+  props:['xixi'] //接收自定义属性
+})
+
+let vm1 = new Vue({
+  el:'#app1',
+  data:{
+    money:'资产'
+  }
+})
+/*
+不管是组件还是实例 自己的数据只能自己使用
+props 将父亲的数据传给儿子
+*/ 
+</script>
+</body>
+</html>

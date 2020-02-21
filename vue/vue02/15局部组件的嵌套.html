@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+  <script src='../vue.js'></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id='app1'>  
+    <tp1></tp1> 
+   
+  </div> 
+ <!-- 组件1 -->
+ <template id="tp1">
+   <div >
+     这里是组件1
+     <tp2></tp2>
+   </div>
+ </template>
+
+  <!-- 组件 2-->
+  <template id="tp2">
+    <div >
+      这里是组件2
+    </div>
+  </template>
+<script>
+
+
+let vm1 = new Vue({
+  el:'#app1',
+  components:{
+    tp1:{
+      template:'#tp1',
+      components:{
+        tp2:{
+          template:'#tp2',
+        }
+      }
+    },
+    // tp2:{
+    //   template:'#tp2'
+    // }
+  }
+})
+/*
+ 局部组件在注册的过程中 已经确定了嵌套关系
+ 使用的过程中 必须要找这种嵌套关系来使用
+*/
+</script>
+</body>
+</html>
