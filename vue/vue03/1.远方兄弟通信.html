@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <son1></son1>
+    <hr>
+    <son2></son2>  
+  </div>
+  <!-- 组价1的模板 -->
+  <template lang="" id='son1'>
+    <div>
+      这里是组件1 
+      <button @click ='change'>toggle</button>
+    </div>
+  </template>
+  <!-- 组价2的模板 -->
+  <template lang="" id='son2'>
+  <div>
+    这里是组件2 
+    <div class="test" v-if='show'></div>
+  </div>
+</template>
+<script>
+/*
+2个组件 兄弟关系
+1个的按钮控制另一个div的显示隐藏
+组件二里
+找到发生改变的组件 添加改变事件和数据关联
+组件里的数据只有自己的方法可以修改
+
+组件1的button来进行控制
+
+事件总线的原理  观察者模式  事件抛发机制  天使实例
+1. 创建一个空实例 作为桥梁
+2. 通过 $on 在空实例上注册事件
+3. 在任何地方 只要能获取到空实例 那就可以通过 $emit 方法触发事件
+
+*/ 
+let vue = new Vue() //创建一个空实例 
+let son1 = Vue.component('son1',{
+  template:'#son1',
+  methods:{
+    change(){
+      console.log('空实例',vue)
+      vue.$emit('hehe')
+    }
+  }
+})
+let son2 = Vue.component('son2',{
+  template:'#son2',
+  data(){
+    return{
+      show:false
+    }
+  },
+  methods: {
+    toggle(){
+      this.show=!this.show
+    }
+  },
+  mounted() {
+    // 组件从虚拟dom变成真实dom 的时刻会自动执行的函数
+    console.log('组件二挂载')
+    vue.$on('hehe',this.toggle)
+    // 将toggle方法注册到 vue空实例的上 名字叫hehe
+  },
+})
+let vm=new Vue({
+  el:"#app"
+})
+
+</script>
+</body>
+</html>

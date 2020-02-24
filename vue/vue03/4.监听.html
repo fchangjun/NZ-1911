@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    {{num}}
+    {{name}}
+    <button @click='add'>add</button>
+    <button @click='change'>change</button>
+  </div>
+<script>
+
+let vm=new Vue({
+  el:"#app",
+  data:{
+   num:1,
+   name:'韩梅梅'
+  },
+  methods: {
+    add(){
+      this.num++
+    },
+    change(){
+      this.name='李雷雷'
+    }
+  },
+  watch: {
+    num:(newValue,oldValue)=>{
+      console.log('num你变了')
+      console.log('new',newValue)
+      console.log('old',oldValue)
+    },
+    name(){
+      console.log('改名')
+    }
+  },
+})
+
+</script>
+</body>
+</html>
