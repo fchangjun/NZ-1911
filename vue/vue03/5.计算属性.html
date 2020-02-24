@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+     {{num}} {{name}}
+     <!-- {{((num*2+4)-6*2/24)/8}}
+     {{((num*2+4)-6*2/24)/8}}
+     {{((num*2+4)-6*2/24)/8}}
+     {{((num*2+4)-6*2/24)/8}} -->
+     <hr>
+     {{hehe}}
+     <button @click='add'>add</button>
+     <button @click='change'>改名</button>
+  </div>
+<script>
+/*
+ 计算属性
+ 也是对数据做处理 
+ 配置项的一种 computed
+ 与data的数据关联 返回处理过之后的数据
+
+计算属性直接当成变量来用
+ 缓存性的特点···相关属性发生改变计算会重新执行 无关属性发生改变计算属性不重新执行
+*/ 
+let vm=new Vue({
+  el:"#app",
+  data:{
+   num:1,
+   name:'韩梅梅'
+  },
+  methods: {
+    change(){
+      this.name='🙃'
+    },
+    add(){
+      this.num++
+    }
+  },
+  computed: {
+    hehe(){
+      console.log('计算属性执行了')
+      return ((this.num*2+4)-6*2/24)/8
+    }
+  },
+
+})
+
+</script>
+</body>
+</html>

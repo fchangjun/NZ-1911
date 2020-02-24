@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+    .swiper-container {
+        width: 600px;
+        height: 300px;
+        background: red;
+    }  
+  </style>
+</head>
+<body>
+  <div id="app">
+    <banner></banner>
+    <banner></banner>
+    <banner></banner>
+  </div>
+  <!-- 轮播图组件 -->
+  <template id="banner">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for='item in list'>
+            <img :src="item" alt="">
+          </div>
+      </div>
+    </div>
+  </template>
+<script>
+Vue.component('banner',{
+  template:'#banner',
+  data(){
+    return{
+      list:[
+        'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2888261511,2808819884&fm=26&gp=0.jpg',
+        'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2164734927,1367682520&fm=26&gp=0.jpg',
+        'https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2422437459,525040718&fm=26&gp=0.jpg'
+      ]
+    }
+  },
+  methods: {
+    initBanner(){
+      var mySwiper = new Swiper ('.swiper-container', {
+          // direction: 'vertical', // 垂直切换选项
+          loop: true, // 循环模式选项
+
+        })   
+    }
+  },
+  mounted() {
+    // 组件创建成功过之后会直接执行 
+    this.initBanner()
+  },
+})
+let vm=new Vue({
+  el:"#app",
+})
+
+</script>
+</body>
+</html>

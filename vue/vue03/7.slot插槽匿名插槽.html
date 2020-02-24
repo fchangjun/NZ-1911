@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <hehe>
+      这里是测试内容
+    </hehe>
+  </div>
+  <!-- 呵呵组件 -->
+  <template id="hehe">
+    <div class='test'>
+       <slot></slot>
+       <h3>这里是呵呵组件</h3>
+       <slot></slot>
+    </div>
+  </template>
+<script>
+/*
+1.组件标签中的内容不会被渲染
+2. slot 相当于开启一段空间来存放组件标签中的内容
+*/ 
+let vm=new Vue({
+  el:"#app",
+  components:{
+    hehe:{
+      template:'#hehe'
+    }
+  }
+})
+
+</script>
+</body>
+</html>

@@ -15,13 +15,17 @@
 </head>
 <body>
   <div id="app">
-    {{num}}
+    <p id='p'>{{num}}</p>
     {{name}}
     <button @click='add'>add</button>
     <button @click='change'>change</button>
   </div>
 <script>
-
+/*
+监听 是配置项的一种
+监听数据的改变 有2个参数一个是更新前的值 一个更新之后的值
+watch监听触发的时候 dom 还没有更新 所以数据是更改之后的但是dom 是更改之前的
+*/ 
 let vm=new Vue({
   el:"#app",
   data:{
@@ -41,6 +45,8 @@ let vm=new Vue({
       console.log('num你变了')
       console.log('new',newValue)
       console.log('old',oldValue)
+      console.log('p',document.getElementById('p')) //假的
+      console.log('p',document.getElementById('p').innerText) //真的
     },
     name(){
       console.log('改名')
