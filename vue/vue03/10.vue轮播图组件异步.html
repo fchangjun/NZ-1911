@@ -23,8 +23,8 @@
 <body>
   <div id="app">
     <banner></banner>
-    <banner></banner>
-    <banner></banner>
+    <!-- <banner></banner>
+    <banner></banner> -->
   </div>
   <!-- 轮播图组件 -->
   <template id="banner">
@@ -45,6 +45,7 @@ Vue.component('banner',{
     }
   },
   methods: {
+    // 初始化轮播图
     initBanner(){
       var mySwiper = new Swiper ('.swiper-container', {
           // direction: 'vertical', // 垂直切换选项
@@ -56,14 +57,27 @@ Vue.component('banner',{
   mounted() {
     // 模拟网络请求数据
     setTimeout(()=>{
+      // 【】-》【1，2，3】
       this.list = [
         'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2888261511,2808819884&fm=26&gp=0.jpg',
         'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2164734927,1367682520&fm=26&gp=0.jpg',
         'https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2422437459,525040718&fm=26&gp=0.jpg'
       ]
+      // 真实dom没有更新
+      // 上一次数据修改 导致dom更新结束之后在执行内部的回调
+      this.$nextTick(()=>{
+        this.initBanner()
+      })
+    
     },1000)
-    // 组件创建成功过之后会直接执行 
-    this.initBanner()
+      // 组件创建成功过之后会直接执行 
+      
+  /*
+    网络请求是异步 dom的更新是异步的
+    初始化的时候 数据没有回来 导致初始化缺少元素 轮播图不能滚动
+    数据发生改变 先改变的是虚拟dom 在去修改真实dom 这个过程是一个异步的
+  */ 
+  
   },
 })
 let vm=new Vue({

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click='toggle'>toggle</button>
+    <!-- 呵呵组件 创建销毁 -->
+    <hehe v-if='show'></hehe>
+  </div>
+  <template id="hehe">
+    <div class = 'test'>
+       <p ref='p'>{{num}}</p>
+    </div>
+  </template>
+<script>
+Vue.component('hehe',{
+  template:'#hehe',
+  data(){
+    return {
+      num:1
+    }
+  },
+  mounted(){
+    //将计时器挂载当前实例上
+   this.timer=setInterval(() => {
+      console.log(1)
+    }, 1000);
+  },
+  destroyed() {
+    // 我回顾组件的一生 寻找遗留的遗憾 错事  解决遗憾 擦屁股
+    // 全局计时器 全局事件监听 
+    clearInterval(this.timer)
+  },
+})
+
+let vm=new Vue({
+  el:"#app",
+  data:{
+    show:false
+  },
+  methods: {
+    toggle(){
+      this.show=!this.show
+    }
+  },
+})
+
+</script>
+</body>
+</html>

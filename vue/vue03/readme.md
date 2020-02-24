@@ -186,3 +186,30 @@ updated
 beforeDestory
 销毁  组件离世的时候
 destroyed
+
+常用 
+created 网络请求
+mounted 网络请求 初始化dom
+beforeDestory/destroyed 组件销毁前擦屁股解决遗憾
+
+### eslint
+帮助我们代码更加规范 错误非常多
+流派 
+tab 2空格 4空格
+{} 换行流  
+function test(){
+
+} 
+
+function test()
+{
+  
+} 
+### 脚手架项目的基本目录
+src  源码目录
+  main.js 入口文件
+  xx.vue  单文件组件
+public 公有资源
+node_module 依赖包
+package.json 项目依赖
+readme 项目提示

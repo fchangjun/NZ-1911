@@ -58,11 +58,28 @@ Vue.component('hehe',{
     // 可以修改数据  可以修改dom
     // 初始化的操作 swiper
     console.log('挂载结束')
-    this.num=7
+    // this.num=7
   },
   beforeUpdate() {
     // 挂载之后数据更新的时候触发，挂载之前数据跟新不会触发
+    // 数据 是更新之后的
+    // dom  dom是更新之前的
     console.log('更新之前')  
+    console.log('this',this)
+    console.log('data',this.num)
+    
+    console.log('dom', this.$refs.p.innerHTML)
+  },
+  updated() {
+    // 数据与dom都跟新完了触发
+    // 数据 是更新之后的
+    // dom  dom是更新之后的
+    // 注意做数据的修改操作 可能引起死循环
+    console.log('更新之前')  
+    this.num=Math.random()
+    console.log('this',this)
+    console.log('data',this.num)
+    console.log('dom', this.$refs.p.innerHTML)
   },
   
 })

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click='toggle'>toggle</button>
+    <hehe v-if='show'></hehe>
+  </div>
+  <template id="hehe">
+    <div class = 'test'>
+       <p ref='p'>{{num}}</p>
+    </div>
+  </template>
+<script>
+Vue.component('hehe',{
+  template:'#hehe',
+  data(){
+    return {
+      num:1
+    }
+  },
+  mounted() {
+    console.log('组件挂载')
+  },
+  beforeDestroy() {
+    // 有数据 有this 也都没用
+    // 有dom
+    console.log('销毁之前')
+    console.log(this)
+    console.log(this.num)
+    console.log(this.$refs['p'].innerHTML)
+  },
+  destroyed() {
+    // 有数据  有this 但是没有用
+    // 没有dom
+     console.log('销毁之后') 
+     console.log(this)
+     console.log(this.num)
+     console.log(this.$refs['p'].innerHTML)
+  }
+})
+
+let vm=new Vue({
+  el:"#app",
+  data:{
+    show:false
+  },
+  methods: {
+    toggle(){
+      this.show=!this.show
+    }
+  },
+})
+
+</script>
+</body>
+</html>
