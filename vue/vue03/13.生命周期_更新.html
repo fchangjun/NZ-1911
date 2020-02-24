@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <hehe></hehe>
+  </div>
+  <template id="hehe">
+    <div class = 'test'>
+       <p ref='p'>{{num}}</p>
+       <button @click='add'>add</button>
+    </div>
+  </template>
+<script>
+Vue.component('hehe',{
+  template:'#hehe',
+  data(){
+    return {
+      num:1
+    }
+  },
+  methods: {
+    add(){
+      this.num++
+    }
+  },
+  beforeCreate() {
+    // 创建之前 没有初始化数据  同时没有真实dom  基本不用
+    console.log('创建之前')
+  },
+  created(){
+    //创建结束 有数据 没有dom
+    // 可以修改数据 在这里修改数据不会触发运行中的更新的生命周期
+    // 可以网络请求
+    // this.num=5
+    console.log('创建结束')
+  },
+  beforeMount() {
+    // 挂载之前和created类似 有数据 可以改数据 没有dom  
+    // 可以做网络请求
+  
+   console.log('挂载之前')
+  },
+  mounted(){
+    //挂载结束 有数据 有dom 
+    // 可以修改数据  可以修改dom
+    // 初始化的操作 swiper
+    console.log('挂载结束')
+    this.num=7
+  },
+  beforeUpdate() {
+    // 挂载之后数据更新的时候触发，挂载之前数据跟新不会触发
+    console.log('更新之前')  
+  },
+  
+})
+
+let vm=new Vue({
+  el:"#app",
+
+})
+
+</script>
+</body>
+</html>

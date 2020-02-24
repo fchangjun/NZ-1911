@@ -158,3 +158,31 @@ vue create name (名字随便起)
 
 ### 监听watch 
 watch 是配置项的一种 主要功能是监听数据的改变
+
+
+### 人生
+人生如戏 大悲咒
+0-1-0
+猥琐发育别浪
+入世
+打怪升级更新自己
+在世
+离世
+回顾一生 寻找遗憾解决遗憾
+
+#### 生命周期
+ 4（4个阶段） 8（每个阶段2个钩子函数） 2（缓存的钩子） 1（捕获错误的钩子函数）
+vue（实例）组件的一生和人生及其想似
+
+beforeCreate
+创建 创建虚拟dom create
+created
+beforeMount
+挂载  虚拟dom 变成真实dom 出现在页面上 在世
+mounted 
+beforeUpdate
+更新  更新数据->更新dom元素
+updated
+beforeDestory
+销毁  组件离世的时候
+destroyed

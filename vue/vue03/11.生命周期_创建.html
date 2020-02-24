@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <hehe></hehe>
+  </div>
+  <template id="hehe">
+    <div class = 'test'>
+       <p ref='p'>{{num}}</p>
+    </div>
+  </template>
+<script>
+Vue.component('hehe',{
+  template:'#hehe',
+  data(){
+    return {
+      num:1
+    }
+  },
+  beforeCreate() {
+    // 创建之前 没有初始化数据  同时没有真实dom  基本不用
+    console.log('创建之前')
+    console.log('this',this)
+    console.log('data',this.num)
+    console.log('dom',this.$refs['p'])
+  },
+  created(){
+    //创建结束 有数据 没有dom
+    // 可以修改数据 在这里修改数据不会触发运行中的更新的生命周期
+    // 可以网络请求
+    console.log('创建结束')
+    console.log('this',this)
+    console.log('data',this.num)
+    this.num=5
+    console.log('dom',this.$refs['p'])
+  }
+})
+
+let vm=new Vue({
+  el:"#app",
+
+})
+
+</script>
+</body>
+</html>
