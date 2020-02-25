@@ -2,7 +2,11 @@
   <div>
      <H4>todolist </H4>
      <todoinput @add='add'></todoinput>
-     <todolist :list='list'></todolist>
+     <todolist 
+     :list='list'
+     @del='del'
+     @update='update'
+     ></todolist>
   </div>
 </template>
 <script>
@@ -26,6 +30,12 @@ export default {
   methods: {
     add(msg){
       this.list.push({msg:msg,state:false})
+    },
+    del(index){
+      this.list.splice(index,1)
+    },
+    update(index){
+      this.list[index].state=true
     }
   },
 }

@@ -220,3 +220,30 @@ readme 项目提示
    b.首屏加载过慢 首屏白屏
    c.页面切换的用户体验好
 2. mpa 多页面应用  多个html
+
+#### 组件切换1 动态组件
+<div is = 'hehe'></div> 
+is 可以指定渲染的组件名
+div 渲染成一个叫呵呵的组件
+推荐与component 标签一起使用
+
+#### 组件切换2 路由
+监听地址栏的改变 根据改变渲染不同的组件
+
+基本使用
+1. 下载安装路由  npm install vue-router
+2. 创建路由表  
+    a. 引入vue 和vue-router 
+    b. 在vue中使用vue-router 
+    c. 创建路由实例 确定路径和组件的对应关系
+    d. 抛出路由实例
+3. 在main.js 注册路由
+4. 就可以使用2个组件
+ <router-link to  tag  active-class >  
+ 控制地址栏改变 
+ <router-view>  开启一片空间渲染指定的组件
+
+ 路由的模式 mode 哈希 和历史
+ 通过路由表里 mode 设置 
+ hash 路由 地址栏中有# 
+ history 路由 没有# 和正常使用的类似
