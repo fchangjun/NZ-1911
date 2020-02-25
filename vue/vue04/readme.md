@@ -247,3 +247,26 @@ div 渲染成一个叫呵呵的组件
  通过路由表里 mode 设置 
  hash 路由 地址栏中有# 
  history 路由 没有# 和正常使用的类似
+ 命名路由
+ 命名视图
+ 重定向
+ 声明式导航 和编程式导航
+  <a href='www.baidu.com'/>
+  window.location.href='www.baidu.com'
+  
+  <router-link > 进行组件切换叫做 声明式导航
+  通过路由对象下的api 进行切换叫做编程式导航
+  vm.$router  push  replace go back forward
+  push 会将组件加入到缓存栈  可以一级一级返回
+  replace  没有加入缓存栈   回到最初的起点
+路由传参
+动态路由   
+路由的路径中的有1项或者几项是变量可以变化
+在目标组件 通过 $route.params 来接受数据
+routes:[
+  {
+    path:'/login/:hehe/:xixi'
+  }
+]
+query传参
+params传参

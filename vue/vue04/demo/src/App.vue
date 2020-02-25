@@ -1,31 +1,36 @@
 <template>
   <div id="app">
-     这里是app根组件
-     <!-- <banner></banner>
-     <box></box>
-     <hr> -->
-     <!-- 控制地址栏改变
-      router-link  默认渲染成a标签 
-      to 表示地址栏变成啥样
-      tag 可以控制渲染元素
-      active-class 激活状态的类名
-      -->
-     <router-link to='/son1' tag='span' active-class='hehe'>son1</router-link>
-     <router-link to='/son2' active-class='hehe' tag='span'>son2</router-link>
-     <!-- 站位的作用 根据地址栏渲染不同的组件 -->
+     <span @click='jump("/son1")'>son1</span>
+     <span @click='jump("/son2")'>son2</span>
+     <span @click='jump("/recommend")'>推荐</span>
+     <span @click='jump("/dtly")'>动态路由</span>
+     <button @click='back'>back</button>
      <router-view></router-view>
-    
   </div>
 </template>
 
 <script>
-// 引入一个组件
-import banner from './Banner'
-// import box from './todolist/Box'
-import box from './is/Box'
+
 export default {
-  //  注册组件
-   components:{banner,box}
+  methods: {
+    back(){
+      this.$router.back()
+    },
+    jump(path){
+      console.log(this)
+      //push  replace go  back（go(-1)） forward (go(1))
+      this.$router.push(path)
+      // this.$router.push({path:path})
+      // this.$router.push({name:'起的名字'})
+      // this.$router.replace(path)
+      // this.$router.push({path:path})
+      // this.$router.push({name:'起的名字'})
+
+      // push   a->b-c->d 每次返回一级  会将页面加入到页面栈
+      // replace a->b-c->->d  直接回到最初的起点
+      //
+    }
+  }
 }
 </script>
 
