@@ -8,5 +8,8 @@
 
 
 export default {
+  mounted() {
+    console.log('组件1',this.$route)
+  },
 }
 </script>

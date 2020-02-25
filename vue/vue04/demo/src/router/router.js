@@ -14,6 +14,7 @@ let router = new VueRouter({
   routes:[
     {
        path:'/son1', //地址栏的path 
+       name:'son1',
        component:son1//组件   如果地址栏变成son1 渲染son1组件
     },
     {
