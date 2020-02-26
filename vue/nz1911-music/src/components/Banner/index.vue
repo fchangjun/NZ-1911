@@ -2,9 +2,13 @@
   <div class='banner'>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide" 
+            v-for = '(item,index) in banners'
+            :key = 'index'
+          >
+          <img :src="item.picUrl" alt="">
+          </div>
+
       </div>
     </div>
   </div>
@@ -12,14 +16,25 @@
 <script>
 import Swiper from 'swiper'
 export default {
+  props:{
+    'banners':{ type :Array ,default:[] }
+  },
   methods:{
     initBanner(){
       new Swiper('.swiper-container',{})
     }
   },
-  mounted(){
-    this.initBanner()
+  watch:{
+    banners(){
+      //banners 改变 网络请求数据ok 之后进行初始化操作
+      this.$nextTick(()=>{
+        this.initBanner()
+      })
+    }
   }
+  // mounted(){
+  //   this.initBanner()
+  // }
 }
 </script>
 <style lang="less" scoped>
@@ -29,5 +44,9 @@ export default {
   .w(375);
   .h(150);
   background: green;
+  img{
+    .w(375);
+    .h(150);
+  }
 }
 </style>

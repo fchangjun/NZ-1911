@@ -10,6 +10,10 @@
       //设置根元素字体大小
       document.documentElement.style.fontSize = document.documentElement.clientWidth/10 + 'px'
       console.log (document.documentElement.style.fontSize)
+      // 监听 屏幕大小的改变
+      window.addEventListener('resize',()=>{
+        document.documentElement.style.fontSize = document.documentElement.clientWidth/10 + 'px'
+      })
     </script>
   </head>
   <body>

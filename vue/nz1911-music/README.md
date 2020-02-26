@@ -25,3 +25,12 @@ css h5   websocket
 3. 组件和类文件和文件夹  大驼峰    MyBanner.vue   MyBanner.js 
 4. index.js  index.vue  
    在模板中  -+小写字母 = 大写字母  less-demo = lessDemo
+
+### 网络请求
+ajax 原生ajax
+jq   不推荐
+fetch 
+axios  
+1. 通过配置 devServer.proxy 解决跨域问题
+2. 将axios进行二次封装  使用拦截器
+3. 将axios 挂载到vue的原型上 在组件里使用不需要引入

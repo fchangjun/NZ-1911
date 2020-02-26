@@ -22,6 +22,9 @@ const router = new VueRouter({
     },{
       path:'/my',
       component:My
+    },{
+      path:'/',
+      redirect:'/recommend'
     }
   ]
 })
