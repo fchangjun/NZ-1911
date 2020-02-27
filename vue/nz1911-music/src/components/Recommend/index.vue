@@ -51,8 +51,7 @@ export default {
     getRecommendData().then((res)=>{
       this.recommendList = res.data.list
     })
-    this.initBs()
-    
+    this.initBs() 
   }
 }
 </script>
