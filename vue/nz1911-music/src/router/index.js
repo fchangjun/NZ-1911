@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Recommend from '../components/Recommend'
-import Singer from '../components/Singer'
+import Singer from '../components/Singer/index.vue'
 import Rank from '../components/Rank'
 import My from  '../components/My'
 Vue.use(VueRouter)
