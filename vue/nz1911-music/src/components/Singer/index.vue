@@ -1,43 +1,47 @@
 <template>
   <div class='singers'>
-
-    <!-- 滚动的列表 -->
-    <div class='wrapper' ref='singerWrapper'>
-      <div class='content'>
-          <ul>
-            <li v-for='(item,index) in singers'
-                :key='index'
-                :ref='item.Findex'
-            >  
-              <!--每一组的首字母 -->
-              <h3>{{item.Findex}}</h3>
-              <!--首字母下的歌手信息 -->
-              <ol>
-                <li v-for='(sItem,sIndex) in item.list' :key='sIndex'>
-                  <img v-lazy="sItem.avator" alt="">
-                  <span>{{sItem.Fsinger_name}}</span>
-                </li>
-              </ol>
-            </li>
-          </ul>
+      <!-- 滚动的列表 -->
+      <div class='wrapper' ref='singerWrapper'>
+        <div class='content'>
+            <ul>
+              <li v-for='(item,index) in singers'
+                  :key='index'
+                  :ref='item.Findex'
+              >  
+                <!--每一组的首字母 -->
+                <h3>{{item.Findex}}</h3>
+                <!--首字母下的歌手信息 -->
+                <ol>
+                  <li v-for='(sItem,sIndex) in item.list' 
+                      :key='sIndex'
+                      @click='goDetail'
+                      >
+                    <img v-lazy="sItem.avator" alt="">
+                    <span>{{sItem.Fsinger_name}}</span>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+        </div>
       </div>
-    </div>
-    <!-- 快速列表 -->
-    <div class='quicklist'>
-      <ul 
-        @touchstart='touchStart'
-        @touchmove='touchMove'
-        @touchend='touchEnd'
-      >
-        <li v-for="(item,index) in quickData" 
-            :key="index"
-            @click='quickJump(item)'
-            :class='selFindex==item?"sel":""'>
+      <!-- 快速列表 -->
+      <div class='quicklist'>
+        <ul 
+          @touchstart='touchStart'
+          @touchmove='touchMove'
+          @touchend='touchEnd'
+        >
+          <li v-for="(item,index) in quickData" 
+              :key="index"
+              @click='quickJump(item)'
+              :class='selFindex==item?"sel":""'>
 
-          {{item}}
-        </li>
-      </ul>
-    </div>
+            {{item}}
+          </li>
+        </ul>
+      </div>
+      <!--嵌套路由 -->
+      <router-view></router-view>
   </div>
 </template>
 <script>
@@ -83,18 +87,28 @@ export default {
     }
   },
   methods:{
+    goDetail(){
+      console.log('11111')
+      this.$router.push('/singer/detail')
+    },
     // 手指的触摸移动事件
     touchStart(e){
+      // 设定距离屏幕顶部的位置是140
       let y = e.touches[0].pageY
+      // 获取按下的格子下标
+      let startCount=parseInt((y-140)/18)
       this.touch.y=y
-      console.log('按下',y )
+      this.touch.startCount=startCount
+      console.log('按下',y ,startCount)
     },
     touchMove(e){
       let moveY =e.touches[0].pageY
       let moveDis=moveY-this.touch.y //计算出移动过的距离
       let count =parseInt(moveDis/18) //获取移动过的格子数
       console.log('移动',moveDis,count)
-      let moveIndex =0 + count  //获取下标
+      let moveIndex =this.touch.startCount + count  //获取下标
+      // 防止超出边界
+      if(moveIndex<0||moveIndex>this.quickData.length-1){ return false}
       let moveFindex =this.quickData[moveIndex]
       this.quickJump(moveFindex)
     },
@@ -111,7 +125,7 @@ export default {
     },
     initBs(){
       let wrapper = this.$refs.singerWrapper
-      this.Bs = new BS(wrapper,{probeType:3})
+      this.Bs = new BS(wrapper,{probeType:3,click:true})
       // 获取距离数组  
       let distance=[]
       for (const key in this.$refs) {

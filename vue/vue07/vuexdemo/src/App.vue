@@ -7,7 +7,8 @@
 
 <script>
 
-import Box from  './todolist/Box'
+// import Box from  './todolist/Box'
+import Box from  './vuexdemo/Box'
 export default {
   name: 'App',
   components:{Box}

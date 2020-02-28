@@ -1,12 +1,12 @@
 
 <template>
   <div>
-    {{showlist}}
+
      <ul>
        <li 
        :class='item.finish?"green":"red"'
        :key='index'
-       v-for='(item,index) in list'>
+       v-for='(item,index) in showlist'>
          {{item.msg}}
          <button @click='del(index)'>删除</button>
          <span v-if='item.finish'>已完成</span>

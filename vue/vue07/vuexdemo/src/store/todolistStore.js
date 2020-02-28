@@ -3,17 +3,38 @@ export default {
   state:{
      list:[{msg:'明天周天爱干啥干啥',finish:true},
      {msg:'呵呵哒',finish:false}
-    ]
+     ],
+     all:1 //,1,2 0 全部显示 1 已完成 2 显示未完成
   },
   getters:{
      showList(state){
-       let result =state.list.filter((item)=>{
-          return item.finish==false
-       })
-       return result
+       let result =null
+       switch (state.all) {
+         case 0:
+            result= state.list
+           break;
+          case 1:
+             result =state.list.filter((item)=>{
+              return item.finish
+            })
+
+          break;
+          case 2:
+             result =state.list.filter((item)=>{
+              return item.finish==false
+            })
+
+          break;
+         default:
+           break;
+       }
+       return result 
      }
   },
   mutations:{
+     changeAll(state,stateIndex){
+       state.all = stateIndex
+     },
      addList(state,params){
       //  mutation 方法里的第一个参数 指的是state
       //  第二个参数才是调用的时候传递的值

@@ -2,32 +2,39 @@
 <template>
   <div>
      <h4>这里是盒子组件 </h4>
-     {{name}}{{age}}
-     <button @click="changeName">改名</button>
-      <button @click="changeAge">改年龄</button>
-     <!-- <son1></son1> -->
-     <hr>
-     <!-- <son2></son2> -->
+        {{name}}
+        <hr>
+        <!-- {{double}} -->
+        {{xixi}}
+        <hr>
+        <button @click='heihei'>改名</button>
   </div>
 </template>
 <script>
-import Son1 from './Son1'
-import Son2 from './Son2'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
+
+// hehe 映射到计算属性里的值
+// state.name  全局状态管理的值
+// 对象可以改名数组不能改名
 export default {
-  name:'Box',
+  // 不适用拓展运算符
+  // computed:mapState({name:state=>state.name})
   computed:{
-    ...mapState({
-      name:state=>state.hehe.name,
-      age:state=>state.xixi.age
-    })
+    // ...mapState(['name'])
+    // ...mapState({hehe:(state)=>{ 
+    //   return state.name
+    // }})
+    // ...mapState({hehe:state=>state.name})
+    ...mapState({name:state=>state.name}),
+    // getters的映射
+    // ...mapGetters(['double']),
+    // ...mapGetters({double:'double'})
+    ...mapGetters({xixi:'double'})
   },
-  components:{Son1,Son2},
   methods:{
-    ...mapMutations(['changeAge','changeName'])
-  },
-  mounted(){
-    console.log(this)
+    // ...mapMutations(['changeName'])
+    // ...mapMutations({changeName:'changeName'})
+    ...mapMutations({heihei:'changeName'})
   }
 }
 </script>
