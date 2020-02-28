@@ -17,12 +17,32 @@ action   可以放异步操作 触发mutation   通过dispatch 触发
 getter   vuex里的计算属性 和state值进行关联 state发生改变
          可以重新计算，并且可以在页面上直接使用
 
+#### action 存放异步
+1. 统一管理异步请求减少代码量
+2. 时间旅行更加准确 vue的开发者工具
+
+#### vue开发者工具
+开发者工具绿了 该网页一定是vue做的
+vue做的网页开发者工具不一定绿
 #### 最简版
 1. 组件里通过 $store.state 获取全局状态数据进行渲染
 2. 通过  $store.commit 方法触发mutation 修改全局状态值 整个页面都会变
 
+#### 模块化
+1. 模块化之后state的取值需要添加一级模块名 其他的三个核心不变
+2. 可以在模块里添加命名空间 作用就是在 mutation getters actions的名字前面 添加模块名
+   用处就是防止名字冲突
 #### 稍微复杂版
 1. 组件里通过 $store.state 获取全局状态数据进行渲染
 2. 通过  $store.dispath方法 触发action里的方法
 3. action 触发mutation进行修改全局状态值
+
+#### 辅助函数
+帮助我们减少代码量
+##### 值类型向计算属性映射
+mapState  将全局状态管理的state值映射到使用组价的计算属性
+mapGetters 将全局状态管理的getters值映射到使用组价的计算属性
+##### 函数类型向methods进行映射
+mapMutations   将mutation的值映射到 方法里
+mapActions    将actions里的值映射到方法
  
