@@ -21,7 +21,10 @@ const store = new Vuex.Store({
     changeCurrendIndex(state,index){
       // 修改当前正在播放那首歌
       state.currentIndex = index 
-    } 
+    },
+    nextCurrendIndex(state){
+      state.currentIndex++
+    }
   },
   getters:{
     currentSong(state){

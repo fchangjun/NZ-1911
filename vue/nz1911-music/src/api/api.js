@@ -27,6 +27,11 @@ let  getSongByMid=(singermid)=>{
   let url ='/xixi/fcj/music/songListById'
   return axios.post(url,{singermid})
 }
+// 根据mids 获取播放的url地址
+let getSongUrlByMid=(mids)=>{
+  let url ='/xixi/fcj/music/songurl'
+  return axios.post(url,{mids})
+}
 /**********************排行**********************/ 
 /**********************我的**********************/ 
 
@@ -34,4 +39,6 @@ let  getSongByMid=(singermid)=>{
 export {getBannerData,
   getRecommendData,
   getSingersData,
-  getSongByMid}
+  getSongByMid,
+  getSongUrlByMid
+}

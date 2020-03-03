@@ -30,7 +30,7 @@
 </template>
 <script>
 import BS from 'better-scroll'
-import {getSongByMid} from 'api/api.js'
+import {getSongByMid,getSongUrlByMid} from 'api/api.js'
 import { mapMutations } from 'vuex'
 export default {
   data(){
@@ -83,28 +83,35 @@ export default {
     },
     handleList(list){
       let result =[] 
+      let mids=[]
       result=list.map((item,index)=>{
         let {albummid,albumname,singer,songmid,songname} =item.musicData
         let albumUrl=`https://y.gtimg.cn/music/photo_new/T002R300x300M000${albummid}.jpg?max_age=2592000`
+        mids.push(songmid)
         return {albummid,albumname,singer,songmid,songname,albumUrl}
       })
-      return result 
+      return {result,mids} 
     }
   },
-  created(){
+  async created(){
     console.log(this.$route) 
     let {singermid} =this.$route.params
     // 根据歌手mid 发起请求获取数据
-    getSongByMid(singermid)
-    .then((data)=>{
-
-      this.list = this.handleList(data.data.list ) 
-      this.name = data.data.singer_name
-      this.avator =`https://y.gtimg.cn/music/photo_new/T001R300x300M000${singermid}.jpg?max_age=2592000`
-      this.$nextTick(()=>{
-        this.initBs()
-      })
-   })
+    
+    let data = await getSongByMid(singermid) 
+    let {result,mids}= this.handleList(data.data.list) 
+    // 通过接口 将mids 歌曲的媒体id 换成 音乐地址 之后将数据进行合并
+    let {urls} =  await getSongUrlByMid(mids)
+    for (let index = 0; index < result.length; index++) {
+     result[index].audioUrl = urls[index]
+    }
+    console.log(result)
+    this.list = result
+    this.name = data.data.singer_name
+    this.avator =`https://y.gtimg.cn/music/photo_new/T001R300x300M000${singermid}.jpg?max_age=2592000`
+    this.$nextTick(()=>{
+      this.initBs()
+    })
   }
 }
 /*
