@@ -16,9 +16,12 @@
      <div class='songlist' ref='wrapper'>
         <div class='content'>
           <ul>
-            <li v-for='(item,index) in list' :key='index'>
-               <h2>{{item.musicData.songname}}</h2>
-               <p>{{name}}.{{item.musicData.albumname}}</p>
+            <li v-for='(item,index) in list' 
+              :key='index'
+              @click="openPlay(index)"
+              >
+               <h2>{{item.songname}}</h2>
+               <p>{{name}}.{{item.albumname}}</p>
             </li>
           </ul>
         </div>
@@ -28,6 +31,7 @@
 <script>
 import BS from 'better-scroll'
 import {getSongByMid} from 'api/api.js'
+import { mapMutations } from 'vuex'
 export default {
   data(){
     return{
@@ -37,14 +41,23 @@ export default {
     }
   },
   methods:{
+    ...mapMutations(['addSongList','changeCurrendIndex','changeScreen']),
     back(){
       this.$router.go(-1)
+    },
+    openPlay(index){
+      // 点击歌的li 显示播放器
+      this.addSongList(this.list)
+      // 确定点击的是那首歌
+      this.changeCurrendIndex(index)
+      // 点击屏幕变大
+      this.changeScreen(true)
     },
     initBs(){
       let img = this.$refs.img
       let imgH= img.clientHeight 
       let wrapper = this.$refs.wrapper
-      this.bs = new BS(wrapper,{probeType:3})
+      this.bs = new BS(wrapper,{probeType:3,click:true})
       this.bs.on('scroll',({y})=>{
         // 获取图片的元素和高度
         if(y>=0){
@@ -67,6 +80,15 @@ export default {
           }
         }
       })
+    },
+    handleList(list){
+      let result =[] 
+      result=list.map((item,index)=>{
+        let {albummid,albumname,singer,songmid,songname} =item.musicData
+        let albumUrl=`https://y.gtimg.cn/music/photo_new/T002R300x300M000${albummid}.jpg?max_age=2592000`
+        return {albummid,albumname,singer,songmid,songname,albumUrl}
+      })
+      return result 
     }
   },
   created(){
@@ -75,8 +97,8 @@ export default {
     // 根据歌手mid 发起请求获取数据
     getSongByMid(singermid)
     .then((data)=>{
-      console.log(data)
-      this.list = data.data.list 
+
+      this.list = this.handleList(data.data.list ) 
       this.name = data.data.singer_name
       this.avator =`https://y.gtimg.cn/music/photo_new/T001R300x300M000${singermid}.jpg?max_age=2592000`
       this.$nextTick(()=>{
