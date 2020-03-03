@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 // import App from './demo/transition'
 import './style/reset.css'
 // 引入样式重置文件
@@ -21,5 +22,6 @@ Vue.use(VueLazyload, {
 })
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
