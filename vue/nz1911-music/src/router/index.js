@@ -19,7 +19,7 @@ const router = new VueRouter({
     component:Singer,
     children:[
       {
-        path:'detail',
+        path:':singermid',
         name:'detail',
         component:Detail
       }

@@ -13,6 +13,14 @@ module.exports={
         pathRewrite:{
           "^/hehe":''  //将路径中多余的暗号 删除
         }
+      },
+      // 老方的线上接口代理
+      '/xixi':{
+        target:'http://47.95.207.1:3000',
+        changeOrigin:true,
+        pathRewrite:{
+          "^/xixi":''  //将路径中多余的暗号 删除
+        }
       }
     }
   },

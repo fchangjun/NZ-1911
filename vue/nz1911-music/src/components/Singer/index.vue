@@ -14,7 +14,7 @@
                 <ol>
                   <li v-for='(sItem,sIndex) in item.list' 
                       :key='sIndex'
-                      @click='goDetail'
+                      @click='goDetail(sItem.Fsinger_mid)'
                       >
                     <img v-lazy="sItem.avator" alt="">
                     <span>{{sItem.Fsinger_name}}</span>
@@ -41,7 +41,12 @@
         </ul>
       </div>
       <!--嵌套路由 -->
-      <router-view></router-view>
+      <transition
+        enter-active-class="animated slideInRight"
+        leave-active-class="animated slideOutRight"
+      >
+        <router-view></router-view>
+      </transition>
   </div>
 </template>
 <script>
@@ -87,9 +92,9 @@ export default {
     }
   },
   methods:{
-    goDetail(){
+    goDetail(Fsinger_mid){
       console.log('11111')
-      this.$router.push('/singer/detail')
+      this.$router.push(`/singer/${Fsinger_mid}`)
     },
     // 手指的触摸移动事件
     touchStart(e){

@@ -1,0 +1,1 @@
+{  "name": "musicApi文档",  "version": "0.1.0",  "description": "来日方长の帅气接口文档",  "title": "帅帅哒0.0",  "url": "http://47.95.207.1:3000/fcj",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2020-03-03T00:32:31.550Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }}

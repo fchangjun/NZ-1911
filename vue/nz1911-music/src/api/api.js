@@ -21,10 +21,17 @@ let getSingersData=()=>{
       else{ resolve(data)}
     })
   })
- 
+}
+// 获取歌手歌单
+let  getSongByMid=(singermid)=>{
+  let url ='/xixi/fcj/music/songListById'
+  return axios.post(url,{singermid})
 }
 /**********************排行**********************/ 
 /**********************我的**********************/ 
 
 
-export {getBannerData,getRecommendData,getSingersData}
+export {getBannerData,
+  getRecommendData,
+  getSingersData,
+  getSongByMid}
