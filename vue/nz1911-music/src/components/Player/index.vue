@@ -16,6 +16,8 @@
      <div class='img'>
        <img :class='cd' :src="currentSong.albumUrl" alt="">
      </div>
+     <!-- 歌词 -->
+     <Lyric></Lyric>
      <!-- 进度条 -->
      <MyProgress
       :startTime = 'startTime'
@@ -32,8 +34,7 @@
             @ended='ended'
             @canplay='canplay'
             @timeupdate="timeupdate"
-           
-            controls :src='currentSong.audioUrl'></audio>
+            :src='currentSong.audioUrl'></audio>
     </div>
     <div v-else 
     class='small'
@@ -45,10 +46,10 @@
 </template>
 <script>
 import MyProgress from 'components/Progress'
-
+import Lyric from 'components/Lyric'
 import {mapState, mapMutations, mapGetters} from 'vuex'
 export default {
-  components:{MyProgress},
+  components:{MyProgress,Lyric},
   data(){
     return{
       startTime:0,

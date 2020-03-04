@@ -32,6 +32,11 @@ let getSongUrlByMid=(mids)=>{
   let url ='/xixi/fcj/music/songurl'
   return axios.post(url,{mids})
 }
+//根据mid获取歌词 
+let getLyricByMid=(songmid)=>{
+  let url ='/xixi/fcj/music/lyric'
+  return axios.post(url,{songmid})
+}
 /**********************排行**********************/ 
 /**********************我的**********************/ 
 
@@ -40,5 +45,6 @@ export {getBannerData,
   getRecommendData,
   getSingersData,
   getSongByMid,
-  getSongUrlByMid
+  getSongUrlByMid,
+  getLyricByMid
 }
