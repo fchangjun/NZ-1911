@@ -17,7 +17,7 @@
        <img :class='cd' :src="currentSong.albumUrl" alt="">
      </div>
      <!-- 歌词 -->
-     <Lyric></Lyric>
+     <Lyric :startTime = 'startTime' :play='play'></Lyric>
      <!-- 进度条 -->
      <MyProgress
       :startTime = 'startTime'
