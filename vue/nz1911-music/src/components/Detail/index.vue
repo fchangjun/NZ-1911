@@ -102,11 +102,16 @@ export default {
     let {result,mids}= this.handleList(data.data.list) 
     // 通过接口 将mids 歌曲的媒体id 换成 音乐地址 之后将数据进行合并
     let {urls} =  await getSongUrlByMid(mids)
+    let finalData=[]
     for (let index = 0; index < result.length; index++) {
      result[index].audioUrl = urls[index]
+     if(urls[index]){
+      // 将不能播放的歌曲去除
+       finalData.push(result[index])
+     }
     }
-    console.log(result)
-    this.list = result
+    console.log(finalData)
+    this.list = finalData
     this.name = data.data.singer_name
     this.avator =`https://y.gtimg.cn/music/photo_new/T001R300x300M000${singermid}.jpg?max_age=2592000`
     this.$nextTick(()=>{
