@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+import { Indicator } from 'mint-ui';
 import Banner  from '../Banner'
 import {getBannerData,getRecommendData} from '../../api/api'
 // import axios from '../../utils/axios'
@@ -56,7 +57,12 @@ export default {
       this.bs.on('pullingDown',()=>{
         console.log('下拉刷新')
         // 上次下拉刷新已经结束 可以开始下一次
-         getRecommendData().then((res)=>{
+        Indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+        });
+        getRecommendData().then((res)=>{
+          Indicator.close()
           this.recommendList = res.data.list
           this.bs.finishPullDown()
         })
@@ -71,11 +77,14 @@ export default {
   },
   mounted(){
     console.log('推荐挂载')
+    // 加载动画
+    Indicator.open()
     getBannerData().then((res)=>(
       this.list = res.data.slider
     ))
     getRecommendData().then((res)=>{
       this.recommendList = res.data.list
+      Indicator.close();
     })
     this.initBs() 
   },

@@ -107,3 +107,40 @@ npm install  vue-lazyload
   动态导航修改组件复用不会重新创建销毁
   监听路由发生改变
  beforeRouterLeave  组件离开的时候触发
+
+### spa 首屏加载白屏问题
+spa 会将所有的组件一次打包加载 加载过程中页面白屏
+npm run build 编译打包
+路由懒加载 异步引入组件 将组件实现按需引入
+
+### ui框架
+[框架集合](https://shimo.im/doc/LkpdnWxM1j40BDJj/)
+1.下载安装
+2.引入 js 和 css文件
+3.照着官方文档赋值粘贴
+
+### 项目 
+1. 产品原型图 ui设计图 （自己从网上找）
+2. api接口文档
+   a.node+mongod 自己来写后端接口 
+   b.扒拉别人的接口 （没有安全验证）可以直接调用
+                    有安全验证   将数据保存成本地文件 自己返回
+3.mock.js 写假数据 
+  easy-mock 
+  yapi
+### 项目上线 
+1. npm run build 打包
+2. 将dist目录丢到服务器上去
+
+### 买一台服务器
+花钱买服务器
+设置密码 
+用户名默认是root 
+管理平台 获取公网ip 
+在命令行  
+```
+ssh root@公网ip 
+回车之后
+输入密码
+```
+如果没有ssh 命令 安装 xshell 工具

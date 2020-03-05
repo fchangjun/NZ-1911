@@ -7,7 +7,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // 解析json数据格式
 app.use(bodyParser.json())
 
-
+app.get('/hehe',(req,res)=>{
+  const data = require('./data')
+  res.send(data)
+})
 // 实例化一个express对象
 
 // app.get('/login',(req,res)=>{
