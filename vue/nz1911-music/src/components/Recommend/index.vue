@@ -31,6 +31,7 @@ import {getBannerData,getRecommendData} from '../../api/api'
 // import axios from '../../utils/axios'
 import BS from  'better-scroll'
 export default {
+  name:'a',
   components:{Banner},
   data(){
     return{
@@ -41,10 +42,35 @@ export default {
   methods:{
     initBs(){
       let wrapper = this.$refs.wrapper
-      new BS(wrapper,{})
+      // 开启下拉刷新
+      this.bs= new BS(wrapper,{
+        pullDownRefresh: {
+          threshold: 50,
+          stop: 20
+        },
+        pullUpLoad: {
+          threshold: 50
+        }
+      })
+      // 监听下拉刷新
+      this.bs.on('pullingDown',()=>{
+        console.log('下拉刷新')
+        // 上次下拉刷新已经结束 可以开始下一次
+         getRecommendData().then((res)=>{
+          this.recommendList = res.data.list
+          this.bs.finishPullDown()
+        })
+      })
+      // 监听上拉加载
+      this.bs.on('pullingUp',()=>{
+        console.log('上拉加载 请求下一页的数据')
+        // 上一次上拉加载已经结束可以开启下一次
+        this.bs.finishPullUp()
+      })
     }
   },
   mounted(){
+    console.log('推荐挂载')
     getBannerData().then((res)=>(
       this.list = res.data.slider
     ))
@@ -52,6 +78,15 @@ export default {
       this.recommendList = res.data.list
     })
     this.initBs() 
+  },
+  activated(){
+    console.log('缓存组件激活')
+  },
+  deactivated(){
+    console.log('缓存组件失活')
+  },
+  destroyed(){
+    console.log('推荐销毁')
   }
 }
 </script>

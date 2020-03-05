@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 // import App from './demo/transition'
+import 'style/icon/iconfont.css'
 import './style/reset.css'
 // 引入样式重置文件
 import  'animate.css/animate.css'

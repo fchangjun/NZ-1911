@@ -1,6 +1,6 @@
 <template>
   <div class='lyric'>
-     {{text}}
+     {{txt}}
   </div>
 </template>
 <script>
@@ -11,67 +11,66 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   data(){
     return{
-      text:'暂无歌词'
+      txt:'暂无歌词'
     }
   },
-  props:['startTime','play'],
+  props:['play','seekTime'],
   computed:{
-    ...mapGetters(['currentSong']),
-    ...mapState(['currentIndex'])
-  },
-  watch:{
-    currentIndex(){
-      console.log('下标发生改变')
-    },
-    play(newValue,oldValue){
-      console.log('歌词的播放状态',newValue, this.lyricObj)
-      if(this.lyricObj){
-        this.lyricObj.togglePlay()
-      }
-    },
-    startTime(newValue,oldValue){
-      console.log('时间改变')
-      // if(!this.lyricObj) return false 
-      // // console.log(newValue)
-      // this.lyricObj.seek(newValue*1000)
-    },
-    
-    currentSong(newData,oldData){
-      console.log('歌曲变了')
-      let {songmid}=newData
-      this.getLyric(songmid)
-    },
-   
+    ...mapGetters(['currentSong'])
   },
   methods:{
-    getLyric(songmid){
-      getLyricByMid(songmid).then((data)=>{
-        // 使用base64解码歌词
-        let  decode=Base64.decode(data.lyric)
-       if(this.lyricObj){
-        //  将之前的歌词播放停止
-         this.lyricObj.stop()
-         this.lyricObj=null
-       }
-        this.lyricObj = new Lyric(decode,({txt})=>{
-            // console.log(txt)
-             console.log(txt)
-             this.text=txt
-             
+    getLryic(songmid){
+      getLyricByMid(songmid).then((res)=>{
+        // 解析歌词
+        let lyricString =Base64.decode(res.lyric)
+        // 如果之前有播放对象将播放停掉
+        if(this.lyricObj){
+          this.lyricObj.stop()
+        }
+        this.lyricObj = new Lyric(lyricString,({txt})=>{
+          console.log(txt)
+          this.txt = txt 
         })
-        this.lyricObj.play()
-        // console.log(lyricObj)
+        //解析完毕直接播放
+          this.lyricObj.play()
       })
-    },
+    }
   },
-   mounted() {
-      let {songmid}=this.currentSong
-
-      this.getLyric(songmid)
-    }, 
+  watch:{
+    seekTime(newTime,oldTime){
+      // 发生改变说明 歌曲快进 歌词也要快进
+       if(!this.lyricObj) return false 
+       this.lyricObj.seek(newTime*1000)
+    },
+    play(newPlay,oldPlay){
+      if(!this.lyricObj) return false 
+      console.log('歌词播放状态',newPlay)
+      this.lyricObj.togglePlay()
+    },
+    currentSong(newSong,oldSong){
+      let {songmid} = newSong
+      this.getLryic(songmid,1)
+    }
+  },
+  mounted(){
+  // 歌词组件挂载 第一播放歌曲
+  let {songmid} = this.currentSong
+  this.getLryic(songmid,0)
+  }
 }
+/*
+1.通过网路请求获取歌词 base64  Lyric 
+2. 播放  play  
+   a. 第一进入播放器组件  mounted
+   b. 切歌   currentSong 监听
+   c. 手动的停止开启  监听play 
+3. 停止  stop  togglePlay
+4. 跳转  seek 
+*/ 
 </script>
 <style lang="less" scoped>
 @import '~style/index.less';
-
+.lyric{
+  font-size: @fs-s;
+}
 </style>

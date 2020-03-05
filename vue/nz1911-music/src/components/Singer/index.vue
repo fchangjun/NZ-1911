@@ -85,6 +85,7 @@ import BS from 'better-scroll'
 import {getSingersData} from 'api/api.js'
 import {nomalData}from './index'
 export default {
+  name:'b',
   data(){
     return{
       singers:[],
@@ -174,6 +175,7 @@ export default {
   },
   created() {
     // 初始化数据 把移动距离挂载到this对象下
+  
     this.touch={y:0}
     console.log(111)
    getSingersData().then((res)=>{

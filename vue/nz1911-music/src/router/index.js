@@ -11,10 +11,12 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes:[
    {
+     name:'a',
      path:'/recommend',
      component:Recommend
    },
    {
+    name:'b',
     path:'/singer',
     component:Singer,
     children:[
@@ -25,9 +27,11 @@ const router = new VueRouter({
       }
     ]
     },{
+      name:'c',
       path:'/rank',
       component:Rank
     },{
+      name:'d',
       path:'/my',
       component:My
     },{

@@ -94,6 +94,7 @@ export default {
     }
   },
   async created(){
+    console.log('detail创建')
     console.log(this.$route) 
     let {singermid} =this.$route.params
     // 根据歌手mid 发起请求获取数据
@@ -117,6 +118,16 @@ export default {
     this.$nextTick(()=>{
       this.initBs()
     })
+  },
+  beforeRouteEnter(from,to,next){
+  // 组件进入之前
+   next()
+  },
+  async beforeRouteUpdate(to,from,next){
+    console.log('组件复用更新的时候执行',from,to)
+    let {singermid} = to.params
+    console.log(singermid)
+    next()
   }
 }
 /*

@@ -63,3 +63,47 @@ npm install  vue-lazyload
 ### jsonp的请求与封装
 
 ### 绝对路径的别名 alias
+
+
+### 减少网路请求
+1. 数据本地化 （将数据存到本地存储 cookie localstorage ...）
+   a.发起请求 查看本地有没有数据
+   b.本地有数据 读取本地  不需要网络请求
+     没有本地数据  发起网络请求 将数据存到本地
+   问题：
+     数据的更新 
+   解决方案
+     1.给本地数据设置过期时间  10min   
+       存入数据的时候同时存入过期时间
+       取数据的时候和过期时间作对比
+     2.用户主动的刷新数据  下拉刷新的操作
+### 下拉刷新 和 上拉加载
+  通过better-scroll 实现
+  下拉刷新  下拉滚动层触及顶部 重新请求一波数据
+  上拉加载  上拉滚动层触底 请求下一页的数据 （分页）
+### keep-alive 只有在vue中可以用 
+ 缓存页面 
+ 在需要缓存的组件外部 加上keepalive 
+ <keep-alive>
+ 组件的切换 路由  动态组件 
+ </keep-alive>
+ 内部的组件就会被缓存
+ actived 激活触发
+ deactived 失活触发
+ include='a,b' 名字叫a,b 的组件会被缓存
+ exclude='a,b' 除了a和b其他的组件缓存
+ a 需要在组件创建的时候通过name属性指定
+ 
+ ### 动态路由 动态导航 
+ {
+   path:'/singer/:id'
+   componet:Singer
+ } 
+ 直接修改动态导航时不会已引起组件的重新创建 组件是复用的
+ 组件内的守卫
+ beforeRouterEnter  进入组件之前
+ beforeRouterUpdate 
+  当前组件路由发生修改 
+  动态导航修改组件复用不会重新创建销毁
+  监听路由发生改变
+ beforeRouterLeave  组件离开的时候触发

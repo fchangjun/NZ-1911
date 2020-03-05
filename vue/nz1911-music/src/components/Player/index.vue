@@ -17,7 +17,7 @@
        <img :class='cd' :src="currentSong.albumUrl" alt="">
      </div>
      <!-- 歌词 -->
-     <Lyric :startTime = 'startTime' :play='play'></Lyric>
+     <Lyric :seekTime = 'seekTime' :play='play'></Lyric>
      <!-- 进度条 -->
      <MyProgress
       :startTime = 'startTime'
@@ -28,7 +28,8 @@
      <span @click='changeLoop'>{{loops[loop]}}</span>
      <button @click='prev'>上一曲</button>
      <button @click='togglePlay'>播放</button>
-     <button @click='next'>下一曲</button>
+     <span class="iconfont" @click='next'>&#xe606;</span>
+
      <!-- 播放器 -->
      <audio ref='audio' 
             @ended='ended'
@@ -55,7 +56,8 @@ export default {
       startTime:0,
       endTime:0,
       loops:['不循环','单曲循环','列表循环','随机循环'],
-      play:false
+      play:false,
+      seekTime:0
     }
   },
   computed:{
@@ -91,6 +93,8 @@ export default {
       if(!this.audio){ return false} 
       // 更改播放的时间 
       this.audio.currentTime = s
+      // 更改歌词的时间
+      this.seekTime = s
     },
     ended(){
       this.play = false
@@ -230,4 +234,8 @@ export default {
     }
   }
 }  
+.iconfont{
+  color: @yellow;
+  font-size: @fs-l;
+}
 </style>

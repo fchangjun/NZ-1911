@@ -3,7 +3,9 @@
     <Header></Header>
     <Tab></Tab>
    <!-- <LessDemo></LessDemo> -->
+   <!-- <keep-alive exclude="a,b"> -->
     <router-view></router-view>
+   <!-- </keep-alive> -->
     <!-- 播放器组件 -->
     <Player></Player>
   </div>
