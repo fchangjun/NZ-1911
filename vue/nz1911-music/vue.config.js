@@ -3,6 +3,7 @@ function resolve(dir){
   return path.join(__dirname,dir)
 }
 module.exports={
+  publicPath:'./',
   lintOnSave:false,//关闭eslint
   devServer:{
     proxy:{    //配置代理服务器
