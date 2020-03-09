@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../../vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id ='app'>
+    {{user}}
+    <hr>  
+    <button @click='changeName'>changeName</button>
+  </div>
+
+<script>
+new Vue({
+  el:'#app',
+  data:{
+    user:{
+      age:15
+    }
+  },
+  methods: {
+    changeName(){
+      // this.user.name = '韩梅梅'
+      // set 将数据用 object.defainPropty进行处理 添加getter和setter
+      this.$set(this.user,'name','韩梅梅')
+      console.log(this.user)
+    }
+  },
+})
+
+
+</script>
+</body>
+</html>

@@ -1,8 +1,13 @@
 const path = require("path")
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin = require('compression-webpack-plugin');
+
+const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 function resolve(dir){
   return path.join(__dirname,dir)
 }
 module.exports={
+  productionSourceMap:false,
   publicPath:'./',
   lintOnSave:false,//关闭eslint
   devServer:{
@@ -31,11 +36,28 @@ module.exports={
     .set('api',resolve('./src/api'))
     .set('style',resolve('./src/style'))
     .set('components',resolve('./src/components'))
+    // 配置分析工具
+    if (process.env.NODE_ENV === 'production') {
+      if (process.env.npm_config_report) {
+        config
+          .plugin('webpack-bundle-analyzer')
+          .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+          .end();
+      }
+    } else {
+    }
+  // 配置gzip 
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(new CompressionPlugin({
+          algorithm: 'gzip',
+          test: productionGzipExtensions,
+          threshold: 10240,
+          minRatio: 0.8
+        })
+      )
+    }
   }
+
 }
-
-// http://ustbhuangyi.com/afas/fsdfsd/sdfsdf/sfsdf  
-
-//  /hehe/afas/fsdfsd/sdfsdf/sfsdf  请求的本地服务器
-
-// http://ustbhuangyi.com/afas/fsdfsd/sdfsdf/sfsdf 本地服务器转发

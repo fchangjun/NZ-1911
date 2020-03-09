@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+let data={name:1}
+// es6一个方法 处理数据 给数据赋予getter和setter
+// ie8 不能使用vue  因为不支持 Object.defineProperty
+let middle = 6
+Object.defineProperty(data,'age',{
+  get(){
+    console.log('获取age')
+    return middle
+  },
+  set(parmas){
+    //参数就是赋值的数据
+
+    console.log('修改age数据',parmas)
+    middle = parmas
+  }
+})
+console.log(data)
+// 取值的时候触发getter
+console.log(data.age)
+//赋值的时候触发setter
+data.age = 15
+console.log(data.age)
+</script>
+</body>
+</html>

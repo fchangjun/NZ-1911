@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id ='test'>
+  2
+</div>
+<button onclick="change()">change</button>
+<script>
+let data={}
+
+function change(){
+ data.age =999
+}
+// vue中的源码 
+let middle = 2
+Object.defineProperty(data,'age',{
+  get(){
+   return middle
+  },
+  set(params){
+    middle=params
+    // 只要是数据修改了就会指令
+    wather()
+  } 
+})
+// 绑定watcher监听
+
+function wather(){
+  // 数据改变之后触发 进行diff【判断是否应该修改dom 
+  renderDom()
+}
+// 重新渲染的方法
+function  renderDom(h) {
+ let test = document.getElementById('test')
+ let age = data.age 
+ test.innerHTML = age 
+}
+console.log(data)
+</script>
+</body>
+</html>
