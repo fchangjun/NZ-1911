@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src='../vue.js'></script>
+</head>
+<body>
+  <div id="app">
+    {{name}}
+    <hehe v-model='name'></hehe>
+  </div>
+  <template id='tp1'>
+    <div>
+    <input  type='checkbox' 
+    :checked="value"
+    @change="$emit('input', $event.target.checked)"
+    >
+    </div>
+  </template>
+<script >
+Vue.component("hehe",{
+  name:'HeHe',
+  template:'#tp1',
+
+  props:['value']
+})
+  new Vue({
+   el:'#app',
+   data:{
+     name:false
+   }
+   
+  })
+</script>
+</body>
+</html>

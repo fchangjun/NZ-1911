@@ -1,8 +1,5 @@
 const path = require("path")
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const CompressionPlugin = require('compression-webpack-plugin');
-
-const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
+// const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 function resolve(dir){
   return path.join(__dirname,dir)
 }
@@ -48,16 +45,16 @@ module.exports={
     }
   // 配置gzip 
   },
-  configureWebpack: config => {
-    if (process.env.NODE_ENV === 'production') {
-      config.plugins.push(new CompressionPlugin({
-          algorithm: 'gzip',
-          test: productionGzipExtensions,
-          threshold: 10240,
-          minRatio: 0.8
-        })
-      )
-    }
-  }
+  // configureWebpack: config => {
+  //   if (process.env.NODE_ENV === 'production') {
+  //     config.plugins.push(new CompressionPlugin({
+  //         algorithm: 'gzip',
+  //         test: productionGzipExtensions,
+  //         threshold: 10240,
+  //         minRatio: 0.8
+  //       })
+  //     )
+  //   }
+  // }
 
 }
