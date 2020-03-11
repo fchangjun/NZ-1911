@@ -130,7 +130,7 @@ export default {
   },
   watch:{
     play(newValue,oldValue){
-      console.log('播放状态',newValue)
+      console.log('播放状态',newValue,this.audio)
       if(!this.audio) return false 
       //点击按钮 还是循环
    
@@ -140,12 +140,15 @@ export default {
         this.audio.pause()
       }
     },
-    // currentSong(newValue,oldValue){
-    //     //  歌曲发生改变 应该自动播放
-    //     console.log('歌曲发生改变')
-    //     if(!this.audio){ return false}
-    //     this.audio.play()
-    // }
+    currentSong(newValue,oldValue){
+        //  歌曲发生改变 应该自动播放
+        console.log('歌曲发生改变')
+        setTimeout(()=>{
+          console.log(this.$refs.audio)
+        this.$refs.audio.play()
+
+        },500)
+    }
   } 
 }
 /*

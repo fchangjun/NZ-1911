@@ -32,7 +32,6 @@ import {getBannerData,getRecommendData} from '../../api/api'
 // import axios from '../../utils/axios'
 import BS from  'better-scroll'
 export default {
-  name:'a',
   components:{Banner},
   data(){
     return{

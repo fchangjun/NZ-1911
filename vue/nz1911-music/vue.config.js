@@ -1,11 +1,12 @@
 const path = require("path")
-// const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
+const CompressionPlugin = require('compression-webpack-plugin') //gzip 压缩的插件
+const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i; //要进行压缩的文件类型
 function resolve(dir){
   return path.join(__dirname,dir)
 }
 module.exports={
   productionSourceMap:false,
-  publicPath:'./',
+  // publicPath:'/',
   lintOnSave:false,//关闭eslint
   devServer:{
     proxy:{    //配置代理服务器
@@ -45,16 +46,16 @@ module.exports={
     }
   // 配置gzip 
   },
-  // configureWebpack: config => {
-  //   if (process.env.NODE_ENV === 'production') {
-  //     config.plugins.push(new CompressionPlugin({
-  //         algorithm: 'gzip',
-  //         test: productionGzipExtensions,
-  //         threshold: 10240,
-  //         minRatio: 0.8
-  //       })
-  //     )
-  //   }
-  // }
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(new CompressionPlugin({
+          algorithm: 'gzip',
+          test: productionGzipExtensions,
+          threshold: 10240,
+          minRatio: 0.8
+        })
+      )
+    }
+  }
 
 }
