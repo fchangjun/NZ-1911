@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+
+// react jsx的注释方式 
+// {/* 注释内容*/}
+
+let Component = React.createClass({
+  render() {
+    // console.log(11)
+    return (
+      <div>
+        {/*<h1> 历史老师:过去的就过去了再也回不去了</h1> */ }
+        <p>  语文老师:哪怕错了也不能空着</p>
+      </div>
+    )
+    
+  }
+})
+// 将组件的虚拟dom挂载到真实dom上
+ReactDOM.render(<Component/>,document.getElementById('app'))
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+/*
+react 数据绑定{变量或者表达式} 和vue中的 {{ }} 一样一样的
+1. jsx 不能直接绑定对象人家不让
+2. jsx 绑定数组 会将数组的每一项拆分出来 渲染到页面上
+3. boolean null  undefined  不会再页面上直接渲染 但是可以使用3元表达式
+4. 其他的基本类型该怎么渲染就怎么渲染
+*/ 
+let Component = React.createClass({
+  getInitialState(){
+    return{
+       num:666,
+       string:'呵呵',
+       obj:{name:'网易'},
+       arr:[1,2,3,4,5],
+       boolean:true,
+       null:null,
+       undef:undefined
+
+    }
+  },
+  render() {
+    console.log(this)
+    return (
+      <div>
+        {this.state.num}<br/>
+        {this.state.string}<br/>
+        {/*{this.state.obj}<br/>*/}
+        {this.state.arr}<br/>
+        <hr/>
+        boolean:{this.state.boolean?"真":'假'}<br/>
+        <hr/>
+        null:{this.state.null}<br/>
+        <hr/>
+        undefined:{this.state.undefined}<br/>
+      </div>
+    )
+    
+  }
+})
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+</script>
+</body>
+</html>

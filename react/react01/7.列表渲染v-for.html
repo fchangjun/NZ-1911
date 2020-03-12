@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+/*
+react中的条件渲染依赖于 绑定数组会将数组的每一项拆分出来
+*/ 
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      list:['咒怨','午夜凶铃','红色高跟鞋','死亡来电','阴阳瞳']
+      // list:[<li>咒怨</li>,<li>午夜凶铃</li>,<li>红色高跟鞋</li>,<li>死亡来点</li>]
+    }
+  },
+  render() {
+    return (
+      <ul>
+        {this.state.list.map((item,index)=>{
+          return(
+            <li>{item}</li>
+          )
+        })}
+      </ul>
+    )
+    
+  }
+})
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+</script>
+</body>
+</html>

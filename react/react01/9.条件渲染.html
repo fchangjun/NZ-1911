@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+    #test{
+      height: 100px;
+      width: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+/*
+条件渲染 v-if  控制元素或者组件的渲染或者不渲染
+1.通过三元表达式控制渲染不渲染
+2.表达式1||表达式2 运算符
+3.函数实现
+*/ 
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      show:false
+    }
+  },
+  renderDiv(){
+    let result = null 
+    if(this.state.show){
+      result  =  (<div id = 'test'></div>)
+    }
+    return result 
+  },
+  render() {
+    console.log(this)
+    // 解构赋值
+    let {show} =  this.state 
+    return (
+      <div>
+       {/*{show?"显示":'隐藏'}*/} 
+       {/*{show?<div id='test'></div>:''}*/}
+       {/*{!show||<div id='test'></div>}*/}
+       {this.renderDiv()}
+      </div>
+    )
+    
+  }
+})
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+    
+  </div>
+  
+<script type="text/babel">
+/*
+vue 中一个组件的数据2中 一种 组件内部的data  一种是来自组件外部的props 
+props 相当于自定义属性 
+1. 组件的内容通过 getDefaultProps生命周期进行初始化
+2. 在组件标签上通过自定义属性传递
+3. 初始化和传递的冲突以传递的优先级高
+4. props传递的数据在组件内部只能使用不能修改
+*/ 
+let Hehe = React.createClass({
+  getDefaultProps(){
+    console.log('初始化props的生命周期')
+    return {
+      age:16
+    }
+  },
+  render(h) {
+    console.log(this) 
+    return(
+      <div>
+        🙃
+       {this.props.age}
+      </div>
+    ) 
+  }
+})
+ReactDOM.render(<Hehe age='999'/>,app)
+</script>
+</body>
+</html>
