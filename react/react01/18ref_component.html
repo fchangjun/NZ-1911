@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+let Component = React.createClass({
+  render(){
+    return(
+      <div className='test1'> 
+        这是组件1
+        <button onClick={()=>{
+          console.log(this)
+          this.refs.son.sayHello()
+        }}>点击</button>
+        <hr/>
+        <Son ref='son'></Son>
+      </div>
+    )
+  }
+})
+
+//创建组件二
+let Son = React.createClass({
+  sayHello(){
+    alert('你好')
+  },
+  render(){
+    return (
+      <div className='test2'>
+        这里是组件二
+      </div>
+    )
+  }
+})
+/*
+ref除了可以绑定dom之外 还可以绑定组件 
+绑定之后可以获取到绑定组件的一切  方法
+可以实现在父组件中调用子组件的方法
+*/ 
+ReactDOM.render(<Component/>,document.getElementById('app'))
+</script>
+</body>
+</html>

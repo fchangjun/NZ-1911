@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+let Father = React.createClass({
+  getInitialState(){
+    return{
+      name:"韩梅梅"
+    }
+  },
+  changeName(name){
+    this.setState({name:name})
+  },
+  render(){
+    return(
+      <div className='father'>
+      <h3>这里是父组件</h3> 
+      {this.state.name}
+      
+      <hr/>
+      {/*通过props 传递方法*/}
+      <Son fafun={this.changeName}></Son>
+      </div>
+    )
+  }
+})
+
+let Son = React.createClass({
+  render(){
+    return(
+      <div className='son'>
+      <h3>子组件</h3> 
+      <button onClick={()=>{
+        console.log(this)
+        // 调用父组件的方法
+        this.props.fafun('李雷雷')
+      }}>子组件的触发按钮</button>
+      </div>
+    )
+  }
+})
+/*
+子组件调用父组件的方法
+*/ 
+ReactDOM.render(<Father/>,document.getElementById('app'))
+</script>
+</body>
+</html>

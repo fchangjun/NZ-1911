@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+let Component = React.createClass({
+  render(){
+    return(
+      <div className='test1'> 
+        这是组件1
+  
+      </div>
+    )
+  }
+})
+
+//创建组件二
+let Son = React.createClass({
+  render(){
+    return (
+      <div className='test2'>
+        这里是组件二
+        <Component></Component>
+      </div>
+    )
+  }
+})
+
+ReactDOM.render(<Son/>,document.getElementById('app'))
+</script>
+</body>
+</html>

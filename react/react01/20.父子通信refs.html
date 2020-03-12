@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+let Father = React.createClass({
+  render(){
+    return(
+      <div className='father'>
+      <h3>这里是父组件</h3> 
+       <button onClick={()=>{
+        //  父组件通过refs强行调用子组件的理发方法
+         this.refs.son.change()
+       }}>强制措施</button>
+       <Son ref='son'></Son>
+      </div>
+    )
+  }
+})
+let Son = React.createClass({
+  getInitialState(){
+    return{
+      hair:'五颜六色 长发披肩'
+    }
+  },
+  change(){
+    this.setState({hair:'小平头'})
+  },
+  render(){
+    return(
+      <div className='son'>
+      <h3>子组件</h3> 
+       {this.state.hair}
+      </div>
+    )
+  }
+})
+
+ReactDOM.render(<Father/>,document.getElementById('app'))
+</script>
+</body>
+</html>

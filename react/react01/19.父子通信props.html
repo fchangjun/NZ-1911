@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+let Father = React.createClass({
+  getInitialState(){
+    return{
+      hair:'五颜六色 长发披肩'
+    }
+  },
+  render(){
+    return(
+      <div className='father'>
+      <h3>这里是父组件</h3> 
+      <button onClick={()=>{
+        this.setState({hair:'小平头'})
+      }}>改过自新回头是岸</button>
+      <hr/>
+      {/*父组件通过props自定义属性 将自己的数据传奇给子组件*/}
+      <Son hair={this.state.hair}></Son>
+      </div>
+    )
+  }
+})
+
+let Son = React.createClass({
+  render(){
+    return(
+      <div className='son'>
+      <h3>子组件</h3> 
+       头发:{this.props.hair}
+      </div>
+    )
+  }
+})
+
+ReactDOM.render(<Father/>,document.getElementById('app'))
+</script>
+</body>
+</html>
