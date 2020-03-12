@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+</head>
+<body>
+  <div id='app'>
+    
+  </div>
+  
+<script type="text/babel">
+/*
+vue 中一个组件的数据2中 一种 组件内部的data  一种是来自组件外部的props 
+state 类似于vue中的data 组件自己的数据 可以随便的修改
+*/ 
+let Hehe = React.createClass({
+  getInitialState(){
+    console.log('初始state的生命周期')
+    return {
+      name:'韩梅梅'
+    }
+  },
+  render(h) {
+    console.log(this) //this指向的是组件对象
+    return(
+      <div>
+        🙃
+        {this.state.name}
+      </div>
+    ) 
+  }
+})
+ReactDOM.render(<Hehe/>,app)
+</script>
+</body>
+</html>

@@ -1,0 +1,2216 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*github*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>react</title></head><body><article class="markdown-body"><h1 id="react">React框架学习<a class="headerlink" href="#react" title="Permanent link"></a></h1>
+<h3 id="react_1">React的起源和发展<a class="headerlink" href="#react_1" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>起初facebook在建设instagram（图片分享）的时候嘞，因为牵扯到一个东东叫数据流，那为了处理数据流并且还要考虑好性能方面的问题嘞，Facebook开始对市场上的各种前端MVC框架去进行一个研究，然而并没有看上眼的，于是Facebook觉得，还是自己开发一个才是最棒的，那么他们决定抛开很多所谓的“最佳实践”，重新思考前端界面的构建方式，他们就自己开发了一套，果然大牛创造力还是很强大的。
+</pre></div>
+
+
+<h3 id="react_2">React的出发点<a class="headerlink" href="#react_2" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>基于HTML的前端界面开发正变得越来越复杂，其本质问题基本都可以归结于如何将来自于服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上。而来自Facebook的React框架正是完全面向此问题的一个解决方案，按官网描述，其出发点为：用于开发数据不断变化的大型应用程序（Building large applications with data that changes over time）。相比传统型的前端开发，React开辟了一个相当另类的途径，实现了前端界面的高性能高效率开发。
+</pre></div>
+
+
+<h3 id="reactmvc">React与传统MVC的关系<a class="headerlink" href="#reactmvc" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>轻量级的视图层框架！
+
+React不是一个完整的MVC框架，最多可以认为是MVC中的V（View），甚至React并不非常认可MVC开发模式；
+</pre></div>
+
+
+<h3 id="reactdom">React高性能的体现：虚拟DOM<a class="headerlink" href="#reactdom" title="Permanent link"></a></h3>
+<p>React高性能的原理：</p>
+<p>在Web开发中我们总需要将变化的数据实时反应到UI上，这时就需要对DOM进行操作。而复杂或频繁的DOM操作通常是性能瓶颈产生的原因（如何进行高性能的复杂DOM操作通常是衡量一个前端开发人员技能的重要指标）。</p>
+<p>React为此引入了虚拟DOM（Virtual DOM）的机制：在浏览器端用Javascript实现了一套DOM API。基于React进行开发时所有的DOM构造都是通过虚拟DOM进行，每当数据变化时，React都会重新构建整个DOM树，然后React将当前整个DOM树和上一次的DOM树进行对比，得到DOM结构的区别，然后仅仅将需要变化的部分进行实际的浏览器DOM更新。而且React能够批处理虚拟DOM的刷新，在一个事件循环（Event Loop）内的两次数据变化会被合并，例如你连续的先将节点内容从A-B,B-A，React会认为A变成B，然后又从B变成A  UI不发生任何变化，而如果通过手动控制，这种逻辑通常是极其复杂的。</p>
+<p>尽管每一次都需要构造完整的虚拟DOM树，但是因为虚拟DOM是内存数据，性能是极高的，部而对实际DOM进行操作的仅仅是Diff分，因而能达到提高性能的目的。这样，在保证性能的同时，开发者将不再需要关注某个数据的变化如何更新到一个或多个具体的DOM元素，而只需要关心在任意一个数据状态下，整个界面是如何Render的。数据驱动，声明式</p>
+<h3 id="react_3">React的特点和优势<a class="headerlink" href="#react_3" title="Permanent link"></a></h3>
+<ol>
+<li>虚拟DOM</li>
+</ol>
+<p>我们以前操作dom的方式是通过document.getElementById()的方式，这样的过程实际上是先去读取html的dom结构，将结构转换成变量，再进行操作</p>
+<p>而reactjs定义了一套变量形式的dom模型，一切操作和换算直接在变量中，这样减少了操作真实dom，性能真实相当的高，和主流MVC框架有本质的区别，并不和dom打交道</p>
+<ol>
+<li>组件系统</li>
+</ol>
+<p>react最核心的思想是将页面中任何一个区域或者元素都可以看做一个组件 component</p>
+<p>那么什么是组件呢？</p>
+<p>组件指的就是同时包含了html、css、js、image元素的聚合体</p>
+<p>使用react开发的核心就是将页面拆分成若干个组件，并且react一个组件中同时耦合了css、js、image，这种模式整个颠覆了过去的传统的方式</p>
+<ol>
+<li>单向数据流</li>
+</ol>
+<p>其实reactjs的核心内容就是数据绑定，所谓数据绑定指的是只要将一些服务端的数据和前端页面绑定好，开发者只关注实现业务就行了</p>
+<ol>
+<li>JSX  语法</li>
+</ol>
+<p>在vue中，我们使用render函数来构建组件的dom结构性能较高，因为省去了查找和编译模板的过程，但是在render中利用createElement创建结构的时候代码可读性较低，较为复杂，此时可以利用jsx语法来在render中创建dom，解决这个问题，但是前提是需要使用工具来编译jsx</p>
+<h3 id="_1">创建第一个组件<a class="headerlink" href="#_1" title="Permanent link"></a></h3>
+<p>react开发需要引入多个依赖文件：react.js、react-dom.js，分别又有开发版本和生成版本</p>
+<p>在这里一开始，我们先学习es5的组件写法，React.createClass，需要引入的是15+</p>
+<p>react.js中有React对象，帮助我们创建组件等功能</p>
+<p>react-dom.js中有ReactDOM对象，渲染组件的虚拟dom为真实dom的爆发功能</p>
+<p>在编写react代码的时候会大量的使用到jsx代码，但是需要编译：</p>
+<ol>
+<li>浏览器端编译，通过引入browser、babel等对引入的script内的代码做编译</li>
+<li>利用webpack等开发环境进行编译，将编译好的文件引入到应用中</li>
+</ol>
+<div class="codehilite"><pre>    //创建组件
+    var Hello = React.createClass({
+        render:function () {
+            //render函数和Vue组件里的render完全一样，在vue组件中可以不用编写render函数，这个时候可以使用template模板来编写组件的虚拟dom结构，然后vue组件会自动讲模板compile成虚拟dom结构放入到render中执行，但是react需要编写render函数
+
+            return (
+                //jsx语法
+                &lt;div&gt;asdasd&lt;/div&gt;
+            )
+
+        }
+    })
+    //利用ReactDOM对象的render方法将组件渲染到某个节点里
+    ReactDOM.render(&lt;Hello/&gt;,document.getElementById(&quot;app&quot;))
+</pre></div>
+
+<p>组件是通过React.createClass创建的（ES5），在es6中直接通过class关键字来创建</p>
+<p>组件其实就是一个构造器,每次使用组件都相当于在实例化组件</p>
+<p>react的组件必须使用render函数来创建组件的虚拟dom结构</p>
+<p>组件需要使用ReactDOM.render方法将其挂载在某一个节点上</p>
+<p>组件的首字母必须大写</p>
+<h3 id="jsx">JSX语法糖<a class="headerlink" href="#jsx" title="Permanent link"></a></h3>
+<p>JSX是一种语法，全称：javascript xml</p>
+<p>JSX语法不是必须使用的，但是因为使用了JSX语法之后会降低我们的开发难度，故而这样的语法又被成为语法糖</p>
+<p>在不使用JSX的时候，需要使用React.createElement来创建组件的dom结构，但是这样的写法虽然不需要编译，但是维护和开发的难度很高，且可读性很差</p>
+<div class="codehilite"><pre>var world = React.createElement(&#39;h1&#39;,{className:&#39;abc&#39;,id:&#39;haha&#39;},[
+    React.createElement(&#39;span&#39;,null,&#39;Hello&#39;),
+    React.createElement(&#39;mark&#39;,null,&#39;React&#39;)
+])
+
+//利用ReactDOM对象的render方法将组件渲染到某个节点里
+ReactDOM.render(world,document.getElementById(&quot;app1&quot;))
+</pre></div>
+
+<p>及时使用了JSX语法了之后，也是需要将其编译成原生的createElement的</p>
+<p>JSX就是在js中使用的xml，但是，这里的xml不是真正的xml，只能借鉴了一些xml的语法，例如：</p>
+<p>最外层必须有根节点、标签必须闭合</p>
+<p>jsx借鉴xml的语法而不是html的语法原因：xml要比html严谨，编译更方便</p>
+<h3 id="dom">组件dom添加样式<a class="headerlink" href="#dom" title="Permanent link"></a></h3>
+<p>在react里表达式的符号是 &ldquo;{  }&rdquo;,作用和vue的表达式作用是一样的</p>
+<p>想给虚拟dom添加行内样式，需要使用表达式传入样式对象的方式来实现：</p>
+<p><div class="codehilite"><pre> &lt;p style = { {color:&#39;red&#39;,fontSize:2+&#39;em&#39;} }&gt;Hello world&lt;/p&gt;
+</pre></div>
+行内样式需要写入一个样式对象，而这个样式对象的位置可以放在很多地方，例如React.createClass的配置项中、render函数里、组件原型上、外链js文件中</p>
+<p>React推荐我们使用行内样式，因为react觉得每一个组件都是一个独立的整体</p>
+<p>其实我们大多数情况下还是大量的在为元素添加类名、id以使用某些样式，但是需要注意的是，class需要写成className（因为毕竟是在写类js代码，会收到js规则的现在，而class是关键字）</p>
+<div class="codehilite"><pre>&lt;p className=&quot;bg-p&quot; id=&quot;myp&quot; style = { this.style }&gt;Hello world&lt;/p&gt;
+</pre></div>
+
+<h3 id="react-event">React Event<a class="headerlink" href="#react-event" title="Permanent link"></a></h3>
+<p>在react中，我们想要给组件的dom添加事件的话，也是 需要在行内添加的方式，事件名字需要写成小驼峰的方式，值利用表达式传入一个函数即可</p>
+<p>注意，在没有渲染的时候，页面中没有真实dom，所以是获取不到dom的</p>
+<p>给虚拟dom结构中的节点添加样式。在行内添加,写成驼峰形式，值是一个函数名，需要用{}包裹</p>
+<div class="codehilite"><pre>handleClick:function () {
+    alert(1)
+},
+render:function () {
+    return (
+        &lt;div&gt;
+            &lt;button onClick = {this.handleClick} className=&quot;click-btn&quot;&gt;click&lt;/button&gt;
+            &lt;button onDoubleClick = {this.handleClick} className=&quot;click-btn&quot;&gt;click&lt;/button&gt;
+        &lt;/div&gt;
+    )
+}
+</pre></div>
+
+<h3 id="_2">组件嵌套<a class="headerlink" href="#_2" title="Permanent link"></a></h3>
+<p>将一个组件渲染到某一个节点里的时候，会将这个节点里原有内容覆盖</p>
+<p>组件嵌套的方式就是将子组件写入到父组件的模板中去，且react没有Vue中的内容分发机制（slot），所以我们在一个组件的模板中只能看到父子关系</p>
+<div class="codehilite"><pre>var Hello = React.createClass({
+    render(){
+        return (
+            &lt;h1&gt;
+                Hello 
+                &lt;World&gt;&lt;/World&gt;
+            &lt;/h1&gt;
+        )
+    }
+})
+var World = React.createClass({
+    render(){
+        return (
+            &lt;mark&gt;
+                World-&lt;Person/&gt; 
+            &lt;/mark&gt;
+        )
+    }
+})
+//无状态组件
+var Person =function(){
+    return (&lt;mark&gt;lilei&lt;/mark&gt;)
+}
+ReactDOM.render(&lt;Hello/&gt;,app)
+</pre></div>
+
+<blockquote>
+<p>注意，react中jsx里的注释要写成{/*  */}的方式</p>
+</blockquote>
+<h3 id="react-propsstate">React中的数据承载-Props/State<a class="headerlink" href="#react-propsstate" title="Permanent link"></a></h3>
+<p>数据驱动、声明式渲染：</p>
+<p>任意的视图变化都应该由数据来控制</p>
+<p>//$(&ldquo;.a&rdquo;).html(0)</p>
+<p>var num = 0
+function renderNum () { $(&ldquo;.a&rdquo;).html(num) }</p>
+<p>React也是基于数据驱动(声明式)的框架，组件中必然需要承载一些数据，在react中起到这个作用的是属性和状态（props &amp; state）</p>
+<ol>
+<li>
+<p>属性（props）  在组件外部传入，或者内部设置，组件内部通过this.props获得</p>
+</li>
+<li>
+<p>状态（state）  在组件内部设置或者更改，组件内部通过this.state获得</p>
+</li>
+</ol>
+<h5 id="props">属性(props)<a class="headerlink" href="#props" title="Permanent link"></a></h5>
+<p>属性一般是外部传入的，组件内部也可以通过一些方式来初始化的设置，属性不能被组件自己更改</p>
+<p>属性是描述性质、特点的，组件自己不能随意更改</p>
+<p>使组件拥有属性的方式：</p>
+<ol>
+<li>在装载（mount）组件的时候给组件传入</li>
+</ol>
+<p>传入数据的时候，除了字符串类型，其他的都应该包上表达式，但是为了规整，所有的数据传递，最好都包上{}</p>
+<div class="codehilite"><pre>var Gouzi = React.createClass({
+    render(){
+        console.log(this)
+        return (
+            &lt;div&gt;
+                &lt;p&gt;我的名字：{this.props.name}&lt;/p&gt;
+                &lt;p&gt;我的性别：{this.props.sex}&lt;/p&gt;
+                &lt;p&gt;我的年龄：{this.props.age}&lt;/p&gt;  
+                &lt;p&gt;我的父亲是：{this.props.father}&lt;/p&gt;                                              
+            &lt;/div&gt;
+        )
+    }
+})
+
+let info = {
+    sex:&#39;male&#39;,
+    father:&#39;狗爸&#39;
+}
+
+ReactDOM.render(&lt;Gouzi {...info} name={&quot;大狗子&quot;} age={26}/&gt;,app)
+</pre></div>
+
+<ol>
+<li>父组件给子组件传入</li>
+</ol>
+<p>父组件在嵌套子组件的时候为子组件传入，传入的方式和上面的方式一样</p>
+<p><div class="codehilite"><pre>//父组件的render函数
+render(){
+    return (
+        &lt;div&gt;
+            &lt;p&gt;父组件：&lt;/p&gt;
+            &lt;hr/&gt;
+            &lt;Son name={&#39;大狗子&#39;}/&gt;
+            &lt;Son name={&#39;二狗子&#39;}/&gt;
+        &lt;/div&gt;
+    )
+}
+</pre></div>
+3. 子组件自己设置</p>
+<p>子组件可以通过getDefaultProps来设置默认的属性</p>
+<p>getDefaultProps的值是函数，这个函数会返回一个对象，我们在这里对象里为组件设置默认属性</p>
+<p>这种方式设置的属性优先级低，会被外部传入的属性值所覆盖
+<div class="codehilite"><pre>getDefaultProps:function () {
+    console.log(&#39;getDefaultProps&#39;)
+    return {
+        name:&#39;狗爸&#39;,
+        sonname:&#39;二狗子&#39;
+    }
+},
+//render
+&lt;p&gt;我是{this.props.sonname}的父亲-{this.props.name}&lt;/p&gt;
+</pre></div></p>
+<p>根据属性或状态，我们可以在render中的表达式里做一些逻辑判断，可以使用||、三元表达式、子执行函数等等</p>
+<div class="codehilite"><pre>getName(){
+    return this.props.name || &#39;野狗子&#39;
+},
+render:function () {
+    let {name} = this.props
+    return (
+    &lt;div&gt;
+        &lt;p&gt;我是子组件-{this.props.name || &#39;野狗子&#39;}&lt;/p&gt;
+        &lt;p&gt;我是子组件-{this.props.name?this.props.name:&#39;野狗子&#39;}&lt;/p&gt;
+        &lt;p&gt;我是子组件-{this.getName()}&lt;/p&gt;
+        &lt;p&gt;我是子组件-{(function (obj) {
+            return obj.props.name || &#39;野狗子&#39;
+        })(this)}&lt;/p&gt;
+    &lt;/div&gt;
+    )
+}
+</pre></div>
+
+<h5 id="state">状态(state)<a class="headerlink" href="#state" title="Permanent link"></a></h5>
+<p>状态就是组件描述某种显示情况的数据，由组件自己设置和更改，也就是说由组件自己维护，使用状态的目的就是为了在不同的状态下使组件的显示不同(自己管理)</p>
+<p>在组件中只能通过getInitialState的钩子函数来给组件挂载初始状态,在组件内部通过this.state获取</p>
+<p>this.props和this.state是纯js对象,在vue中，$data属性是利用Object.defineProperty处理过的，更改$data的数据的时候会触发数据的getter和setter，但是react中没有做这样的处理，如果直接更改的话，react是无法得知的，所以，需要使用特殊的更改状态的方法：</p>
+<p>setState(params)</p>
+<p>在setState中传入一个对象，就会将组件的状态中键值对的部分更改，还可以传入一个函数，这个回调函数必须返回像上面方式一样的一个对象，函数可以接收prevState和props</p>
+<div class="codehilite"><pre>//1.
+let doing = this.state.doing==&#39;学习&#39;+props.knowledge?&#39;玩游戏&#39;:&#39;学习&#39;+props.knowledge
+this.setState({doing})
+
+//2.
+this.setState((prevState,props)=&gt;{
+    return {
+        doing:prevState.doing==&#39;学习&#39;+props.knowledge?&#39;玩游戏&#39;:&#39;学习&#39;+props.knowledge
+    }
+})
+</pre></div>
+
+<h5 id="_3">实现下拉菜单的方式<a class="headerlink" href="#_3" title="Permanent link"></a></h5>
+<ol>
+<li>通过数据来控制元素的行内样式中display的值，或者去控制类名</li>
+</ol>
+<div class="codehilite"><pre>&lt;ul style={{display:isMenuShow?&#39;block&#39;:&#39;none&#39;}}&gt;&lt;li&gt;国内新闻&lt;/li&gt;&lt;/ul&gt;
+...
+&lt;ul className={isMenuShow?&#39;show&#39;:&#39;hide&#39;}&gt;&lt;li&gt;国内新闻&lt;/li&gt;&lt;/ul&gt;
+</pre></div>
+
+<ol>
+<li>根据数据控制是否渲染改节点、组件
+<div class="codehilite"><pre>{
+    isMenuShow?&lt;ul&gt;&lt;li&gt;国内新闻&lt;/li&gt;&lt;/ul&gt;:&#39;&#39;
+}
+</pre></div></li>
+<li>通过ref对dom、组件进行标记，在组件内部通过this.refs获取到之后，进行操作
+<div class="codehilite"><pre>&lt;ul ref=&#39;content&#39;&gt;&lt;li&gt;国内新闻&lt;/li&gt;&lt;/ul&gt;
+...
+this.refs.content.style.display = this.state.isMenuShow?&#39;block&#39;:&#39;none&#39;
+</pre></div></li>
+</ol>
+<h5 id="_4">属性和状态的对比<a class="headerlink" href="#_4" title="Permanent link"></a></h5>
+<p>相似点：都是纯js对象，都会触发render更新，都具有确定性（状态/属性相同，结果相同）</p>
+<p>不同点： </p>
+<ol>
+<li>属性能从父组件获取，状态不能</li>
+<li>属性可以由父组件修改，状态不能</li>
+<li>属性能在内部设置默认值 ，状态也可以</li>
+<li>属性不在组件内部修改   ，状态要改</li>
+<li>属性能设置子组件初始值  ，状态不可以</li>
+<li>属性可以修改子组件的值，状态不可以</li>
+</ol>
+<p>状态只和自己相关，由自己维护</p>
+<p>属性不要自己修改，可以从父组件获取，也可以给子组件设置</p>
+<p>组件在运行时自己需要修改的数据其实就是状态而已</p>
+<h4 id="_5">组件的生命周期<a class="headerlink" href="#_5" title="Permanent link"></a></h4>
+<p>react中组件也有生命周期，也就是说也有很多钩子函数供我们使用，下面是生命周期的图示：</p>
+<p><img alt="生命周期" src="/Users/apple/Desktop/1818/react/%27./life.jpg%27" /></p>
+<p>组件是一个构造器，每一次使用组件都相当于在实例化组件，在这个时候，组件就会经历一次生命周期，从实例化实例开始到这个实例销毁的时候，都是一次完整的生命周期</p>
+<p>组件的生命周期，我们会分为三个阶段，初始化、运行中、销毁</p>
+<h5 id="_6">初始化阶段<a class="headerlink" href="#_6" title="Permanent link"></a></h5>
+<ol>
+<li>
+<p>实例化组件之后，组件的getDefaultProps钩子函数会执行</p>
+<p>这个钩子函数的目的是为组件的实例挂载默认的属性</p>
+<p>这个钩子函数只会执行一次，也就是说，只在第一次实例化的时候执行，创建出所有实例共享的默认属性，后面再实例化的时候，不会执行getDefaultProps，直接使用已有的共享的默认属性</p>
+<p>理论上来说，写成函数返回对象的方式，是为了防止实例共享，但是react专门为了让实例共享，只能让这个函数只执行一次</p>
+<p>组件间共享默认属性会减少内存空间的浪费，而且也不需要担心某一个实例更改属性后其他的实例也会更改的问题，因为组件不能自己更改属性，而且默认属性的优先级低。</p>
+</li>
+<li>
+<p>执行getInitialState为实例挂载初始状态，且每次实例化都会执行，也就是说，每一个组件实例都拥有自己独立的状态呢</p>
+</li>
+<li>
+<p>执行componentWillMount，相当于Vue里的created+beforeMount，这里是在渲染之前最后一次更改数据的机会，在这里更改的话是不会触发render的重新执行</p>
+<p>多做一些初始数据的获取</p>
+</li>
+<li>
+<p>执行render，渲染dom</p>
+</li>
+<li>
+<p>执行componentDidMount ，相当于Vue里的mounted,多用于操作真实dom</p>
+</li>
+</ol>
+<h5 id="_7">运行中阶段<a class="headerlink" href="#_7" title="Permanent link"></a></h5>
+<p>当组件mount到页面中之后，就进入了运行中阶段，在这里有5个钩子函数，但是这5个函数只有在数据（属性、状态）发送改变的时候才会执行</p>
+<ol>
+<li>componentWillReceiveProps</li>
+</ol>
+<p>当父组件给子组件传入的属性改变的时候，子组件的这个函数才会执行</p>
+<p>当执行的时候，函数接收的参数是子组件接收到的新参数，这个时候，新参数还没有同步到this.props上,多用于判断新属性和原有属性的变化后更改组件的状态</p>
+<ol>
+<li>
+<p>接下来就会执行shouldComponentUpdate,这个函数的作用：</p>
+<p>当属性或状态发送改变后控制组件是否要更新，提高性能,返回true就更新，否则不更新，默认返回true</p>
+<p>接收nextProp、nextState，根据根据新属性状态和原属性状态作出对比、判断后控制是否更新</p>
+</li>
+<li>
+<p>componentWillUpdate,在这里，组件马上就要重新render了，多做一些准备工作，千万千万，不要在这里修改状态，否则会死循环
+    相当于Vue中的beforeUpdate</p>
+</li>
+<li>
+<p>render，重新渲染dom</p>
+</li>
+<li>
+<p>componentDidUpdate，在这里，新的dom结构已经诞生了,相当于Vue里的updated</p>
+</li>
+</ol>
+<h5 id="_8">销毁阶段<a class="headerlink" href="#_8" title="Permanent link"></a></h5>
+<p>当组件被销毁之前的一刹那，会触发componentWillUnmount，临死前的挣扎</p>
+<p>相当于Vue里的beforeDestroy，所以说一般会做一些擦屁股的事情</p>
+<p>为什么Vue中有destroyed，而react却没有componentDidUnmount</p>
+<p>Vue在调用$destroy方法的时候就会执行beforeDestroy，然后组件被销毁，这个时候组件的dom结构还存在于页面结构中，也就说如果想要对残留的dom结构进行处理必须在destroyed处理，但是react执行完componentWillUnmount之后把事件、数据、dom都全部处理掉了，所以根本不需要其他的钩子函数了</p>
+<p>怎么样就算组件被销毁：</p>
+<ol>
+<li>
+<p>当父组件从渲染这个子组件变成不渲染这个子组件的时候，子组件相当于被销毁</p>
+</li>
+<li>
+<p>调用ReactDOM.unmountComponentAtNode(node) 方法来将某节点中的组件销毁</p>
+</li>
+</ol>
+<h5 id="react_4">React中的事件对象<a class="headerlink" href="#react_4" title="Permanent link"></a></h5>
+<p>react中对于事件进行了处理，解决了一些兼容性问题，react事件对象上面挂载着nativeEvent，这个就是原生的事件对象</p>
+<p>react对事件对象做了优化，如果不取值的话，值都是null</p>
+<h5 id="react_5">React中组件通信方式<a class="headerlink" href="#react_5" title="Permanent link"></a></h5>
+<p>父组件与子组件通信</p>
+<ol>
+<li>
+<p>父组件将自己的状态传递给子组件，子组件当做属性来接收，当父组件更改自己状态的时候，子组件接收到的属性就会发生改变</p>
+</li>
+<li>
+<p>父组件利用ref对子组件做标记，通过调用子组件的方法以更改子组件的状态,也可以调用子组件的方法..</p>
+</li>
+</ol>
+<p>子组件与父组件通信</p>
+<ol>
+<li>父组件将自己的某个方法传递给子组件，在方法里可以做任意操作，比如可以更改状态，子组件通过this.props接收到父组件的方法后调用。</li>
+</ol>
+<p>兄弟组件通信</p>
+<p>在react没有类似vue中的事件总线来解决这个问题，我们只能借助它们共同的父级组件来实现，将非父子关系装换成多维度的父子关系</p>
+<p>复杂的非父子组件通信在react中很难处理，多组件间的数据共享也不好处理，所以我们会使用flux、redux来实现这样的功能，解决这个问题</p>
+<h5 id="react_6">React中表单元素默认值<a class="headerlink" href="#react_6" title="Permanent link"></a></h5>
+<p>在react中，如果需要 给表单元素设置默认value或者checked，需要设置成defaultValue/defaultChecked，否则设置默认值以后，用户无法更改</p>
+<h5 id="reactmixins">React中的mixins<a class="headerlink" href="#reactmixins" title="Permanent link"></a></h5>
+<p>在vue中我们可以将一些通用的、公用的方法放入到某一个纯js对象中，然后，在需要使用改方法的组件中使用mixins配置（值为对象）将该js对象中的方法注入到组件中，这样就能实现代码复用，便于维护</p>
+<p>在React中曾经也有这样的api，但是在高版本react中推荐我们使用es6中的class来创建组件了，这个时候无法使用mixinsapi，所以mixins被废弃了，如果要使用公用代码抽离，我们可以使用模块化</p>
+<h5 id="react-keys">React-keys<a class="headerlink" href="#react-keys" title="Permanent link"></a></h5>
+<p>我们在react中循环列表数据的时候，需要对循环出来的虚拟jsx节点传入上key这个数据，</p>
+<p>Keys可以在DOM中的某些元素被增加或删除的时候帮助React识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。</p>
+<h5 id="_9">状态提升<a class="headerlink" href="#_9" title="Permanent link"></a></h5>
+<p>就是如果有多个组件共享一个数据，把这个数据放到共同的父级组件中来管理</p>
+<h5 id="_10">组合<a class="headerlink" href="#_10" title="Permanent link"></a></h5>
+<p>在vue中有一个内容分发叫slot，在react中也有实现，就是可以在使用组件的时候，在组件标签内部放入一些不固定的内容，在该组件的模板中，只有{this.props.children}来表示</p>
+<div class="codehilite"><pre>//App
+&lt;Dialog
+close={this.ToggleDialogShow} isShow={isDialogShow}
+&gt;
+    &lt;ContentA/&gt;
+    &lt;ContentA/&gt;
+    &lt;ContentB/&gt;
+&lt;/Dialog&gt;
+
+//dialog
+&lt;div style={{display:isShow?&#39;block&#39;:&#39;none&#39;}} className=&quot;dialog&quot;&gt;
+    &lt;Button handler={this.props.close} text=&quot;关闭&quot;/&gt;   
+    {this.props.children}//这里就是slot
+&lt;/div&gt;
+</pre></div>
+
+<h3 id="webpack">webpack<a class="headerlink" href="#webpack" title="Permanent link"></a></h3>
+<p>前端工程化： npm、cnpm、yarn、bower | grunt 、 gulp 、webpack</p>
+<p>gulp： 基于流的前端自动化构建工具，基于流的任务式的工具</p>
+<p>webpack： 是一款模块化打包工具，webpack是基于配置的，通过配置一些选项来让webpack执行打包任务。</p>
+<p>npm i webpack -g</p>
+<p>npm i webpack-cli -g (4.0+)</p>
+<p>npm i yarn -g</p>
+<p>webpack在打包的时候，依靠依赖关系图，在打包的时候需要告知webpack两个概念：入口和出口</p>
+<p>一般情况下，我们需要使用webpack.config.js进行配置</p>
+<h5 id="entry">entry<a class="headerlink" href="#entry" title="Permanent link"></a></h5>
+<p>entry配置项目打包的入口，值可以为单个的字符串执行某一个文件的地址，这个时候该文件就是入口文件，webpack会根据入口文件里各模块间的关系形成依赖关系图，然后根据依赖关系图进行打包
+<div class="codehilite"><pre>entry:&#39;./src/app.js&#39;,
+output:{
+    path:path.join(__dirname,&#39;build&#39;),
+    filename:&#39;app.js&#39;
+}
+</pre></div>
+但是有的时候我们需要的是多入口，我们就写成数组的形式，数组里的每一个字符串地址指向的都是一个独立的入口，webpack会将这些入口的依赖打包
+<div class="codehilite"><pre>entry:[&#39;./src/app.js&#39;,&#39;./src/vendor.js&#39;],
+output:{
+    path:path.join(__dirname,&#39;build&#39;),
+    filename:&#39;[name].js&#39;//不确定名字的时候，这里会打包成main.js
+}
+</pre></div>
+刚才的两种entry配置都只会打包出一个js文件，但是在某一个应用中我们可能需要将js根据依赖关系打包成多个js文件，并且在多页面应用中，我们也确实不可能只使用一个js文件，那么我们就可以使用如下的配置：</p>
+<p><div class="codehilite"><pre>    entry:{
+        app:&#39;./src/app.js&#39;,
+        vendor:&#39;./src/vendor.js&#39;
+    },
+    output:{
+        path:path.join(__dirname,&#39;build&#39;),
+        filename:&#39;[name]_[hash].js&#39;
+    }
+</pre></div>
+这样，因为filename里写成名字是[name],所以会根据entry的配置的键名来为打包出的js文件命名，hash是每次打包的一个随机的hash值，可以用来做版本控制</p>
+<h5 id="output">output<a class="headerlink" href="#output" title="Permanent link"></a></h5>
+<p>在这里我们配置打包输出的一些选项</p>
+<p>filename可以确定打包出来的文件的名字，在里面我们可以使用[name],[hash]这样的占位符</p>
+<p>path配置打包出去的文件的路径，需要是绝对路径</p>
+<h5 id="env">env<a class="headerlink" href="#env" title="Permanent link"></a></h5>
+<p>在命令行或者终端中执行 webpack &ndash;env hello命令，就相当于在打包的时候传入一个参数为hello</p>
+<p>在webpack.config.js中可以暴露出一个函数，这个函数就可以接收到env参数，当然函数就可以根据env参数来有选择的返回某一个或多个配置对象
+<div class="codehilite"><pre>module.exports = (env)=&gt;{
+    if(env==&#39;production&#39;){
+        return productionConfig
+    }
+    return developmentConfig
+}
+</pre></div></p>
+<p>&ndash;watch 可以让webpack去监听文件的改变。
+可以在package.json里的scripts中配置一些快捷操作，通过npm run来运行</p>
+<h5 id="plugins">plugins<a class="headerlink" href="#plugins" title="Permanent link"></a></h5>
+<p>在webpack编译用的是loader，但是有一些loader无法完成的任务，交由插件（plugin）来完成，插件的时候需要在配置项中配置plugins选项，值是数组，可以放入多个插件的使用，而一般的插件都是一个构造器，我们只需在plugins数组中放入该插件的实例即可，在实例化插件的时候又可以传入options，对插件的使用进行配置</p>
+<p>html-webpack-plugin</p>
+<p>这个插件可以选择是否依据模板来生成一个打包好的html文件，在里面可以配置、title、template、filename、minify等选项，详情请查阅<a href="https://segmentfault.com/a/1190000007294861">文档</a></p>
+<p>在这个插件里，我们可以使用jade、hbs、ejs等模板引擎来编译成html，这里举例jade的配置：</p>
+<p><a href="https://segmentfault.com/a/1190000000357534">文档</a>
+<div class="codehilite"><pre>npm i jade jade-loader --save-dev
+
+module:{
+    rules:[
+        {
+            test:/\.jade$/,
+            use:&#39;jade-loader&#39;
+        }
+    ]
+},
+plugins:[
+    new HtmlWebpackPlugin({
+        // title:&#39;webpack-config-demo&#39;,
+        template:&#39;./src/index.jade&#39;,
+        filename:&#39;index.html&#39;
+    })
+]
+</pre></div></p>
+<h5 id="webpack-dev-server">webpack-dev-server<a class="headerlink" href="#webpack-dev-server" title="Permanent link"></a></h5>
+<p>webpack相辅相成的有一个server功能工具可以提供开发的热更新服务器</p>
+<p>npm install webpack-dev-server -g
+npm install webpack-dev-server -D</p>
+<p>第一种启动方式： 直接执行webpack-dev-server,如果有需要配置的选项，在后面跟上参数即可。例如
+<div class="codehilite"><pre>webpack-dev-server --hot true
+</pre></div>
+第二种启动方式：在webpack.config.js中配置devServer的选项，执行webpack-dev-server就ok
+<div class="codehilite"><pre>devServer:{
+    port:9000,
+    contentBase:&#39;./build&#39;,
+    historyApiFallback: true,
+    open: true,
+    proxy:{
+
+    }
+}
+</pre></div></p>
+<h4 id="loaders">LOADERS<a class="headerlink" href="#loaders" title="Permanent link"></a></h4>
+<p>在webpack中专门有一些东西用来编译文件、处理文件，这些东西就叫loader，loader的使用就是在配置项中，设置modules，在modules中设置rule值为数组，在数组里放入多个匹配规则：</p>
+<div class="codehilite"><pre>module:{
+    rules:[
+        {test:/\.css$/,use:&#39;css-loader&#39;}
+    ],
+    //before
+    loaders:[
+        {test:/\.css$/,loader:&#39;css-loader&#39;}
+    ],
+}
+</pre></div>
+
+<p>test为此次匹配要匹配的文件正则规则，use代表要使用的loader</p>
+<p>使用url-loader可以将css中引入的图片（背景图）、js中生成的img图片处理一下，生成到打包目录里</p>
+<p>视图html-withimg-loader可以将html中img标签引入的img图片打包到打包目录</p>
+<p>file-loader</p>
+<div class="codehilite"><pre>{
+    test:/\.(png|jpe?g|svg|gif)$/,
+    // use:&#39;url-loader?limit=1000&amp;name=images/[hash:8].[name].[ext]&#39;
+    use:[
+        {
+            loader:&#39;url-loader&#39;,
+            options:{
+                limit:1000,
+                name:&#39;/static/images/assets/[hash:8].[name].[ext]&#39;
+            }
+        }
+    ]
+},
+{
+    test:/\.html$/,
+    use:&#39;html-withimg-loader&#39;
+}
+</pre></div>
+
+<p>处理css：</p>
+<p>cnpm i css-loader style-loader &ndash;save-dev</p>
+<p>配置：</p>
+<p>{
+    test:/.css$/,
+    use:[&lsquo;style-loader&rsquo;,&rsquo;css-loader&rsquo;]
+}</p>
+<p>注意。webpack中loader的使用是从后往前的</p>
+<p>css-loader可以将引入到js中的css代码给抽离出来，style-loader可以将抽离出来的css代码放入到style标签中</p>
+<p>处理sass</p>
+<p>{
+test:/.scss$/,
+use:[&lsquo;style-loader&rsquo;,&rsquo;css-loader&rsquo;,&rsquo;sass-loader&rsquo;]
+},</p>
+<p>将引入项目的css文件、scss文件抽成一个文件，引入到页面中</p>
+<p>cnpm i extract-text-webpack-plugin</p>
+<div class="codehilite"><pre>const ExtractTextWebpackPlugin = require(&#39;extract-text-webpack-plugin&#39;)
+///loader
+{
+    test:/\.css$/,
+    use:ExtractTextWebpackPlugin.extract({
+      fallback: &quot;style-loader&quot;,
+      use: &quot;css-loader&quot;
+    })
+},
+{
+    test:/\.scss/,
+    use:ExtractTextWebpackPlugin.extract({
+      fallback: &quot;style-loader&quot;,
+      use: [&quot;css-loader&quot;,&quot;sass-loader&quot;]
+    })
+}
+///plugin
+new ExtractTextWebpackPlugin({
+    filename:&#39;app.css&#39;,
+    allChunks:true
+})
+</pre></div>
+
+<p>因为ExtractTextWebpackPlugin对webpack4支持的不是很好，所以我们这样解决：</p>
+<p>cnpm i extract-text-webpack-plugin@next -D
+yarn add extract-text-webpack-plugin@next -D</p>
+<p>@next下载的就是最最新的版本，可能是开发版本</p>
+<p>webpack-dev-server进行了一个优化，在跑起服务的时候，会将编译结果保存在内存里，不会实时的输出的打包结果</p>
+<p>css兼容优化处理：post-css 、autoprefixer</p>
+<p>处理es6：</p>
+<p>需要的依赖：</p>
+<p>&ldquo;babel&rdquo;: &ldquo;^6.23.0&rdquo;,
+&ldquo;babel-core&rdquo;: &ldquo;^6.24.1&rdquo;,
+&ldquo;babel-loader&rdquo;: &ldquo;^7.0.0&rdquo;,
+&ldquo;babel-preset-es2015&rdquo;: &ldquo;^6.24.1&rdquo;,
+&ldquo;babel-preset-react&rdquo;: &ldquo;^6.24.1&rdquo;,</p>
+<p>rules：
+{
+    test:/.js$/,
+    exclude: /node_modules/,
+    loader:&rsquo;babel-loader&rsquo;,
+    query: {
+        presets: [&lsquo;es2015&rsquo;,&rsquo;react&rsquo;]
+     }
+}</p>
+<h5 id="es6react">ES6中的react<a class="headerlink" href="#es6react" title="Permanent link"></a></h5>
+<p>1.创建组件：</p>
+<p>使用class来创建组件</p>
+<p>class App extends React.Component {</p>
+<p>}</p>
+<p>2.默认状态的设置</p>
+<p>在es6中不再使用getInitialState来设置默认状态，而是在constructor里面直接给this.state上挂载状态</p>
+<p>class App extends Component {
+    constructor(props){
+        super(props)</p>
+<div class="codehilite"><pre>    this.state={
+        doing:&#39;吃饭&#39;
+    }
+}
+</pre></div>
+
+
+<p>}</p>
+<ol>
+<li>默认属性的设置</li>
+</ol>
+<p>在es6中，通过给类设置defaultProps属性来设置默认属性</p>
+<p>App.defaultProps = {
+    name:&rsquo;App根组件&rsquo;
+}</p>
+<ol>
+<li>做属性传参验证</li>
+</ol>
+<p>import PropTypes from &lsquo;prop-types&rsquo;;</p>
+<p>App.propTypes = {
+    name:PropTypes.string
+}</p>
+<p>5.钩子函数有变化</p>
+<p>getDefaultProps、getInitialState没有了</p>
+<p>多出了constructor,而这个函数本身是类的构造器，在这里相当于getDefaultProps、getInitialState的结合</p>
+<h5 id="create-react-app">create-react-app 脚手架<a class="headerlink" href="#create-react-app" title="Permanent link"></a></h5>
+<p>npm install creat-react-app -g</p>
+<p>create-react-app my-app //生成一个react开发模板在my-app目录
+//生成的过程特别缓慢，可以使用yarn工具来下载，也就是说先去下载安装yarn   ：npm install yarn -g</p>
+<p>当我们要进行二次配置的时候，需要找到node_modules文件夹里的react-scripts进行配置，但是当我们执行npm run eject就可以将配置文件抽出，方便开发配置</p>
+<h5 id="_11">无状态组件<a class="headerlink" href="#_11" title="Permanent link"></a></h5>
+<p>当我们使用某些组件的时候，发现，该组件不需要拥有自己的状态，只需要接收到外界传入的属性之后做出相应的反应即可</p>
+<p>这样的话，我们可以利用纯函数的方式将其制作成无状态组件，提高性能
+<div class="codehilite"><pre>import React from &#39;react&#39;
+
+const Button = (props)=&gt;{
+    return &lt;button onClick={props.handler}&gt;我要花钱&lt;/button&gt;
+}
+
+export default Button
+</pre></div></p>
+<h5 id="flux">Flux<a class="headerlink" href="#flux" title="Permanent link"></a></h5>
+<p>在2014年，facebook提出了Flux，Flux 是一种架构思想，专门解决软件的结构问题。它跟MVC 架构是同一类东西，但是更加简单和清晰。</p>
+<p>其实FLUX在react里的应用就类似于vue中的vuex的作用，但是</p>
+<p>在vue中，vue是完整的mvvm框架，而vuex只是一个全局的插件</p>
+<p>react只是一个视图层的框架，在flux是一个架构思想，我们在做项目的时候使用flux架构的话要比单纯使用react要简单很多，这个时候，react在整个FLUX架构中担任某一个角色的</p>
+<p>react在这里只是充当了FLUX架构体系中的view层</p>
+<p>Flux的组成部分：</p>
+<ul>
+<li>View： 视图层</li>
+<li>ActionCreator（动作创造者）：视图层发出的消息（比如mouseClick）</li>
+<li>Dispatcher（派发器）：用来接收Actions、执行回调函数</li>
+<li>Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面</li>
+</ul>
+<p>Flux的流程：</p>
+<ol>
+<li>组件获取到store中保存的数据挂载在自己的状态上</li>
+<li>用户产生了操作，调用actions的方法</li>
+<li>actions接收到了用户的操作，进行一系列的逻辑代码、异步操作</li>
+<li>然后actions会创建出对应的action，action带有标识性的属性</li>
+<li>actions调用dispatcher的dispatch方法将action传递给dispatcher</li>
+<li>dispatcher接收到action并根据标识信息判断之后，调用store的更改数据的方法</li>
+<li>store的方法被调用后，更改状态，并触发自己的某一个事件</li>
+<li>store更改状态后事件被触发，该事件的处理程序会通知view去获取最新的数据</li>
+</ol>
+<h5 id="redux">redux<a class="headerlink" href="#redux" title="Permanent link"></a></h5>
+<p>React 只是 DOM 的一个抽象层，并不是 Web 应用的完整解决方案。有两个方面，它没涉及。</p>
+<ul>
+<li>代码结构 </li>
+<li>组件之间的通信</li>
+</ul>
+<p>2014年 Facebook 提出了 Flux 架构的概念，引发了很多的实现。2015年，Redux 出现，将 Flux 与函数式编程结合一起，很短时间内就成为了最热门的前端架构。</p>
+<p>如果你不知道是否需要 Redux，那就是不需要它</p>
+<p>只有遇到 React 实在解决不了的问题，你才需要 Redux</p>
+<p>简单说，如果你的UI层非常简单，没有很多互动，Redux 就是不必要的，用了反而增加复杂性。</p>
+<ul>
+<li>用户的使用方式非常简单</li>
+<li>用户之间没有协作</li>
+<li>不需要与服务器大量交互，也没有使用 WebSocket</li>
+<li>视图层（View）只从单一来源获取数据</li>
+</ul>
+<p>需要使用redux的项目:</p>
+<ul>
+<li>用户的使用方式复杂</li>
+<li>不同身份的用户有不同的使用方式（比如普通用户和管理员）</li>
+<li>多个用户之间可以协作</li>
+<li>与服务器大量交互，或者使用了WebSocket</li>
+<li>View要从多个来源获取数据</li>
+</ul>
+<p>从组件层面考虑，什么样子的需要redux：</p>
+<ul>
+<li>某个组件的状态，需要共享</li>
+<li>某个状态需要在任何地方都可以拿到</li>
+<li>一个组件需要改变全局状态</li>
+<li>一个组件需要改变另一个组件的状态</li>
+</ul>
+<p>redux的设计思想：</p>
+<ol>
+<li>Web 应用是一个状态机，视图与状态是一一对应的。</li>
+<li>所有的状态，保存在一个对象里面（唯一数据源）。</li>
+</ol>
+<p>redux的流程：</p>
+<p>1.store通过reducer创建了初始状态
+2.view通过store.getState()获取到了store中保存的state挂载在了自己的状态上
+3.用户产生了操作，调用了actions 的方法
+4.actions的方法被调用，创建了带有标示性信息的action
+5.actions将action通过调用store.dispatch方法发送到了reducer中
+6.reducer接收到action并根据标识信息判断之后返回了新的state
+7.store的state被reducer更改为新state的时候，store.subscribe方法里的回调函数会执行，此时就可以通知view去重新获取state</p>
+<blockquote>
+<p>注意：flux、redux都不是必须和react搭配使用的，因为flux和redux是完整的架构，在学习react的时候，只是将react的组件作为redux中的视图层去使用了。</p>
+</blockquote>
+<p>reducer必须是一个纯函数：</p>
+<p>Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出。</p>
+<p>纯函数是函数式编程的概念，必须遵守以下一些约束。</p>
+<p>不得改写参数</p>
+<p>不能调用系统 I/O 的API</p>
+<p>不能调用Date.now()或者Math.random()等不纯的方法，因为每次会得到不一样的结果</p>
+<p>由于 Reducer 是纯函数，就可以保证同样的State，必定得到同样的 View。但也正因为这一点，Reducer 函数里面不能改变 State，必须返回一个全新的对象，请参考下面的写法。
+<div class="codehilite"><pre>// State 是一个对象
+function reducer(state, action) {
+  return Object.assign({}, state, { thingToChange });
+  // 或者
+  return { ...state, ...newState };
+}
+
+// State 是一个数组
+function reducer(state, action) {
+  return [...state, newItem];
+}
+</pre></div></p>
+<p>最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象。</p>
+<p>我们可以通过在createStore中传入第二个参数来设置默认的state，但是这种形式只适合于只有一个reducer的时候</p>
+<p>划分reducer</p>
+<p>因为一个应用中只能有一个大的state，这样的话reducer中的代码将会特别特别的多，那么就可以使用combineReducers方法将已经分开的reducer合并到一起</p>
+<p>注意：</p>
+<ol>
+<li>
+<p>分离reducer的时候，每一个reducer维护的状态都应该不同</p>
+</li>
+<li>
+<p>通过store.getState获取到的数据也是会安装reducers去划分的</p>
+</li>
+<li>
+<p>划分多个reducer的时候，默认状态只能创建在reducer中，因为划分reducer的目的，就是为了让每一个reducer都去独立管理一部分状态</p>
+</li>
+</ol>
+<h3 id="react-router">React-router<a class="headerlink" href="#react-router" title="Permanent link"></a></h3>
+<p>市场上的react-router的版本有1、2、3、4,1-3的差别不大，使用于16.0.0以下的版本</p>
+<p>react-router 4.0 适用于16.0.0以上</p>
+<p>在这里使用15.6.1的react。这个版本的react允许使用React.createClass来创建组件，在16以上只能使用class类的方式来创建</p>
+<ol>
+<li>
+<p>渲染根组件的时候，最外层包裹上Router组件，在其上可以设置history属性，值可以是hashHistory||browserHistory</p>
+<p>当值为hashHistory的时候，url的变化为hash值的变化，router会去检测hash变化来实现组件的切换</p>
+</li>
+</ol>
+<p>当值为browserHistory的时候，url的变化为path的变化，需要后端进行配置</p>
+<ol>
+<li>
+<p>Router中使用Route组件来描述每一级路由，Route上有path、component属性，代表着当path改变成&hellip;的时候，就渲染..组件</p>
+</li>
+<li>
+<p>在需要切换路由组件的地方，通过this.props.children来表示对应路由组件</p>
+</li>
+<li>
+<p>在Route中可以多次嵌套Route来实现多级路由</p>
+</li>
+<li>
+<p>IndexRoute可以设置该路由中的默认子路由</p>
+</li>
+</ol>
+<p><IndexRoute component={Home}/></p>
+<ol>
+<li>IndexRedirect可以设置在进入该路由之后马上跳转到哪里</li>
+</ol>
+<p><IndexRedirect to='home'/></p>
+<ol>
+<li>使用Redirect组件可以做到从一个路由马上重定向到其他路由,利用这样的属性，当我们form设置为&rsquo;*&rsquo;的时候，就可以将匹配不到的路由重定向到某げ路由下</li>
+</ol>
+<p><Redirect from="*" to="home"/></p>
+<ol>
+<li>可以在配置Route的时候给path里加入/:param 才表示此路由需要参数</li>
+</ol>
+<p>传入的时候，querystring参数可以在Link里的query中传入和设置，在目标组件中，通过this.props中的，params、routePrams、location等来接收参数</p>
+<ol>
+<li>
+<p>可以通过过Router传入routes参数，值为数组，来设置路由配置：
+<div class="codehilite"><pre>const routeConfig = [
+  { path: &#39;/&#39;,
+    component: App,
+    indexRoute: { component: Home },
+    childRoutes: [
+      { path: &#39;home&#39;, component: Home },
+      { path: &#39;news&#39;,
+        component: News,
+        childRoutes: [
+          { path: &#39;inside&#39;, component: Inside },
+          { path: &#39;outside&#39;,component:Outside}
+        ]
+      },
+      { path: &#39;detail/:id&#39;, component: Detail },
+      {path:&#39;*&#39;,component:Home}
+    ]
+  }
+]
+
+
+
+ReactDOM.render(
+
+    &lt;Router routes={routeConfig} history={hashHistory}&gt;&lt;/Router&gt;
+    ,document.getElementById(&#39;app&#39;))
+</pre></div></p>
+</li>
+<li>
+<p>编程式导航</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>在路由组件中通过this.props.history获取到history对象，利用里面push、replace、go、goBack方法来进行隐式跳转</p>
+</li>
+<li>
+<p>可以从react-router中引入browserHistory或者hashHistory调用里面的push、replace、go、goBack方法来进行隐式跳转</p>
+</li>
+</ul>
+<ol>
+<li>可以通过在路由配置上设置 onLeave和onEnter路由钩子来监听路由的变化</li>
+</ol>
+<h4 id="ui">UI组件库<a class="headerlink" href="#ui" title="Permanent link"></a></h4>
+<p>关于React的UI组件库市场上也有很多，在这里我们使用蚂蚁金服开发的AntDesign组件库</p>
+<p>这是PC端的，移动端的是Antd-Mobile</p>
+<h4 id="react-redux">React-redux<a class="headerlink" href="#react-redux" title="Permanent link"></a></h4>
+<p>这个库或者说工具是redux的开发者专门为react创建出来的，为我们在react中使用redux提供便利</p>
+<p>起到的是桥梁的作用，能将react和redux更好的连接在一起</p>
+<p>React-Redux 将所有组件分成两大类：UI 组件/木偶组件（presentational component）和容器组件/智能组件（container component）。</p>
+<p>UI 组件有以下几个特征。</p>
+<ul>
+<li>只负责 UI 的呈现，不带有任何业务逻辑</li>
+<li>没有状态（即不使用this.state这个变量）</li>
+<li>所有数据都由参数（this.props）提供</li>
+<li>不使用任何 Redux 的 API</li>
+</ul>
+<p>容器组件的特征恰恰相反。</p>
+<ul>
+<li>负责管理数据和业务逻辑，不负责 UI 的呈现</li>
+<li>带有内部状态</li>
+<li>使用 Redux 的 API</li>
+</ul>
+<p>只要记住一句话就可以了：UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。</p>
+<p>你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。前者负责与外部的通信，将数据传给后者，由后者渲染出视图。</p>
+<p>React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。</p>
+<p>使用方法及步骤：</p>
+<ol>
+<li>
+<p>使用Provider组件，包裹在应用的最外层，并为Provider注入store属性，此时，Provider就会将自己的store属性传递给子组件组合中的容器组件</p>
+</li>
+<li>
+<p>使用connect函数，可以根据一个现有的UI组件生成一个容器组件，且我们在使用的时候，其实一直在使用的都是容器组件，connect函数执行之后返回一个函数，将返回的函数传入UI组件并执行之后就会生成一个容器组件</p>
+</li>
+<li>
+<p>connect函数有两个参数：mapStateToProps,mapDispatchToProps</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>mapStateToProps的作用很简单，就是将redux中的state传递到UI组件的props上，此参数是一个函数，接收到store的state然后再返回一个对象，返回的对象中的属性就会传递到UI组件的属性上</p>
+<p>mapStateToProps对store进行了订阅，只要state更改，mapStateToProps会自动执行并获取到最新的state传入到UI组件的属性上</p>
+</li>
+<li>
+<p>mapDispatchToprops 函数，接收到dispatch参数，其实就是store.dispatch，返回的对象中设置的方法可以使用到dispatch，且能传入到UI组件的属性上</p>
+</li>
+</ul>
+<p>那么，有了mapDistpatchToProps之后，我们就不需要actions了吗？</p>
+<p>我们需要将一些复杂的业务逻辑，或者说异步的业务逻辑抽离出来放入到actions里面去，也就是后所mapDispatchToProps里自己创建的只是一些简单的方法就可以了</p>
+<p>第一次使用react-redux等工具的做法</p>
+<p>创建了actionCreator，专门生成action，又设置 了actions，在actions里放一些异步的、复杂的操作之后，调用actionCreator生成action再dispatch到reducer</p>
+<p>其实我们上面创建actions的目的，就是因为ActionCreator不能做复杂的动作，其实我们可以使用redux-thunk来对reducer创建中间件，让actionCreator的方法能返回一个函数，这个函数就可以接收到dispatch，且做出异步操作之后dispatch出action，也就是说，我们不需要再创建actions来分离异步复杂操作，而且直接可以在ActionCreator里写异步方法</p>
+<p>步骤：</p>
+<ol>
+<li>对store中的reducer使用redux-thunk
+<div class="codehilite"><pre>import {createStore,applyMiddleware} from &#39;redux&#39;
+import reducer from &#39;./reducer&#39;
+import thunk from &#39;redux-thunk&#39;
+const store = createStore(reducer,applyMiddleware(thunk))
+
+export default store
+</pre></div></li>
+<li>
+<p>在ActionCreator的方法中返回方法来做异步处理
+<div class="codehilite"><pre>const actions_thunk = {
+    clearCart(){
+        //做异步操作之后生成action且dispatch
+
+        return (dispatch)=&gt;{
+
+            setTimeout(function(){              
+                localStorage.removeItem(&#39;cars&#39;)
+
+                let action = change_cars([])
+
+                dispatch(action)
+
+            },500)
+
+        }
+
+    }
+}
+</pre></div></p>
+</li>
+<li>
+<p>可以将actionCreator的方法利用bindActionCreator放入到mapDispatchToProps中
+<div class="codehilite"><pre>import {bindActionCreators} from &#39;redux&#39;
+import actions_thunk from &#39;../../redux/ActionCreators/actions_thunk&#39;
+export default connect(state=&gt;state,dispatch=&gt;{
+    return {
+        actions_thunk:bindActionCreators(actions_thunk,dispatch)
+    }
+})(ClearCar)
+
+///
+button onClick={this.props.actions_thunk.clearCart} 
+</pre></div></p>
+</li>
+</ol>
+<p>其实，现在有这样的流行做法：</p>
+<p>将所有的数据都交由redux管理，这样的话，我们的组件在UI层的逻辑就更纯粹了,而且可以做到数据缓存，比如，A组件获取了数据放入到redux中，当A组件被切换掉之后重新切换回来的时候，数据依然在redux中可以找到，也就是说直接取出来用就ok，不需要重新获取</p>
+<h4 id="react_7">React 扩展<a class="headerlink" href="#react_7" title="Permanent link"></a></h4>
+<ol>
+<li>ref推荐使用函数的方法：</li>
+</ol>
+<ul>
+<li>字符串方式
+<div class="codehilite"><pre>&lt;Son ref=&quot;son&quot;&gt;&lt;/Son&gt;
+//
+
+this.refs.son
+</pre></div></li>
+<li>函数方式(推荐)</li>
+</ul>
+<p><div class="codehilite"><pre>&lt;Son ref={(el)=&gt;{this.son = el}}&gt;&lt;/Son&gt;
+
+//
+
+this.son
+</pre></div>
+<transition name = "abc"></p>
+<p></transition></p>
+<h4 id="_12">考试题：<a class="headerlink" href="#_12" title="Permanent link"></a></h4>
+<ol>
+<li>react的特点不包括什么？</li>
+</ol>
+<p>声明式设计、高效、灵活、（双向数据流）</p>
+<ol>
+<li>
+<p>动画可以使用哪个第三方插件实现：</p>
+<p>(ReactTransitionGroup)/animate.css/transitionTranslate/redux-thunk</p>
+</li>
+<li>
+<p>ReactRouter中，路由的onLeave应该写在哪里:</p>
+<p>路由对应的组件中、父组件中、(路由组件中)、最外层大组件中</p>
+</li>
+<li>
+<p>react-redux中的connect方法的返回值是一个:
+    ContainerComponent = connect()(UIComponent)
+    对象、(容器组件)、UI组件、数组</p>
+</li>
+<li>
+<p>react中常提到的中间件的概念，指的是：</p>
+<p>react中间件、flux中间件、(redux中间件)、react-redux中间件</p>
+</li>
+<li>
+<p>redux设计的三大原则：</p>
+<p>(store唯一/唯一数据源、
+state只读、
+reducer是纯函数)
+reducer只读</p>
+</li>
+<li>
+<p>哪些不是react-router的组件：</p>
+<p>(Provider)、Route、Router、(MapStateToProps)</p>
+</li>
+<li>
+<p>下面哪些方法可以使componentWillUpdate执行</p>
+<p>属性更改或者状态更改</p>
+</li>
+<li>
+<p>请简述对虚拟dom的理解，为什么使用虚拟DOM可以极大的提升react的性能</p>
+</li>
+</ol>
+<p>虚拟dom是真实dom的js对象映射，使用虚拟dom，避免对原生dom的创建和比对，取而代之的创建和比对的是js对象</p>
+<p>原生dom的创建和比对是非常消耗性能的，而js对象的对比和创建对性能开销很小，从这种方式来提供应用的性能</p>
+<ol>
+<li>
+<p>请说明在react中ref的作用，并写出使用ref的两种方式，说明哪一种是官方推荐的</p>
+<p>ref可以使我们在react对dom或者子组件做出标记并获取：</p>
+<p><Son ref="son"></Son>//this.refs.son
+<Son ref={(el)=>{this.son = el}}&gt;</Son>//this.son(官方推荐)</p>
+</li>
+<li>
+<p>说明react中，父子组件项目传值的方式，并说明在大型项目中为什么要引入flux或者redux这种开发架构
+    父组件将自己的状态当成属性传递给子组件
+    父组件将自己的方法传递给子组件，子组件在调用的时候传参
+    父组件通过ref获取到子组件，调用子组件的方法传参</p>
+<p>react是一款视图层的轻量级前端框架，大量的非父子组件通信、状态共享会导致整个项目数据复杂，难以维护，所以react不适合处理大量的数据通信，为了解决这个问题，引入了FLUX、REDUX这样的数据架构，react结合FLUX或者redux才能实现比较复杂的前端项目</p>
+</li>
+<li>
+<p>在react中，列表循环尽量不要使用index作为key值，这和diff算法有关系，请简述diff算法中key值有什么作用，为什么key中使用index值会降低代码性能</p>
+<p>key值是diff算法中对比两个虚拟dom的最重要参考，决定了哪些列表中的组件可以复用，如果使用index作为key中，列表数据改变后，会导致同一个dom元素的key中发送改变，本来可以复用的组件必须重新创建，降低页面性能，除非列表不需要改变，一般情况不使用index作为key值</p>
+</li>
+<li>
+<p>请列举你所了解的react中的性能优化</p>
+<ul>
+<li>没必要存在store中的数据，存在state中就可以</li>
+<li>函数的this执行放在constructor中改变</li>
+<li>和页面显示无关的数据不要放在state中</li>
+<li>shouldComponentUpdate来判断组件是否需要重新render(使用pureComponent)</li>
+<li>使用性能分析工具进行性能分析，找问题解决问题</li>
+</ul>
+</li>
+</ol>
+<p>13.1 pureComponnet
+    pureComponnet里如果接收到的新属性或者是更改后的状态和原属性、原状态相同想等的话，就不会去重新render了
+    在里面也可以使用shouldComponentUpdate，而且。是否重新渲染以shouldComponentUpdate的返回值为最终的决定因素
+    class ABC extends pureComponnet {</p>
+<div class="codehilite"><pre>}
+</pre></div>
+
+
+<ol>
+<li>
+<p>请说明react中引入redux-thunk、redux-promise这两种中间件可以解决什么样的问题</p>
+<p>通常情况下，action只是一个对象，不能包含异步操作，这导致了很多创建action的逻辑只能写在组件中，代码量较多也不便于复用，同时对该部分代码测试的时候也比较困难，组件的业务逻辑也不清晰，使用中间件了之后，可以通过actionCreator异步编写action，这样代码就会拆分到actionCreator中，可维护性大大提高，可以方便于测试、复用，同时actionCreator还集成了异步操作中不同的action派发机制，减少编码过程中的代码量</p>
+</li>
+<li>
+<p>画图说明redux的架构，写出redux中常用的函数</p>
+<p>dispatch , subscribe,combineReducers,getState,createStore</p>
+</li>
+<li>
+<p>简述react-redux结合react-router在项目中的使用方式</p>
+<ul>
+<li>创建store，编写reducer</li>
+<li>在<Router/>外面嵌套<Provider store={store}></Provider>，将store传递给各个子组件</li>
+<li>编写UI组件</li>
+<li>使用react-redux的connect方法结合mapStateToProps、mapDispatchToProps生成容器组件，容器组件和store连接在一起</li>
+</ul>
+<p>router4
+* 创建store，编写reducer
+* 在<Router/>外面嵌套<Provider store={store}></Provider>，将store传递给各个子组件
+* 编写UI组件
+* 使用react-redux的connect方法结合mapStateToProps、mapDispatchToProps生成容器组件，容器组件和store连接在一起
+* 如果某一个组件不是路由组件，却需要使用router相关api，并且还需要使用store中的state的时候，需要在最外层包裹withRouter，里面再使用connect生成容器组件</p>
+</li>
+<li>
+<p>下列说法错误的是：</p>
+<p>（React是一款专注于数据层的前端框架）、react中需要调用setState方法来重置状态、react中的虚拟dom可以提升框架自身的性能、（react是一款符合MVVM设计思想的前端框架）</p>
+</li>
+<li>
+<p>关于前端组件化说法错误的是：</p>
+<p>前端组件使得复杂的代码得以被更好的划分、组件化的代码设计方式增加了代码的可复用性、（在拆分组件的时候将组件拆分的越小越细越好）、组件化开发是一种设计思想，不是react独享的</p>
+</li>
+<li>
+<p>在react中，异步获取ajax数据一般放在那个生命周期函数：componentWillMount</p>
+</li>
+<li>
+<p>使用es6定义组件，可以在那个生命周期钩子函数里使用this.state=state 对state进行赋值。而不需要调用this.setState方法：constructor</p>
+</li>
+<li>
+<p>在redux中，重要的组成部分不包括：</p>
+<p>store、action、reducer、（dispatcher）</p>
+</li>
+<li>
+<p>webpack中html-webpack-plugin插件可以完成的任务是：</p>
+<p>(在打包输出目录中自动生成index.html)、(向打包目录中的index.html文件内插入打包生成的js文件引用)、将js源码中引用的css代码抽离ちゅ单独的css文件并放置到打包输出目录、(像打包输出目录中的index.html文件插入打包生成的css引用)</p>
+</li>
+<li>
+<p>关于jsx，说明正确的是：(ad)</p>
+<p>a:jsx中可以通过{}来使用js的表达式，b:jsx中可以通过{}来使用js的代码，c:jsx中可以使用style={color:&rsquo;red&rsquo;}来设置元素的样式、d:jsx代码会被解析成一个js对象</p>
+</li>
+<li>
+<p>react组件被挂载到页面 的时候，被执行的生命周期函数包括：(ab)</p>
+<p>a: componentWillMount,b:render,c:componentDidUpdate,d:shouldComponentUpdate</p>
+</li>
+<li>
+<p>在自定义的react组件中，哪些生命周期函数可以不写（acd）</p>
+<p>a: constructor b:render c:componentWillMount d:componentWillUnmount</p>
+</li>
+<li>
+<p>说法正确的是：（ab）</p>
+<p>a: 父组件通过属性的方式给子组件传值，b:子组件通过props接收父组件的值，c:state中和页面无关的属性发送变化时，render不会执行，d:shouldComponentUpdate函数的两个参数分别是当前的state和当前的props</p>
+</li>
+<li>
+<p>在react组件中，当（props或者state）发送变化的时候，会导致render生命周期函数重新执行</p>
+</li>
+<li>
+<p>使用react-redux时，页面上的组件需要被拆分成（容器）组件和（UI）组件，通过使用（connect/mapStateToProps）方法，可以把store中固定state内容映射到组件上</p>
+</li>
+<li>
+<p>使用ES6创建react组件的方式是（class &hellip;  extends React.Component）,ES5创建组件的方法是(React.createClass),创建无状态组件的方式是(function(props){return ()})</p>
+</li>
+<li>
+<p>react中，ref属性的作用是（获取jsx中元素的真实dom节点或子组件）</p>
+</li>
+<li>
+<p>es5语法创建react组件比es6多了两个生命周期函数（getDefaultProps/getInitialState）</p>
+</li>
+<li>
+<p>请简述react-router中hashHistory和browserHistory的区别：</p>
+<p>这是react-router中设置监听url路径变化的两种方式，hashHistory在切换路由的时候会在url上跟着哈希值，browserHistory通过判断path变化才切换路由，且path变化的时候后端可以接收到请求，需要后端配置忽略掉</p>
+</li>
+<li>
+<p>请画图说明flux中的单向数据流</p>
+<p>用户访问View-》view发出用户的action-》dispatcher收到action要求store进行更新-》store更改后，触发一个事件-》view接收到该事件的触发，更新页面</p>
+</li>
+<li>
+<p>简述react-redux的用法</p>
+<p>创建store、reducer，通过provider将store传递给各个子组件，创建ui组件，生成容器组件，利用connect将store和容器组件连接</p>
+</li>
+<li>
+<p>说明redux设计和使用的三大原则：</p>
+<p>唯一数据源、保持状态只读、数据改变只能通过纯函数完成</p>
+</li>
+<li>
+<p>说明redux-thunk的使用方法：</p>
+<p>npm install redux-thunk -S</p>
+<p>//store
+import {createStore,applyMiddleware} from &lsquo;redux&rsquo;
+import thunk from &lsquo;redux-thunk&rsquo;</p>
+<p>import reducer from &lsquo;./reducer&rsquo;</p>
+<p>const store  = createStore(reducer,applyMiddleware(thunk))</p>
+<p>//actionCreator</p>
+<p>const actionCreator = {
+    handlerChange(){
+        return (dispatch)=&gt;{</p>
+<div class="codehilite"><pre>        ...
+
+    }
+}
+</pre></div>
+
+
+<p>}</p>
+</li>
+</ol></article></body></html>
