@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+
+let Component = React.createClass({
+  getInitialState(){
+    return{
+      name:'韩梅梅'
+    }
+  },
+
+  render() {
+
+    return (
+      <div>
+        {this.state.name}    
+        <button onClick={()=>{
+          // this.state.name = '李雷雷'
+          // console.log(this.state.name)
+          this.setState({name:'李雷雷'},()=>{
+            console.log('数据修改完毕',this.state.name)
+          })
+          console.log(this.state.name)
+        }}>改名</button> 
+      </div>
+    )
+    
+  }
+})
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+
+</script>
+</body>
+</html>

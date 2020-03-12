@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../base/react.min.js"></script>
+  <script src="../base/react-dom.min.js"></script>
+  <script src="../base/browser.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type="text/babel">
+
+let Component = React.createClass({
+  getInitialState(){
+    return{
+    
+    }
+  },
+  test1(num1,num2,e){
+    console.log('这里到test1',num1,num2,e)
+  },
+  render() {
+
+    return (
+      <div>
+        {/* <button onClick={(e)=>{
+           console.log('呵呵哒',e)
+         }}>点击</button>*/}
+        
+        {/*<button onClick={this.test1}>点我</button>*/}
+        <button onClick={this.test1.bind(null,6,4)}>点我</button>
+        
+      </div>
+    )
+    
+  }
+})
+
+ReactDOM.render(<Component/>,document.getElementById('app'))
+/*
+改变this指向 
+1、区别在哪？
+2、为什么能改变this执行（实现原理）？
+3、手写 bind call  apply
+bind  
+使用bind之后默认参数会放到参数队列的最后方
+call
+apply 
+
+*/ 
+</script>
+</body>
+</html>
