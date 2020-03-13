@@ -41,8 +41,31 @@ package.josn
 不是一种新的组件而是获取表单数据的2中方式 
 
 非受控组件  通过ref 获取表单数据
+受控组件  将表单value 和state 里的数据进行关联
 
-傻瓜组件
+### react developer tool 
+谷歌浏览器插件 使用方式类似vue开发者工具
+
+### Fragment 
+可以作为跟组件使用并且不会被渲染
+
+#### 生命周期
+
+1. 创建初始化
+getDefaultProps  初始化porps
+getInitialState  初始化state 
+15.6 的生命周期 在16版本本取消 用 构造函数代替
+2. 挂载
+componentWillmount  挂载之前
+componentDidMount 挂载结束
+3. 更新 
+componentWillReceiveProps props发生改变的时候触发
+shouldComponentUpdate     数据的改变是否应该引起页面的更新
+componentWillUpdate   组件将要更新
+componentDidUpdate  组件更新完毕
+4. 卸载销毁
+componentWillUnMount
+
 
 
 
