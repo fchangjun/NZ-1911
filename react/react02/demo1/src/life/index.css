@@ -1,0 +1,17 @@
+.demo{
+  width: 100px;
+  height: 100px;
+ 
+}
+.fixed{
+  position: absolute;
+  top: 0px;
+  left:0px;
+  border: 1px solid red;
+  height: 8000px;
+}
+.test{
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}

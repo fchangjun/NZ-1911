@@ -56,14 +56,14 @@ getDefaultProps  初始化porps
 getInitialState  初始化state 
 15.6 的生命周期 在16版本本取消 用 构造函数代替
 2. 挂载
-componentWillmount  挂载之前
+（废弃）componentWillmount  挂载之前
 componentDidMount 挂载结束
 3. 更新 
-componentWillReceiveProps props发生改变的时候触发
+（废弃）componentWillReceiveProps props发生改变的时候触发
 shouldComponentUpdate     数据的改变是否应该引起页面的更新
-componentWillUpdate   组件将要更新
+（废弃）componentWillUpdate   组件将要更新
 componentDidUpdate  组件更新完毕
-4. 卸载销毁
+4. 卸载销毁   擦屁股解决遗憾的操作
 componentWillUnMount
 
 

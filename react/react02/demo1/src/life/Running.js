@@ -1,32 +1,33 @@
 import React,{ Component } from "react";
 
 class Running extends Component{
-  constructor(){
-    super()
-    this.state={
-      name:'韩梅梅'
+  componentWillReceiveProps(props){
+    //监听props 发生改变
+    //参数里是更新之后的数据
+    //this 里是更新之前的数据
+    console.log('props发生改变')
+    console.log('this',this.props)
+    console.log('参数props',props)
+
+  }
+  shouldComponentUpdate(props,state){
+    if(props.num === this.props.num){
+      return false 
+    }else{
+      return true
     }
-  }
-  componentWillMount(){
-    console.log('组价将要挂载')
-  }
-  componentDidMount(){
-    console.log('挂载结束')
-  }
-  shouldComponentUpdate(){
-    console.log('数据变了')
+
   }
   render(){
-    console.log('组件渲染了')
+    console.log('子组件组件渲染了')
     return(
       <div>
         <h6>运行中的生命周期</h6>
-        <p ref='p'>{this.state.name}</p>
-        <button onClick={()=>{
-          this.setState({name:'李雷'})
-        }}>cahnge</button>
+        <p ref='p'>{this.props.num}</p>
+
       </div>
     )
   }
+  
 }
 export default Running
