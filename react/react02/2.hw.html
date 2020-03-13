@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='../base/react.min.js'></script>
+  <script src='../base/react-dom.min.js'></script>
+  <script src="../base//browser.min.js"></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type='text/babel'>
+// 容器
+let  Box = React.createClass({
+   getInitialState(){
+    //  亲兄弟通信状态提升相关的数据放在公有的父元素上
+     return{
+       datas:[{msg:'今天又是周五了',finish:true},
+       {msg:'明天又是周六了',finish:false},
+       {msg:'大后天又是周一了',finish:false},
+       ]
+     }
+   },
+   add(msg){
+    //  添加数据的方法 要传给input 子组件调用
+     console.log(22)
+     console.log(this.state.datas)
+     let datas = this.state.datas
+     datas.push({msg:msg,finish:false})
+    this.setState({datas})
+   },
+   del(index){
+    // 删除数据的方法 传给list 子组件调用
+    let datas = this.state.datas
+    datas.splice(index,1)
+    this.setState({datas})
+   },
+   update(index){
+    // 修改数据的方法传给list 子组件调用
+    let datas = this.state.datas 
+    datas[index].finish = true 
+    this.setState({datas})
+   },
+   render(){
+     let {datas} = this.state
+     return(
+       <div>
+        <Input addFun = {this.add}></Input> 
+        <hr/>
+        <List list = {datas}  defFun={this.del} updateFun={this.update}></List>
+       </div>
+     )
+   }
+})
+// 输入组件
+let Input = React.createClass({
+  render(){
+    return(
+      <div>
+        <input type="text" ref='input'/>
+        <button onClick={()=>{
+          console.log(111)
+          let value = this.refs.input.value
+          console.log(value)
+          this.props.addFun(value)
+        }}>add</button>
+      </div>
+    )
+  }
+})
+
+// 显示组件
+let List = React.createClass({
+  render(){
+    console.log(this,'list组件')
+    let  {list} =  this.props
+    return(
+      <ul>
+        {list.map((item,index)=>{
+          return(
+            <li>{item.msg}
+              <button onClick={()=>{
+                this.props.defFun(index)
+              }}>删除</button>
+              {item.finish?
+              <span>已完成</span>:
+              <button onClick={()=>{
+                this.props.updateFun(index)
+              }}>待完成</button>}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+})
+ReactDOM.render(<Box/>,app)
+  /*
+   react 版本的todolist  
+   3个组件 容器的box 输入的input 显示list
+  */ 
+</script> 
+</body>
+</html>

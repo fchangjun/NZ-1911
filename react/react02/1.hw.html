@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='../base/react.min.js'></script>
+  <script src='../base/react-dom.min.js'></script>
+  <script src="../base//browser.min.js"></script>
+  <title>Document</title>
+  <style>
+    table,tr,td{
+      border: 1px solid red;
+    }
+    .red{
+      background: red;
+    }
+    .blue{
+      background: blue;
+    }
+    .pink{
+      background: pink;
+    }
+    .green{
+      background: green;
+      }
+      .orange{
+      background: orange;
+    }
+    .purple{
+      background: purple;
+      }
+  </style>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+<script type='text/babel'>
+let  Box = React.createClass({
+  getInitialState(){
+    return{
+        tabs:[[1],
+              [1,2],
+              [1,2,3],
+              [1,2,3,4,],
+              [1,2,3,4,5],
+              [1,2,3,4,5,6],
+              [1,2,3,4,5,6,7],
+              [1,2,3,4,5,6,7,8],
+              [1,2,3,4,5,6,7,8,9]
+        ],
+        selIndex:0,
+        colors:[['red','blue'],['green','pink'],['purple','orange']],
+        colorIndex:0
+    }
+  },
+  renderTd(tds,trIndex){
+    let result = tds.map((tdItem,tdIndex)=>{
+      return (
+        <td>{tdItem}*{trIndex+1}={tdItem*(trIndex+1)}</td>
+      )
+    })
+    return result 
+  },
+  move(index){
+   console.log(index)
+   this.setState({selIndex:index})
+  },
+  selectChange(e){
+    console.log('下拉菜单改变',e.target.value)
+    this.setState({colorIndex:e.target.value})
+  },
+  render() {
+    let {tabs,selIndex,colors,colorIndex}= this.state
+    return(
+      <div className='box'>
+        <select onChange={this.selectChange}>
+          {colors.map((item,index)=>{
+            return(
+              <option value={index}>{item}</option>
+            )
+          })}
+        </select>
+
+
+      {/*这里是表格*/}
+      <table >
+        {tabs.map((trItem,trIndex)=>{
+          return(
+            <tr className={trIndex%2?colors[colorIndex][0]:colors[colorIndex][1]}
+                onMouseOver={this.move.bind(null,trIndex)}
+                style={ {opacity:selIndex==trIndex?0.5:1} }
+            >
+             {/* tr的内部需要渲染td*/}
+             {this.renderTd(trItem,trIndex)}
+            </tr>
+          )
+        })}
+      </table>
+      </div>
+    ) 
+  }
+})
+ReactDOM.render(<Box/>,app)
+  /*
+  实现9*9乘法表
+  隔行变色
+  滑过有特效
+  下拉菜单能控制隔行变色的颜色
+  */ 
+</script> 
+</body>
+</html>
