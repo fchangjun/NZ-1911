@@ -30,30 +30,17 @@ class Box extends Component{
         <BrowserRouter>
           <NavLink exact to='/singer' activeClassName='selected' className='nav'> 歌手</NavLink> 
           <NavLink exact to='/recommend' activeClassName='selected' className='nav'> 推荐</NavLink>
-          {/* 通过component创建组件 */}
-          {/* <Route exact path='/singer' component={Singer}></Route>
-          <Route exact path='/singer' component={(props)=>{
-            console.log(props)
-            return(
-              <div>
-                这是函数创建的组件
-              </div>
-            )
-          }}></Route> */}
-          {/* 通过render 属性显示组件 */}
-          {/* <Route  path='/recommend' render={Recommend}></Route>
-          <Route  path='/recommend' render={()=>{
-            return(
-              <div>
-                render 渲染的组件
-              </div>
-            )
-          }}></Route> */}
-          {/* 通过clildren 创建组件 */}
-          <Route  path='/recommend' children={Recommend} ></Route>
-          <Route  path='/recommend' children={()=>{
-            return( <div>这里是children 创建的组件</div>)
-          }}></Route>
+          <NavLink exact to='/singer/test' activeClassName='selected' className='nav'> 歌手测试</NavLink>
+          <Switch>
+            {/* 小心产生死循环 */}
+            <Redirect exact from='/' to ='/recommend'></Redirect>
+            <Route exact path='/singer' component={Singer}></Route>
+            <Route  path='/recommend' component={Recommend}></Route>
+            <Route  path='/singer/test' component={SingerTest}></Route>
+           
+            <Route component={NotFound}></Route>
+          </Switch>
+            
         </BrowserRouter>
 
       
