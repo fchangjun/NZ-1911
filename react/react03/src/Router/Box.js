@@ -1,62 +1,61 @@
 import React, { Component, Fragment } from "react";
 import {HashRouter,BrowserRouter,NavLink,Link,Route,Switch,Redirect} from 'react-router-dom'
 import './nav.css'
-function Singer (props){
-  console.log('歌手的props',props)
+function Singer (){
+  console.log('歌手的props')
   return(
     <div>这里是歌手组件</div>
   )
 }
-function SingerTest (props){
+
+function My (){
+  console.log('我的组件')
   return(
-    <div>这里是歌手测试组件</div>
+    <div>这里是我的组件
+
+        <Route path='/my/info' component={Info}></Route>
+        <Route path='/my/login' component={Login}></Route>
+
+    </div>  
   )
 }
-function Recommend (){
+
+function Info(){
   return(
-    <div>这里是推荐组件</div>
+    <div>我的信息</div>
   )
 }
-function NotFound (){
+
+function Login(){
   return(
-    <div>你的页面打了样</div>
+    <div>去登录</div>
   )
 }
 class Box extends Component{
   render(){
     return(
       <div>
-        <h3>路由基础2 - switch</h3>
-        <BrowserRouter>
-          <NavLink exact to='/singer' activeClassName='selected' className='nav'> 歌手</NavLink> 
-          <NavLink exact to='/recommend' activeClassName='selected' className='nav'> 推荐</NavLink>
-          {/* 通过component创建组件 */}
-          {/* <Route exact path='/singer' component={Singer}></Route>
-          <Route exact path='/singer' component={(props)=>{
-            console.log(props)
-            return(
-              <div>
-                这是函数创建的组件
-              </div>
-            )
-          }}></Route> */}
-          {/* 通过render 属性显示组件 */}
-          {/* <Route  path='/recommend' render={Recommend}></Route>
-          <Route  path='/recommend' render={()=>{
-            return(
-              <div>
-                render 渲染的组件
-              </div>
-            )
-          }}></Route> */}
-          {/* 通过clildren 创建组件 */}
-          <Route  path='/recommend' children={Recommend} ></Route>
-          <Route  path='/recommend' children={()=>{
-            return( <div>这里是children 创建的组件</div>)
-          }}></Route>
-        </BrowserRouter>
-
-      
+        <h3>嵌套路由</h3>
+        <HashRouter>
+           <Link to='/singer'>歌手</Link>
+           <Link to='/my'>我的</Link>
+           <hr/>
+           <Route path='/singer/'  component={Singer}></Route>
+           {/* <Route path='/my' component={My}></Route> */}
+   
+           <Route  path='/my/:id' render={()=>{
+             return(
+               <div>
+                 <h3>我的组件</h3>
+                 <hr/>  
+                  <Link to='/my/info'>我的信息</Link>
+                  <Link to='/my/login'>我的登录</Link>
+                  <Route path='/my/:id/info' component={Info}></Route>
+                  <Route path='/my/:id/login' component={Login}></Route>
+               </div>
+             )
+           }}></Route>
+        </HashRouter> 
       </div>
     )
   }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// 模拟高阶函数 hof 本质也是一个函数 接受一个函数作为参数 返回一个新的函数
+// 高阶组件 hoc 本质是一个函数 接受一个组件作为参数  返回一个新的组件
+// localStorage.setItem('name','李雷雷')
+// 获取名字特别复杂 100000代码
+// function sayHello(){
+//   let name =localStorage.getItem('name')
+//   console.log('你好:',name)
+// }
+// function sayBye(){
+//   let name =localStorage.getItem('name')
+//   console.log('再见:',name)
+// }
+
+function sayHello(name){
+  console.log('你好:',name)
+}
+function sayBye(name){
+  console.log('再见:',name)
+}
+// 创建高阶函数 目的是优化重复代码 在高阶函数中做重复处理
+function hof(fun){
+  return()=>{
+    let name =localStorage.getItem('name')
+    fun(name)
+  }
+}
+hof(sayHello)()
+hof(sayBye)()
+// 高阶函数执行完了 得到一个个函数
+</script>
+</body>
+</html>
