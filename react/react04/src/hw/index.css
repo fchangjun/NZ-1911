@@ -1,0 +1,6 @@
+.selected{
+  display: inline-block;
+  width: 100px;
+  height: 80px;
+  background: red;
+}
