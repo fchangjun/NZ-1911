@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import connect from './connect'
+import store from './store/store'
 import ActionCreator from  './store/actionCreator'
 class Son1 extends Component {
-  // componentDidMount(){
-  //   // 监听老佛爷的异动
-  //   store.subscribe(()=>{
-  //     this.setState({})
-  //   })
-  // }
+  componentDidMount(){
+    // 监听老佛爷的异动
+    store.subscribe(()=>{
+      this.setState({})
+    })
+  }
   render() {    
-    // let {name,age} = store.getState()
-    let {name,age} = this.props
+    let {name,age} = store.getState()
     return (  
       <div>
         <h3>子组件1</h3>
@@ -24,4 +23,4 @@ class Son1 extends Component {
   }
 }
  
-export default connect(Son1);
+export default Son1;
