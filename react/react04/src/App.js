@@ -1,6 +1,6 @@
 import React from 'react';
 // import Box from './hw/Box'
-import Box from './Redux/Box'
+import Box from './todolist/Box'
 
 function App() {
   return (
