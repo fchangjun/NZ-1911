@@ -30,3 +30,37 @@ import store from './store/store.js'
     2. actionCreator 默认做两个事情1.创建action 2.通过dispath 发送action 
        actionCreator 使用插件之后只要 创建action 
     3. 在组件里发送
+
+
+#### react-redux 中异步action
+解决方式通过异步中间件 redux-thunk  redux-sage redux-promise  ....
+1. 安装异步插件  npm install redux-thunk 
+2. 在store.js 引入并使用
+```
+import {createStore,applyMiddleware} from 'redux'
+import thunk from 'redux-thunk' //解决异步的插件
+import reducer from './reducer'
+export default createStore(reducer,applyMiddleware(thunk))
+```
+3. 除了actionCreatore 需要修改之外 其他的都不用动 
+   a. 如果是同步的方法也不需要动 返回action
+   b. 如果action里有异步 返回一个函数 函数能接受dispath 在函数内部 做网络请求
+      成功之后通过dispath手动的发送
+   ```
+   {
+      addlist(){
+         let action ={} 
+         return action 
+      },
+      dellist(){
+         return(dispatch)=>{
+            <!-- 网络请求 -->
+            setTimeOut(()=>{
+               let action  ={} 
+               dispatch(action)
+            }，1000)
+         }
+      }
+   }
+   ```     
+ 

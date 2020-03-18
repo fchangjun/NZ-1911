@@ -1,24 +1,21 @@
-import  {CHANGE_NAME,CHANGE_AGE}from './actionType'
-export default {
-  // changename(){
-  //   let action={
-  //     type:CHANGE_NAME,
-  //     payload:'李雷雷'
-  //   }
-  //   Store.dispatch(action)
-  // }
+import {CHANGE_NAME,CHANGE_AGE}from './actionTypes'
+export default{
   [CHANGE_NAME](){
-    let action={
+    return { 
       type:CHANGE_NAME,
-      payload:'李雷雷'
+      payload:'半藏'
     }
-    return action
   },
   [CHANGE_AGE](){
-    let action={
+    return{
       type:CHANGE_AGE,
-      payload:88
+      payload:99
     }
-    return action
+  },
+  addlist(){
+    console.log(111)
+  },
+  dellist(){
+    console.log(111)
   }
 }
