@@ -1,4 +1,3 @@
-import Store from './store'
 import  {CHANGE_NAME,CHANGE_AGE}from './actionType'
 export default {
   // changename(){
@@ -13,6 +12,13 @@ export default {
       type:CHANGE_NAME,
       payload:'李雷雷'
     }
-    Store.dispatch(action)
+    return action
+  },
+  [CHANGE_AGE](){
+    let action={
+      type:CHANGE_AGE,
+      payload:88
+    }
+    return action
   }
 }

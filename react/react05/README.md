@@ -6,3 +6,6 @@
 ```
 npm install redux react-redux 
 ```
+1. 优化全局状态的获取过程
+ 
+ 
