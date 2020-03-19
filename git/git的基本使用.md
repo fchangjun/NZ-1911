@@ -39,21 +39,23 @@ git  checkout -b 分支名   //创建并且切换一个分支
 
 git checkout  分支名  //切换一个分支
 
-git merge 分支名(dev)  //在当前分支合并其他分支(dev)
+git merge 分支名(dev)  //在当前分支合并其他分支(dev)  子分支向母分支合并
 
 git  reset --hard  提交id  //版本的滚动 只能是被git管理的
 
 git diff    //查看暂存区和工作区的区别
 
-git clone 
-git push 
-git pull（fecth + commit）
-git fetch 
-git remote 
+git clone url  // 将远程的仓库克隆到本地
+git push  origin（远程仓库名） master （分支名）
+git pull  origin 分支名  （fecth + commit）
+git fetch   拉取代码
+git remote add origin url  将本地仓库和远程从仓库建立连接
+
+git branch  -D 分支名删除本地分支
 ```
 
 #### 冲突 
-需要的留着 不需要的删除
+需要的留着 不需要的删除 -> 良好的交流
 
 ### git仓库 本地仓库 远程仓库
 本地仓库和远程仓库都是仓库 该有的都有 
@@ -71,3 +73,24 @@ git remote
 ### git的分支
 
 ### gitflow git工作流
+git 的使用流程 更多是对分支的使用
+
+master 主分支  线上分支 和正在线上运行的代码是一致的
+realease 分支  预发布分支 发布前的测试
+dev    分支     开发分支 
+futrue 分支     个人分支 功能分支
+bug    分支     线上代码出现bug的时候来解决bug
+
+#### 角色
+主程
+1. 和远程仓库过关联
+2. 搭建项目框架
+3. 上传到远程的dev分支
+4. 开发结束之后 将dev分支的代码 合并到master （预上线分支）
+普通开发者
+1. clone 代码
+2. 从dev分支切换出个人分支
+3. 在个人分支进行修改
+4. 将个人分支合并到dev分支
+5. push dev分支  push 之前一定要先更新代码
+6. 将个人分支删除调重新创建
