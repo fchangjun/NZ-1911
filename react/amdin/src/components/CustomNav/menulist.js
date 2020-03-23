@@ -15,7 +15,7 @@ export default[
        key:'2-1',
        title:"用户添加",
        path:'/admin/useradd'
-     },
+      },
      {
       key:'2-2',
       title:"用户列表",

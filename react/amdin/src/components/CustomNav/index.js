@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import {withRouter, Switch} from 'react-router-dom'
 import { Menu } from 'antd';
 import menuList from './menulist'
-import {
-  HomeOutlined,
-  SettingFilled,
-  UserOutlined,
-  RadarChartOutlined,
-} from '@ant-design/icons';
+// import {
+//   HomeOutlined,
+//   SettingFilled,
+//   UserOutlined,
+//   RadarChartOutlined,
+// } from '@ant-design/icons';
 const { SubMenu } = Menu;
 
 function handleClick(e) {
@@ -18,20 +18,20 @@ function handleClick(e) {
 }
 class CustomNav extends Component {
   renderIcon(icon){
-    switch (icon) {
-      case 'home':
-        return <HomeOutlined/>
-        break;
-      case 'set':
-        return <SettingFilled/>
-        break;
-      case 'user':
-        return <UserOutlined/>
-        break;
-      default:
-        return <RadarChartOutlined />
-        break;
-    }
+    // switch (icon) {
+    //   case 'home':
+    //     return <HomeOutlined/>
+    //     break;
+    //   case 'set':
+    //     return <SettingFilled/>
+    //     break;
+    //   case 'user':
+    //     return <UserOutlined/>
+    //     break;
+    //   default:
+    //     return <RadarChartOutlined />
+    //     break;
+    // }
   }
   renderItem(data){
     return data.map((item,index)=>{
