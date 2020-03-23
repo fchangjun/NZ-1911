@@ -1,68 +1,71 @@
 import React, { Component } from 'react';
+import {withRouter, Switch} from 'react-router-dom'
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-
+import menuList from './menulist'
+import {
+  HomeOutlined,
+  SettingFilled,
+  UserOutlined,
+  RadarChartOutlined,
+} from '@ant-design/icons';
 const { SubMenu } = Menu;
 
 function handleClick(e) {
-  console.log('click', e);
+  // 点击获取跳转路径通过编程式导航实现跳转
+  console.log(e)
+  let {path} = e.item.props 
+  this.props.history.replace(path)
 }
 class CustomNav extends Component {
-  state = {  }
-  render() { 
-    return ( 
-      <Menu onClick={handleClick} style={{ width: 256 }} mode="vertical">
-      <SubMenu
-        key="sub1"
-        title={
-          <span>
-            <MailOutlined />
-            <span>Navigation One</span>
-          </span>
-        }
-      >
-        <Menu.ItemGroup title="Item 1">
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup title="Iteom 2">
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
-        </Menu.ItemGroup>
-      </SubMenu>
-      <SubMenu
-        key="sub2"
-        title={
-          <span>
-            <AppstoreOutlined />
-            <span>Navigation Two</span>
-          </span>
-        }
-      >
-        <Menu.Item key="5">Option 5</Menu.Item>
-        <Menu.Item key="6">Option 6</Menu.Item>
-        <SubMenu key="sub3" title="Submenu">
-          <Menu.Item key="7">Option 7</Menu.Item>
-          <Menu.Item key="8">Option 8</Menu.Item>
-        </SubMenu>
-      </SubMenu>
-      <SubMenu
-        key="sub4"
-        title={
-          <span>
-            <SettingOutlined />
-            <span>Navigation Three</span>
-          </span>
-        }
-      >
-        <Menu.Item key="9">Option 9</Menu.Item>
-        <Menu.Item key="10">Option 10</Menu.Item>
-        <Menu.Item key="11">Option 11</Menu.Item>
-        <Menu.Item key="12">Option 12</Menu.Item>
-      </SubMenu>
+  renderIcon(icon){
+    switch (icon) {
+      case 'home':
+        return <HomeOutlined/>
+        break;
+      case 'set':
+        return <SettingFilled/>
+        break;
+      case 'user':
+        return <UserOutlined/>
+        break;
+      default:
+        return <RadarChartOutlined />
+        break;
+    }
+  }
+  renderItem(data){
+    return data.map((item,index)=>{
+      if(item.children){
+        return(
+          <SubMenu key={item.key} title={(()=>{
+            return(
+              <span>
+                {this.renderIcon(item.icon)}
+                {item.title}
+              </span>
+            )
+          })()}>
+            {/* 如果里面还有2级 将渲染的方法在调用一遍 */}
+            {this.renderItem(item.children)}
+          </SubMenu>
+        )
+      }else{
+        return(
+        <Menu.Item key={item.key} path={item.path}>
+          {this.renderIcon(item.icon)}
+          {item.title}
+        </Menu.Item>
+        )
+      }
+    })
+  }
+  render(){
+    return(
+    <Menu onClick={handleClick.bind(this)} style={{ width: 200 }} mode="vertical" theme='dark'>
+      {this.renderItem(menuList)}
     </Menu>
-     )
+    )
   }
 }
  
-export default CustomNav;
+export default withRouter(CustomNav);
