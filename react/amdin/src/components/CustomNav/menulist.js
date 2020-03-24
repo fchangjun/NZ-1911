@@ -24,6 +24,12 @@ export default[
    ]
   },
   {
+    key:'3',
+    title:"商品管理",
+    icon:'goods',
+    path:'/admin/goods'
+  },
+  {
     key:'8',
     title:"管理员",
     icon:'administrator',
