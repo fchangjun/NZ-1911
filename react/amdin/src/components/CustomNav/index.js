@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter, Switch} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import { Menu } from 'antd';
 import menuList from './menulist'
 // import {

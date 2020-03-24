@@ -24,6 +24,12 @@ export default[
    ]
   },
   {
+    key:'8',
+    title:"管理员",
+    icon:'administrator',
+    path:'/admin/administrator'
+  },
+  {
     key:'9',
     title:"设置",
     icon:'set',

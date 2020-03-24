@@ -1,9 +1,10 @@
 import React ,{Component} from 'react';
-import {HashRouter,Link,Route,Switch,Redirect} from 'react-router-dom'
+import {HashRouter,Route} from 'react-router-dom'
 import  Admin from  './pages/Admin'
 import  Login from './pages/Login'
 import User from './pages/User'
 import Goods from './pages/Goods'
+import Admins from './pages/Administartor'
 class App extends Component {
   render() { 
     return (  
@@ -17,6 +18,7 @@ class App extends Component {
             <Admin>
                 <Route path='/admin/user' component={User}></Route>
                 <Route path='/admin/goods' component={Goods}></Route>
+                <Route path='/admin/administrator' component={Admins}></Route>
             </Admin>
           )
         }}></Route>

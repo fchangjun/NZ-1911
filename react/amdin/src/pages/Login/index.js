@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import api from '../../api/index.js'
+import api from '../../api/admin.js'
 import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
 import style from './index.module.less'
 class Login extends Component {
   login=()=>{
     console.log('登录',this)
-    let {getFieldsValue,validateFields} = this.props.form //用户获取表单数据的值
+    let {validateFields} = this.props.form //用户获取表单数据的值
     // 获取输入值不管是否满足条件
     // let result = getFieldsValue()
     // console.log(result)
@@ -18,7 +18,7 @@ class Login extends Component {
       }else{
         api.login(data).then((res)=>{
           console.log(res)
-          if(res.code == 404){
+          if(res.code === 404){
             message.error('用户名密码错误')
           }else{
             message.success('登录成功，3s后跳转首页',3,()=>{
@@ -68,13 +68,13 @@ class Login extends Component {
         {/* 记住我  提交*/}
         <Form.Item>
           <Checkbox>Remember me</Checkbox>
-          <a className="login-form-forgot" href="">
+          <span className="login-form-forgot" >
             Forgot password
-          </a>
+          </span>
           <Button type="primary" onClick={this.login} className="login-form-button">
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <span >register now!</span>
         </Form.Item>
       </div>
     </div>

@@ -17,7 +17,6 @@ class Admin extends Component {
       <Layout >
         <Header style={ {background:'red'} }>这里是头部</Header>
         <Content >
-          这里是容器
           {this.props.children}
         </Content>
         <Footer >Ant Design ©2018 Created by Ant UED</Footer>
