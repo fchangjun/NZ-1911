@@ -3,8 +3,9 @@ import {HashRouter,Route} from 'react-router-dom'
 import  Admin from  './pages/Admin'
 import  Login from './pages/Login'
 import User from './pages/User'
-import GoodsList from './pages/Goods/GoodsList'
-import GoodsAdd from './pages/Goods/GoodsAdd'
+import GoodsInfoList from './pages/Goods/GoodsList'
+import GoodsInfoAdd from './pages/Goods/GoodsAdd'
+import GoodsKindList from  './pages/GoodsKind/GoodkindList'
 import Admins from './pages/Administartor'
 class App extends Component {
   render() { 
@@ -18,8 +19,9 @@ class App extends Component {
           return(
             <Admin>
                 <Route path='/admin/user' component={User}></Route>
-                <Route path='/admin/goods' component={GoodsList}></Route>
-                <Route path='/admin/goodsadd' component={GoodsAdd}></Route>
+                <Route path='/admin/goodsInfo' component={GoodsInfoList}></Route>
+                <Route path='/admin/goodsInfoAdd' component={GoodsInfoAdd}></Route>
+                <Route path='/admin/goodskind' component={GoodsKindList}></Route>
                 <Route path='/admin/administrator' component={Admins}></Route>
             </Admin>
           )

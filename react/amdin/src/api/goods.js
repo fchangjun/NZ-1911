@@ -13,6 +13,26 @@ class Goods {
     let url =`/mall/goods/${_id}/putaway`
     return axios.put(url,{putaway})
   }
+  add(payload){
+    let url ='/mall/goods'
+    return axios.post(url,payload)
+  }
+  kindlist(){
+    let url ='/mall/kind'
+    return axios.get(url)
+  }
+  kindadd(kindName){
+    let url ='/mall/kind'
+    return axios.post(url,{kindName})
+  }
+  kindupdate(_id,kindName){
+    let url ='/mall/kind/'+_id
+    return axios.put(url,{kindName})
+  }
+  kinddel(_id){
+    let url ='/mall/kind/'+_id
+    return axios.delete(url)
+  }
 }
 
 export default new Goods()

@@ -27,7 +27,19 @@ export default[
     key:'3',
     title:"商品管理",
     icon:'goods',
-    path:'/admin/goods'
+    path:'/admin/goods',
+    children:[
+      {
+        key:'3-1',
+        title:'商品信息',
+        path:'/admin/goodsInfo'
+      },
+      {
+        key:'3-2',
+        title:'商品类别',
+        path:'/admin/goodsKind'
+      }
+    ]
   },
   {
     key:'8',

@@ -78,7 +78,7 @@ class Goods extends Component {
         <Card title='商品列表' className={style.card}>
            <Button type='primary' onClick={()=>{
              console.log(this)
-             this.props.history.push('/admin/goodsadd')
+             this.props.history.push('/admin/goodsInfoAdd')
            }}>商品添加</Button>
             {/* 表格内容 */}
             <Table 
