@@ -42,6 +42,29 @@ export default[
     ]
   },
   {
+    key:'4',
+    title:"数据统计",
+    icon:'echarts',
+    path:'/admin/echarts',
+    children:[
+      {
+        key:'4-1',
+        title:'饼状图',
+        path:'/admin/echarts/pie'
+      },
+      {
+        key:'4-2',
+        title:'折线图',
+        path:'/admin/echarts/line'
+      },
+      {
+        key:'4-3',
+        title:'柱状图',
+        path:'/admin/echarts/bar'
+      },
+    ]
+  },
+  {
     key:'8',
     title:"管理员",
     icon:'administrator',

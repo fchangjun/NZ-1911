@@ -8,6 +8,9 @@ import GoodsInfoAdd from './pages/Goods/GoodsAdd'
 import GoodsInfoUpdate from  './pages/Goods/GoodsUpdate'
 import GoodsKindList from  './pages/GoodsKind/GoodkindList'
 import Admins from './pages/Administartor'
+import EchartsPie from './pages/Echarts/Pie'
+import EchartsLine from  './pages/Echarts/Line'
+import EchartsBar  from './pages/Echarts/Bar'
 class App extends Component {
   render() { 
     return (  
@@ -25,6 +28,11 @@ class App extends Component {
                 <Route path='/admin/goodsInfoUpdate/:id' component={GoodsInfoUpdate}></Route>
                 <Route path='/admin/goodskind' component={GoodsKindList}></Route>
                 <Route path='/admin/administrator' component={Admins}></Route>
+                <Route path='/admin/echarts/pie' component={EchartsPie}></Route>
+                <Route path='/admin/echarts/line' component={EchartsLine}></Route>
+                <Route path='/admin/echarts/bar' component={EchartsBar}></Route>
+                
+             
             </Admin>
           )
         }}></Route>

@@ -8,7 +8,7 @@ class GoodsUpdate extends Component {
   state = {
     "name":"默认名字",
     "desc":'超好吃,是真的超好吃不是假的超好吃',
-    "path":null,
+    "path":'heheheda',
     "link":"http://www.baidu.com",
     "stock":0,
     "putaway":0,
@@ -21,15 +21,19 @@ class GoodsUpdate extends Component {
     // 获取id
     let {id} =  this.props.match.params
     //  获取的是类别列表
-    let {code ,list}= await goodsApi.kindlist() 
+    let result= await goodsApi.kindlist() 
     //  通过id 获取修改信息
-    this.setState({types:list})
+    let {code,info} = await goodsApi.findOne(id) 
+    console.log(result.list,info[0])
+    this.setState({types:result.list,...info[0]})
     
   }
   // 添加商品
   submit=async()=>{
+    let {id} =  this.props.match.params
    if (!this.state.path){return message.info('请先上传图片')}
-   let {code,msg}  = await goodsApi.add(this.state)
+  //  调用修改的接口
+   let {code,msg}  = await goodsApi.update(id,this.state)
    if(code){ return message.error(msg)}
    console.log(this)
    this.props.history.replace('/admin/goodsInfo')
@@ -60,6 +64,9 @@ class GoodsUpdate extends Component {
   }
   render() { 
     let {name,desc,path,link,stock,putaway,price,unit,types,kind} = this.state
+    // 判断path是不是base64 
+    let basePath = path
+    if(basePath.indexOf('base64')=== -1){ basePath = config.serverIp+path}
     return ( 
       <div className={style.box}>
          <Card title='商品添加'>
@@ -103,9 +110,9 @@ class GoodsUpdate extends Component {
             {/* 缩略图 */}
             缩略图:
             <input type="file" ref='img'/> <button onClick={this.upload}>上传图片</button>
-            {config.serverIp}
-            <img width='120' height='80' src={path} alt=""/>
-            <button onClick={this.submit}>添加</button>
+           
+            <img width='120' height='80' src={basePath} alt=""/>
+            <button onClick={this.submit}>修改</button>
          </Card>
       </div>
      );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomNav from '../../components/CustomNav'
 import { Layout } from 'antd';
+import HeaderNav from '../../components/HeaderNav'
 import style from './index.module.less'
 const { Header, Content, Footer, Sider } = Layout;
 class Admin extends Component {
@@ -15,7 +16,9 @@ class Admin extends Component {
       </Sider>
      
       <Layout >
-        <Header style={ {background:'red'} }>这里是头部</Header>
+        <Header style={ {background:'#fff'} }>
+          <HeaderNav></HeaderNav>
+        </Header>
         <Content >
           {this.props.children}
         </Content>

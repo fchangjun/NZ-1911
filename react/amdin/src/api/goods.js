@@ -1,7 +1,7 @@
 import axios from '../utils/axios'
 class Goods {
   findOne(id){
-    let url ='/mall/goods/'+_id
+    let url ='/mall/goods/'+id
     return axios.get(url)
   }
   list(page = 1,pageSize =2){
@@ -16,6 +16,10 @@ class Goods {
   putaway(_id,putaway){
     let url =`/mall/goods/${_id}/putaway`
     return axios.put(url,{putaway})
+  }
+  update(_id,payload){
+    let url =`/mall/goods/${_id}`
+    return axios.put(url,payload)
   }
   add(payload){
     let url ='/mall/goods'
