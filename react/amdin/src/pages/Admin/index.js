@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import CustomNav from '../../components/CustomNav'
 import { Layout } from 'antd';
 import style from './index.module.less'
-import goodsApi from '../../api/goods'
 const { Header, Content, Footer, Sider } = Layout;
 class Admin extends Component {
-  async componentDidMount(){
-    // 请求商品的类别列表
-    let result= await goodsApi.kindlist()
-    console.log(result)
-  }
   state = {  }
   render() { 
     return ( 

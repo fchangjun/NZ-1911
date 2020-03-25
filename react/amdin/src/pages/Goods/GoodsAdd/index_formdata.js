@@ -42,17 +42,13 @@ class GoodsAdd extends Component {
     let types = ['jpg',"jpeg",'gif','png']
     if(size>1000000){ return message.warning('图片超过1m')}
     if(types.indexOf(type.split('/')[1])===-1){ return message.warning('只允许jpg.jpeg,gif,png四种类型')}
-    // 将图片变成base64 
-    // 创建文件读取对象 
-     let reader = new FileReader()
-    //  文件转化为base64结束触发
-     reader.onload=()=>{
-       console.log('转化完毕')
-       console.log(reader.result)
-       this.setState({path:reader.result})
-     }
-    // 读取一个文件
-     reader.readAsDataURL(file)
+    // 调用接口
+    // 将图片转化为formdata 
+    let formdata = new FormData()
+    formdata.append('hehe',file)
+    let {code,msg,path} = await uploadApi.img(formdata)
+    if(code){ return message.error(msg)}
+    this.setState({path})
   }
   render() { 
     let {name,desc,path,link,stock,putaway,price,unit,types,kind} = this.state
@@ -100,7 +96,7 @@ class GoodsAdd extends Component {
             缩略图:
             <input type="file" ref='img'/> <button onClick={this.upload}>上传图片</button>
             {config.serverIp}
-            <img width='120' height='80' src={path} alt=""/>
+            <img width='120' height='80' src={config.serverIp+path} alt=""/>
             <button onClick={this.submit}>添加</button>
          </Card>
       </div>

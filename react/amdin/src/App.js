@@ -5,6 +5,7 @@ import  Login from './pages/Login'
 import User from './pages/User'
 import GoodsInfoList from './pages/Goods/GoodsList'
 import GoodsInfoAdd from './pages/Goods/GoodsAdd'
+import GoodsInfoUpdate from  './pages/Goods/GoodsUpdate'
 import GoodsKindList from  './pages/GoodsKind/GoodkindList'
 import Admins from './pages/Administartor'
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                 <Route path='/admin/user' component={User}></Route>
                 <Route path='/admin/goodsInfo' component={GoodsInfoList}></Route>
                 <Route path='/admin/goodsInfoAdd' component={GoodsInfoAdd}></Route>
+                <Route path='/admin/goodsInfoUpdate/:id' component={GoodsInfoUpdate}></Route>
                 <Route path='/admin/goodskind' component={GoodsKindList}></Route>
                 <Route path='/admin/administrator' component={Admins}></Route>
             </Admin>

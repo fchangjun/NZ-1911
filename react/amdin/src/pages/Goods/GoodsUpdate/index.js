@@ -4,7 +4,7 @@ import uploadApi from '../../../api/upload'
 import goodsApi from '../../../api/goods'
 import config from '../../../config'
 import {Card, message} from 'antd';
-class GoodsAdd extends Component {
+class GoodsUpdate extends Component {
   state = {
     "name":"默认名字",
     "desc":'超好吃,是真的超好吃不是假的超好吃',
@@ -18,7 +18,11 @@ class GoodsAdd extends Component {
     "types":[] 
   }
   async componentDidMount(){
+    // 获取id
+    let {id} =  this.props.match.params
+    //  获取的是类别列表
     let {code ,list}= await goodsApi.kindlist() 
+    //  通过id 获取修改信息
     this.setState({types:list})
     
   }
@@ -108,11 +112,12 @@ class GoodsAdd extends Component {
   }
 }
  
-export default GoodsAdd;
+export default GoodsUpdate;
 /*
-商品添加
-1.用户输入信息
-2.获取用户输入的信息
-3.调用添加接口
+商品修改
+1.根据商品的id 获取商品相关的信息
+2.显示默认信息
+3.用户进行修改
+4.调用修改接口
 4.添加成功后 可以在页面不动 也可以跳转回列表页
 */ 

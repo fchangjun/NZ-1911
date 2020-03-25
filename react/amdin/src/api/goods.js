@@ -1,5 +1,9 @@
 import axios from '../utils/axios'
 class Goods {
+  findOne(id){
+    let url ='/mall/goods/'+_id
+    return axios.get(url)
+  }
   list(page = 1,pageSize =2){
     // localhost:3000/goods?page=1&pageSize=5
     let url ='/mall/goods'
