@@ -1,7 +1,9 @@
 import React ,{Component} from 'react';
 import {HashRouter,Route} from 'react-router-dom'
-import  Admin from  './pages/Admin'
-import  Login from './pages/Login'
+import loadalbe from "./utils/loadable"
+// import  Admin from  './pages/Admin'
+// import  Login from './pages/Login'
+// import  Login from './pages/Login/loadableLogin'
 import User from './pages/User'
 import GoodsInfoList from './pages/Goods/GoodsList'
 import GoodsInfoAdd from './pages/Goods/GoodsAdd'
@@ -11,6 +13,9 @@ import Admins from './pages/Administartor'
 import EchartsPie from './pages/Echarts/Pie'
 import EchartsLine from  './pages/Echarts/Line'
 import EchartsBar  from './pages/Echarts/Bar'
+import TokenModal from './components/TokenModal'
+const Login = loadalbe(()=>import('./pages/Login'))
+const Admin = loadalbe(()=>import('./pages/Admin'))
 class App extends Component {
   render() { 
     return (  
@@ -36,6 +41,7 @@ class App extends Component {
             </Admin>
           )
         }}></Route>
+        <TokenModal></TokenModal>
       </HashRouter>
     );
   }
