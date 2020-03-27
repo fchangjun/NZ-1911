@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { Card } from 'antd';
-
+import {connect} from 'react-redux'
 class TokenModal extends Component {
-  state = { show:true }
-  render() { 
-    let {show} = this.state
+ 
+  render() {
+
+    let {tokenModal} = this.props
     return ( 
       <Fragment>
-        {!show||
+        {!tokenModal||
         <div style={{
           position:"fixed",
           top:0,
@@ -25,4 +26,4 @@ class TokenModal extends Component {
   }
 }
  
-export default TokenModal;
+export default connect(state=>state)(TokenModal);
