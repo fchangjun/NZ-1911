@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Pagination,Card,message,Table,Tag,Button,Popconfirm} from 'antd'
 import goodsApi from '../../../api/goods'
 import style from './index.module.less'
+import XLSX from 'xlsx'
 let rootPath = 'http://47.95.207.1:3000'
 class Goods extends Component {
   state = { 
@@ -58,6 +59,29 @@ class Goods extends Component {
    componentDidMount(){
      this.getListData()
    }
+  //  导出全部商品
+  exportAll=async ()=>{
+    // 获取表头数据
+    let thead = this.state.columns.map((item)=>{ return item.title})
+    // 获取要导出的数据
+    let {list} = await goodsApi.list(1,10000)
+    let data = list.map((item)=>{
+      let arr = [] 
+      for (const key in item) {
+         arr.push(item[key])
+      }
+      return arr
+    })
+
+    // 将数据合并为数组 
+    let result = [thead,...data]
+    console.log(result)
+    //导出
+    let  sheet = XLSX.utils.aoa_to_sheet(result) 
+    let  wb =XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb,sheet)
+    XLSX.writeFile(wb,'商品.xlsx')
+  }
   // 上架商品
   putAwayGodds = async (_id,putaway)=>{
     if(putaway ===0||putaway === -1){
@@ -92,6 +116,17 @@ class Goods extends Component {
              console.log(this)
              this.props.history.push('/admin/goodsInfoAdd')
            }}>商品添加</Button>
+
+          <Button type='primary' onClick={()=>{
+             let thead = document.getElementsByTagName('thead')[0]
+             let table = document.getElementsByTagName('table')[1]
+             table.appendChild(thead)
+            //  console.log(table,thead) 
+             var wb = XLSX.utils.table_to_book(table, {sheet:"Sheet JS"});
+              // 将工作薄导出为excel文件
+              XLSX.writeFile(wb,'商品.xlsx');
+           }}>DOM导出表格</Button>
+          <Button type='primary' onClick={this.exportAll}>导出全部</Button>
             {/* 表格内容 */}
             <Table 
               scroll={ {y:300,x:840} }
