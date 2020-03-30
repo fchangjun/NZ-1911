@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid red;
+      display: flex;
+     
+    }
+    .wrapper div{
+      width: 50%;
+      height: 100%;
+    }
+    .editBox{
+      background: skyblue;
+    }
+    .preViewBox{
+      background: #ab956d;
+    }
+  </style>
+
+</head>
+<body>
+<button onclick='preview()'>预览</button>
+<div class ='wrapper'>
+  <div>
+    <button onclick='bold()'>加粗</button>
+    <button onclick='h("h1")'>一级标题</button>
+    <button onclick='h("h2")'>二级标题</button>
+    <button onclick='insertImg()'>插入图片</button>
+    <button onclick='link()'>创建连接</button>
+    <h1>编辑区</h1>
+    <div class='editBox' contenteditable="true">
+
+    </div>
+  </div>
+  <div>
+    <h1>预览区</h1>
+    <div class='preViewBox'>
+
+    </div>
+  </div>
+
+</div>
+<script>
+ function preview(){
+   let content = document.getElementsByClassName('editBox')[0].innerHTML
+   document.getElementsByClassName('preViewBox')[0].innerHTML=content
+   console.log(content)
+ }
+//  加粗
+function bold(){
+  document.execCommand('bold',false,null)
+}
+// h1 
+function h(params){
+  document.execCommand('formatBlock',false,params)
+}
+// 插入图片
+function insertImg(){
+  let imgurl ='https://dss2.bdstatic.com/6Ot1bjeh1BF3odCf/it/u=1935283115,3535406749&fm=74&app=80&f=JPEG&size=f121,140?sec=1880279984&t=0cedd3805f55f84207a86dffa6f24408'
+  document.execCommand('insertImage',false,imgurl)
+}
+//创建连接
+function link(){
+document.execCommand('createLink',false,'http://www.baidu.com')
+}
+</script>
+</body>
+</html>

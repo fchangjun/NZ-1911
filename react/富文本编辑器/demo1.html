@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style></style>
+</head>
+<body>
+<button onclick='bold()'>加粗</button>
+<div contenteditable="true">
+  <p>hehe大</p>
+  <h1>你好</h1>
+  <img src="https://dss2.bdstatic.com/6Ot1bjeh1BF3odCf/it/u=1935283115,3535406749&fm=74&app=80&f=JPEG&size=f121,140?sec=1880279984&t=0cedd3805f55f84207a86dffa6f24408" alt="">
+</div>
+<script>
+  function bold(){
+    document.execCommand('bold',false,null)
+  }
+</script>
+<!-- contenteditable 属性可以让元素可编辑
+
+-->
+</body>
+</html>

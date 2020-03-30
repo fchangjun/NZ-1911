@@ -5,7 +5,7 @@ import loadalbe from "./utils/loadable"
 // import  Login from './pages/Login'
 // import  Login from './pages/Login/loadableLogin'
 import User from './pages/User'
-import GoodsInfoList from './pages/Goods/GoodsList'
+import GoodsInfoList from '@pages/Goods/GoodsList'
 import GoodsInfoAdd from './pages/Goods/GoodsAdd'
 import GoodsInfoUpdate from  './pages/Goods/GoodsUpdate'
 import GoodsKindList from  './pages/GoodsKind/GoodkindList'
