@@ -1,0 +1,23 @@
+{
+  "name": "webpackDemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode=production",
+    "dev_dir": "webpack --mode=production ./demo2/src/hehe.js -o ./demo2/output/main.js",
+    "start": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.42.1"
+  },
+  "dependencies": {
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3",
+    "url-loader": "^4.0.0"
+  }
+}
