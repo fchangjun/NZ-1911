@@ -54,3 +54,29 @@ webpack 的配置文件
 在js文件里引入 css
 正常情况下  import 只能引入js模块 但是很多时候需要用import导入其他文件比如 css ，png 
 在这种情况下无法解析 需要 loader加载器 将特殊的文件转化为js模块
+module:{
+  rules:[
+    {
+      test:'正则匹配加载的模块',
+      use:[加载器1,加载器2 ...]
+    }
+  ]
+}
+### 插件 
+帮助我们简化一些功能性操作
+plugins:[插件1，插件2]
+###  通过webpack 进行react项目的开发
+1. 开发者模式  npm  run dev 
+   a.要在本地启动一个服务器
+   b.运行我们的react项目  v
+   c.使用jsx 语法  v 
+   d.引入预处理语言 v
+   e.引入图片   x
+   d.html 文件的移动 v
+2. 生产者模式   npm run build 
+   a.编译打包 产生dist文件
+   b.能够进行代码压缩
+   c.使用jsx 语法
+   d.引入预处理语言
+   e.引入图片
+   d.html 文件的移动
