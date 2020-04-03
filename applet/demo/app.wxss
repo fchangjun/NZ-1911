@@ -1,0 +1,11 @@
+view{
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+text{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: blue;
+}

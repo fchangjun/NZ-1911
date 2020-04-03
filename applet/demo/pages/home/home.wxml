@@ -1,0 +1,2 @@
+<view>这是小程序中的块元素相当于div</view>
+<text>这里是小程序的行内元素相当于span</text>
