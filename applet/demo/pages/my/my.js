@@ -15,5 +15,14 @@ Page({
   },
   onHide(){
     console.log('页面隐藏')
-  }
+  },
+  /*
+  * 提供的功能函数
+  */ 
+   onPullDownRefresh(){
+     console.log('下拉刷新了')
+   },
+   onReachBottom(){
+     console.log('上拉')
+   }
 })

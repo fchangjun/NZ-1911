@@ -1,0 +1,27 @@
+<view>这是小程序中的块元素相当于div</view>
+<text>这里是小程序的行内元素相当于span</text>
+<view>名字是:{{name}}</view>
+<button bindtap="changeName" 
+        data-hehe='aptx7869'
+        data-xixi='123'
+        data-arr="{{[1,2,3,4]}}"
+        data-obj='{{ {us:123,ps:123} }}'
+> 改名</button>
+<!-- <button bind:tap="changeName"> 改名</button> -->
+<view>列表渲染</view>
+<!-- 循环数组 -->
+<!-- <text wx:for="{{ arr }}">{{index}}:{{item}}</text> -->
+<!-- 循环对象 -->
+<!-- <text wx:for ="{{obj}}">{{index}}:{{item}}</text> -->
+<!-- 更改 item和index的使用名字 -->
+<text 
+ wx:for="{{obj}}" 
+ wx:for-index='hehe' 
+ wx:for-item='xixi'
+ wx:key = 'hehe'
+>{{hehe}}{{xixi}}</text>
+<view>条件渲染</view>
+<view wx:if="{{length > 5}}"> 1 </view>
+<view wx:elif="{{length > 2}}"> 2 </view>
+<view wx:else> 3 </view>
+

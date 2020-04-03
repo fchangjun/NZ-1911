@@ -1,3 +1,4 @@
 {
- 
+  "enablePullDownRefresh":false,
+  "onReachBottomDistance":50
 }

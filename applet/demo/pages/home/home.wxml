@@ -1,2 +1,14 @@
-<view>这是小程序中的块元素相当于div</view>
-<text>这里是小程序的行内元素相当于span</text>
+<!-- 这里是首页 -->
+<view class="home-wrapper">
+<!-- 录播图 -->
+<swiper>
+ <swiper-item wx:for='{{imgs}}'>
+  <image src="{{item}}"></image>
+ </swiper-item>
+</swiper>
+</view>
+<view>
+switchtab 路由
+</view>
+<button bindtap='jumpTab'>跳转到tabbar页面</button>
+<button bindtap="jumpNoTab">跳转到非tabbar页面</button>

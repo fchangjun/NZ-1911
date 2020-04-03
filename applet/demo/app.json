@@ -1,34 +1,35 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/route/route"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "呵呵哒",
     "backgroundColor": "red",
     "backgroundTextStyle": "light",
-    "enablePullDownRefresh":false
+    "enablePullDownRefresh": false
   },
   "tabBar": {
-    "position":"bottom",
-    "color":"#ccc",
-    "backgroundColor":"#ff0000",
-    "selectedColor":"#ab956d",
-    "borderStyle":"white",
+    "position": "bottom",
+    "color": "#ccc",
+    "backgroundColor": "#ff0000",
+    "selectedColor": "#ab956d",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath":"/common/tabbar/home.png",
-        "selectedIconPath":"/common/tabbar/home@selected.png"
+        "iconPath": "/common/tabbar/home.png",
+        "selectedIconPath": "/common/tabbar/home@selected.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath":"/common/tabbar/my.png",
-        "selectedIconPath":"/common/tabbar/my@selected.png"
+        "iconPath": "/common/tabbar/my.png",
+        "selectedIconPath": "/common/tabbar/my@selected.png"
       }
     ]
   }

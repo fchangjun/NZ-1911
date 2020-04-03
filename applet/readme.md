@@ -88,5 +88,61 @@ pages  小程序里的页面
     小程序启动
     小程序隐藏
     小程序显示
- 2. 页面的生命周期
+ 2. 页面的生命周期 
+     页面加载
+     页面卸载 
+     页面显示
+     页面隐藏
+     页面渲染结束
     
+### 小程序的数据绑定 
+page({
+  data:{
+    ...数据
+  }
+})
+页面对象下 data里的数据可以通过{{}} 在视图中进行绑定
+如果要修改数据  页面实例(this).setData({要修改的key:value})
+
+### 事件
+小程序的事件是特制事件和原生js不一样  tap  longtap ..
+处理函数卸载js文件
+传参是以data开头的属性进行传参 在事件对象里进行接受
+```
+<button bindtap="处理函数"
+ data-hehe='123'
+ data-obj="{{ {us:123,ps:456} }}
+ data-arr = "{{ [1,2,3,4,5] }}"
+></button>
+```
+### 小程序中的指令
+wx：for
+wx：if
+
+### 小程序中的网络请求
+js 原生ajax 
+jq 的ajax 
+axios vue react 
+requrest 模块
+以上方式在小程序全部无效  
+在网页上发起请求 js jq axios 都需要http请求对象 都是基于window对象 小程序就没有window对象
+
+小程序的网络请求 使用的是内置的wx.request api  使用方式类似于jq的ajax 
+发布线上的要求
+1. 请求的域名必须是https协议
+2. 请求的域名必须在合法域名列表里
+3. 小程序没有跨域问题
+开发环境下 没有https 没有域名的合法列表
+忽略 https 安全域名的验证
+
+将wx.request 进行二次封装 
+axios.post()
+axios.get()
+asiox.delecte()
+.....
+
+网络请求的回调里 经常会找不到this 换成箭头函数就行了
+
+### 小程序路由 
+1. 控制页面跳转
+2. 传递参数
