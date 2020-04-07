@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Pagination,Card,message,Table,Tag,Button,Popconfirm} from 'antd'
-import goodsApi from '../../../api/goods'
+import goodsApi from '@api/goods'
+import {imgServer} from '@config'
 import style from './index.module.less'
 import XLSX from 'xlsx'
-let rootPath = 'http://47.95.207.1:3000'
+let rootPath = 'http://localhost:3000'
 class Goods extends Component {
   state = { 
     page:1,//页码数
@@ -19,13 +20,11 @@ class Goods extends Component {
         console.log(kind)
       return( <span>{kind?kind.kindName:'暂无类别'}</span>)
       }},
-      {title: '缩略图',dataIndex: 'path',key: 'path',render(path){
+      {title: '缩略图',dataIndex: 'goodsImgPath',key: 'path',render(goodsImgPath){
         // 图片是base64 还是正常的图片路径
-        let result = path
-        if(path.indexOf('base64')===-1){
-           result =rootPath+path
-        }
-        return(<img width ='150' height='80'src={result}/>)
+        let result = goodsImgPath[0]?imgServer+goodsImgPath[0]:''
+
+        return(<img width ='150' height='80'src={result} alt=''/>)
       },width:150},
       {title: '描述',dataIndex: 'desc',key: 'desc',width:200},
       {title: '单位',dataIndex: 'unit',key: 'unit',width:80},

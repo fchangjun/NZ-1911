@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/api/api",
+    "pages/map/map",
     "pages/home/home",
     "pages/my/my",
     "pages/route/route"
@@ -20,6 +22,12 @@
     "borderStyle": "white",
     "list": [
       {
+        "pagePath": "pages/map/map",
+        "text": "地图",
+        "iconPath": "/common/tabbar/home.png",
+        "selectedIconPath": "/common/tabbar/home@selected.png"
+      },
+      {
         "pagePath": "pages/home/home",
         "text": "首页",
         "iconPath": "/common/tabbar/home.png",
@@ -32,5 +40,11 @@
         "selectedIconPath": "/common/tabbar/my@selected.png"
       }
     ]
+  },
+  "sitemapLocation": "sitemap71.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "给用不给用"
+    }
   }
 }

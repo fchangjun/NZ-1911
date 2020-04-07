@@ -10,5 +10,11 @@
 <view>
 switchtab 路由
 </view>
+<!-- 编程式导航 -->
 <button bindtap='jumpTab'>跳转到tabbar页面</button>
 <button bindtap="jumpNoTab">跳转到非tabbar页面</button>
+<button bindtap="jumpNoTabNavagtor">Navagator</button>
+<button bindtap="jumpNoTabRedirect">redirect</button>
+<button bindtap="jumpAny">relanch</button>
+<!-- 声明式导航 -->
+<navigator url="/pages/route/route?us=123&ps=123" >声明式导航</navigator>

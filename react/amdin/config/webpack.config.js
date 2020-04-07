@@ -297,7 +297,10 @@ module.exports = function(webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
         '@utils':path.join(__dirname,'../src/utils'),
-        '@pages':path.join(__dirname,'../src/pages')
+        '@pages':path.join(__dirname,'../src/pages'),
+        '@components':path.join(__dirname,'../src/components'),
+        '@api':path.join(__dirname,'../src/api'),
+        '@config':path.join(__dirname,'../src/config'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

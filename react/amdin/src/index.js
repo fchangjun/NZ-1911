@@ -5,14 +5,13 @@ import ReactDOM from 'react-dom';
 import store from  './store/store'
 import {Provider} from 'react-redux'
 import App from './App';
-import ExportElsx from './pages/Exsl'
+// import ExportElsx from './pages/Exsl'
 import * as serviceWorker from './serviceWorker';
-// ReactDOM.render(
-//   <ExportElsx></ExportElsx>
-// , document.getElementById('root'));
+// import PicturesWall from  '@components/PicturesWall'
+
 ReactDOM.render(
 <Provider store={store}>
-  <App />
+  <App></App>
 </Provider>
 , document.getElementById('root'));
 

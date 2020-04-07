@@ -1,0 +1,6 @@
+<button bindtap='showToast'>showToast</button>
+<button bindtap='hideToast'>关闭</button>
+<button bindtap='changeTitle'>修改标题</button>
+<button bindtap='playPhone'>电话</button>
+<button bindtap="scanCode">扫码</button>
+{{result}}

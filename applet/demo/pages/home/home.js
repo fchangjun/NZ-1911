@@ -44,5 +44,24 @@ Page({
         console.log(err)
       }
     })
+  },
+  // 通过navagator 跳转到非tabbar 页面
+  jumpNoTabNavagtor(){
+    wx.navigateTo({
+      url: '/pages/route/route',
+    })
+  },
+  // 通过redireact 跳转到非tabbar 页面
+  jumpNoTabRedirect(){
+    wx.redirectTo({
+      url: '/pages/route/route?us=123&ps=123',
+    })
+  },
+  // 跳转到任何界面
+  jumpAny(){
+    wx.reLaunch({
+      // url: '/pages/route/route',
+      url: '/pages/my/my',
+    })
   }
 })

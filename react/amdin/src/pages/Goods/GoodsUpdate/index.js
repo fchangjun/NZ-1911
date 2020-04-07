@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import style from  './index.module.less'
-import uploadApi from '../../../api/upload'
 import goodsApi from '../../../api/goods'
-import config from '../../../config'
+import {imgServer} from '@config'
 import {Card, message} from 'antd';
 class GoodsUpdate extends Component {
   state = {
@@ -24,8 +23,8 @@ class GoodsUpdate extends Component {
     let result= await goodsApi.kindlist() 
     //  通过id 获取修改信息
     let {code,info} = await goodsApi.findOne(id) 
-    console.log(result.list,info[0])
-    this.setState({types:result.list,...info[0]})
+    console.log(result,info,code)
+    this.setState({types:result.list,...info})
     
   }
   // 添加商品
@@ -66,7 +65,7 @@ class GoodsUpdate extends Component {
     let {name,desc,path,link,stock,putaway,price,unit,types,kind} = this.state
     // 判断path是不是base64 
     let basePath = path
-    if(basePath.indexOf('base64')=== -1){ basePath = config.serverIp+path}
+    if(basePath.indexOf('base64')=== -1){ basePath = imgServer+path}
     return ( 
       <div className={style.box}>
          <Card title='商品添加'>

@@ -146,3 +146,8 @@ asiox.delecte()
 ### 小程序路由 
 1. 控制页面跳转
 2. 传递参数
+
+
+
+### 项目启动
+竞品分析：http://yimei-h5.bestyuemei.com/ym/shopping-mall/shopping-mall.html

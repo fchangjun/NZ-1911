@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import style from  './index.module.less'
-import uploadApi from '../../../api/upload'
-import goodsApi from '../../../api/goods'
-import config from '../../../config'
+import goodsApi from '@api/goods'
 import {Card, message} from 'antd';
+import PicturesWall from '@components/PicturesWall'
 class GoodsAdd extends Component {
   state = {
     "name":"默认名字",
     "desc":'超好吃,是真的超好吃不是假的超好吃',
-    "path":null,
+    "goodsImgPath":[],
+    "descImgPath":[],
     "link":"http://www.baidu.com",
     "stock":0,
     "putaway":0,
     "price":0,
     "unit":"件",
-    "kind":'',
+    "kind":'请选择类别',
     "types":[] 
   }
   async componentDidMount(){
@@ -24,36 +24,23 @@ class GoodsAdd extends Component {
   }
   // 添加商品
   submit=async()=>{
-   if (!this.state.path){return message.info('请先上传图片')}
+
+  let {goodsImgPath,descImgPath} = this.state 
+   if (!goodsImgPath.length||!descImgPath.length){return message.info('请先上传图片')}
+   console.log(this.state)
    let {code,msg}  = await goodsApi.add(this.state)
    if(code){ return message.error(msg)}
-   console.log(this)
-   this.props.history.replace('/admin/goodsInfo')
+  //  this.props.history.replace('/admin/goodsInfo')
 
   }
-  // 图片上传
-  upload= async ()=>{
-    // 1. 获取图片里的内容
-    let  file = this.refs.img.files[0]
-    if(!file){ return message.error('请先选择一张图片')}
-    // 图片的验证
-    let {size,type} = file 
-    console.log(type)
-    let types = ['jpg',"jpeg",'gif','png']
-    if(size>1000000){ return message.warning('图片超过1m')}
-    if(types.indexOf(type.split('/')[1])===-1){ return message.warning('只允许jpg.jpeg,gif,png四种类型')}
-    // 将图片变成base64 
-    // 创建文件读取对象 
-     let reader = new FileReader()
-    //  文件转化为base64结束触发
-     reader.onload=()=>{
-       console.log('转化完毕')
-       console.log(reader.result)
-       this.setState({path:reader.result})
-     }
-    // 读取一个文件
-     reader.readAsDataURL(file)
+  //修改展示轮播 
+  changGoodsImgPath(paths){
+   this.setState({goodsImgPath:paths})
   }
+  //修改描述图片
+  changDescImgPath(paths){
+    this.setState({descImgPath:paths})
+   }
   render() { 
     let {name,desc,path,link,stock,putaway,price,unit,types,kind} = this.state
     return ( 
@@ -97,10 +84,13 @@ class GoodsAdd extends Component {
               })}
             </select>
             {/* 缩略图 */}
-            缩略图:
-            <input type="file" ref='img'/> <button onClick={this.upload}>上传图片</button>
-            {config.serverIp}
-            <img width='120' height='80' src={path} alt=""/>
+            <br/>
+            商品展示轮播:
+            <PicturesWall okCb={this.changGoodsImgPath.bind(this)}></PicturesWall>
+            <br/>
+            商品详情:
+            <PicturesWall okCb={this.changDescImgPath.bind(this)}></PicturesWall>
+            <br/>
             <button onClick={this.submit}>添加</button>
          </Card>
       </div>

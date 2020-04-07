@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import { Menu, Dropdown, Icon } from 'antd';
 import style from './index.module.less'
 
@@ -35,14 +35,14 @@ class HeaderNav extends Component {
       <div className={style.box}>
         这里是头部导航
         <Dropdown overlay={createMenu(userdata)}>
-          <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+          <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             Hover me <Icon type="down" />
-          </a>
+          </span>
         </Dropdown>
         <Dropdown overlay={createMenu(langData)}>
-          <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+          <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             语言 <Icon type="down" />
-          </a>
+          </span>
         </Dropdown>
       </div>
      );

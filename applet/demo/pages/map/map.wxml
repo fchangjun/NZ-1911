@@ -1,0 +1,38 @@
+<map 
+id="map" 
+rotate = '{{rotate}}'
+longitude="{{longitude}}" 
+latitude="{{latitude}}" 
+scale="14" 
+style="width: 100vw; height: 50vh;"
+
+controls="{{controls}}" 
+bindcontroltap="controltap" 
+
+markers="{{markers}}" 
+bindmarkertap="markertap" 
+
+polyline="{{polyline}}" 
+bindregionchange="regionchange" 
+show-location 
+></map>
+<button bindtap='goWxMap'> 跳转微信地图</button>
+<button bindtap="chooseLocation">选择位置</button>
+<!-- 
+ 1. 进入小程序之后地图的终点在我所处的位置
+     1.地图的终点信息是经纬度
+     2.进入小程序获取使用者的经纬度信息 地图的api
+ 2. 可以随意移动 点击左下角控件 回到我所处的位置
+ 3. 规划路线图 起点 终点 
+    1. 输入起点 输入终点  
+    2. 后端返回  起点终点  中间路线的经纬度 数组 
+ 4. 在所处的位置周围展示娱乐场所 
+    自如一样
+    1. 发送请求 一个坐标点 
+    2. 后端返回该坐标周围所有的建筑
+    3. 前端根据数组来显示marker 
+
+    
+
+
+ -->
