@@ -1,31 +1,31 @@
-const axios = require('../../utils/axios')
+const {getBanner,getRecommend} =require('../../api/homeApi')
+// getApp() 可以获取小程序的实例
 Page({
+  data:{
+    bannerList:[],
+    productTopicList:[]
+  },
   onLoad(){
     this.getBanner()
+    this.getRecommend()
   },
-  getBanner(){
-    /**
-     * url :http://yimei-api.bestyuemei.com/ym/30008/getYmBannerListByScene
-     * method: post 
-     * body: scene 1003 
-     * 数据格式是 x-www-formurlencode 
-     *  */ 
-    let url ='http://yimei-api.bestyuemei.com/ym/30008/getYmBannerListByScene'
-    axios.post(url,{scene:1003},1)
-    .then((res)=>{
-      console.log(res)
-    })
-    // wx.request({
-    //   url: "http://yimei-api.bestyuemei.com/ym/30008/getYmBannerListByScene",
-    //   method:"POST",
-    //   data:{scene:1003},
-    //   header:{
-    //     "content-type":'application/x-www-form-urlencoded'
-    //     // 注意上传格式   默认是json
-    //   },
-    //   success(res){
-    //     console.log(res)
-    //   }
-    // })
+  getBanner:async function(){
+     let {code,data,msg} = await getBanner()
+     if(code !== 200){ console.log(msg)}
+     this.setData({bannerList:data.bannerList})
+  },
+  async getRecommend(){
+     let {data} = await getRecommend()
+     console.log(data.productTopicList)
+     this.setData({productTopicList:data.productTopicList})
+   
+  },
+  // 跳转web页面
+  goWeb(e){
+    let {weburl} =e.currentTarget.dataset
+   console.log(weburl)
+     wx.navigateTo({
+       url: `/pages/web/wep?weburl=${weburl}`,
+     })
   }
 })

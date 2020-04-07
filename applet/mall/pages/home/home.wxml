@@ -1,2 +1,28 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class='container home'>
+<!-- 轮播图 -->
+<swiper indicator-dots='true'>
+  <swiper-item wx:for='{{bannerList}}' wx:key='index' 
+    bindtap ='goWeb'
+    data-weburl='http://www.bilibili.com'
+  >
+    <image src="{{item.imageUrl}}"></image>
+  </swiper-item>
+</swiper>
+<!-- 推荐列表哦 -->
+<view class='list'>
+ <view wx:for='{{productTopicList}}' wx:key='index'> 
+ <!-- 活动图片 -->
+
+  <image src="{{item.topicImageUrl}}"></image>
+ <!-- 活动茶品列表 -->
+ <scroll-view scroll-x='true'>
+  <view class='productList'>
+    <view wx:for="{{item.ymProductList}}" wx:key='index' >
+      <image src="{{item.coverImage}}"></image>
+      <text> {{item.productName}}</text>
+    </view>
+  </view>
+ </scroll-view>
+ </view>
+</view>
+</view>
