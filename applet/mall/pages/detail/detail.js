@@ -1,7 +1,31 @@
+const goodsApi = require('../../api/goodsApi')
+const {config} = getApp()
 Page({
-  onLoad(option){
+  data:{
+    showModal:false, //控制模态框的显示隐藏
+    info:{},
+    imgServer:config.imgServer
+  },
+  async onLoad(option){
     console.log(option)
-    let productId='5e8973abfba9d9788a2eb420'//option.productId
+    let productId='5e8973abfba9d9788a2eb420'
+    // let productId=option.productId
+    let {code,msg,result} = await goodsApi.getGoodsInfo(productId)
+    this.setData({info:result[0]})
+  },
+  // 分享当前页面
+  sharePage(){
+    console.log('12313')
+    wx.showShareMenu({
+      withShareTicket: true,
+      success(res){
+        console.log(res)
+      },
+      fail(err){
+      
+        console.log(err)
+      }
+    })
   }
 })
 /*

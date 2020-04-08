@@ -1,2 +1,40 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<import src='/template/addCartModal/addCartModel.wxml'/>
+<view class = 'container detail'>
+<!-- 商品信息 -->
+<view class='info'>
+<!-- 商品的轮播图 -->
+<swiper>
+  <swiper-item wx:for='{{info.goodsImgPath}}'>
+    <image mode ='aspectFill' src="{{imgServer+item}}"></image>
+  </swiper-item>
+</swiper>
+<!-- 价格名字库存量 -->
+<view class='text'>
+  <view>
+      <text class='name'>{{info.name}}</text>
+      <text class='desc'>{{info.desc}}</text>
+  </view>
+  <view bindtap='sharePage'>
+   <image src='/res/tabbar/home_sel.png'></image>
+  </view>
+</view>
+<view class='price'>
+￥  {{info.price}}
+</view>
+</view>
+<!-- 商品描述 -->
+<view class='desc'>
+<block wx:for='{{info.descImgPath}}'>
+<image  mode ='widthFix' src='{{imgServer+item}}'></image>
+</block>
+</view>
+<!-- bottombtn -->
+<view class='bottom-btn'>
+ <view>首页</view>
+ <view>购物车</view>
+ <view>加入购物车</view>
+</view>
+<!-- 模态框模板 -->
+<template is='shopCartModal' data="{{ showModal }}"></template>
+</view>
+<!-- 使用模板 -->

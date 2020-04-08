@@ -1,0 +1,7 @@
+
+<template name='shopCartModal'>
+<view class='shopCartModal' wx:if="{{showModal}}">
+购物车弹框
+
+</view>
+</template>

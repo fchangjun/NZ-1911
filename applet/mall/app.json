@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/detail/detail",
     "pages/category/category",
     "pages/home/home",
     "pages/shopcart/shopcart",
     "pages/my/my",
-    "pages/web/wep",
-    "pages/detail/detail"
+    "pages/web/wep"
   ],
   "window": {
     "backgroundTextStyle": "light",

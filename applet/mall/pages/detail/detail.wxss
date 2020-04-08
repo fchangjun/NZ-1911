@@ -1,1 +1,81 @@
-/* pages/detail/detail.wxss */
+/* 引入模板的样式文件 */
+@import '/template/addCartModal/addCartModal.wxss';
+.detail{
+
+}
+/* 商品信息 */
+.info{
+  width: 750rpx;
+  height: 800rpx;
+  background: #fff;
+}
+swiper{
+  width: 750rpx;
+  height: 500rpx;
+  background: #fff;
+
+}
+/* swiper-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+swiper-item image{
+
+ width: 100%;
+ height: 100%;
+}
+/* 名字描述 */
+.text{
+  display: flex;
+  padding: 40rpx;
+}
+.text view{
+  height: 130rpx;
+}
+.text view:nth-child(1){
+  /* background: skyblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.name{
+  font-size: 17px;
+}
+.desc{
+  font-size: 15px;
+  font-weight: 300;
+  color:#ccc;
+}
+.text{
+  /* background: green; */
+  display: flex;
+  justify-content: space-between;
+}
+.text view:nth-child(2){
+  /* background: pink; */
+  margin-left:10rpx ;
+  border-left:4rpx dotted #ccc ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  /* background: skyblue; */
+}
+.text view:nth-child(2)>image{
+   /* background: red; */
+   width: 80rpx;
+   height: 80rpx;
+}
+.price{
+  color:green;
+  font-size:20px;
+  padding-left:30rpx ;
+}
+/* 商品描述 */
+.desc{
+  background: #fff;
+}
+.desc image{
+  width: 100%;
+}
