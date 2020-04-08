@@ -75,7 +75,45 @@ swiper-item image{
 /* 商品描述 */
 .desc{
   background: #fff;
+  padding-bottom:100rpx ;
 }
 .desc image{
   width: 100%;
+}
+
+/* 底部的按钮 */
+.bottom-btn{
+  border-top:1rpx solid #1296db ;
+  position: fixed;
+  bottom: 0px;
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  background: #fff;
+  justify-content: space-between;
+}
+.right{
+  width: 250rpx;
+  height: 100rpx;
+  background: #1296db;
+  color:#fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+.left{
+  padding-left:30rpx ;
+  /* background: red; */
+  display: flex;
+}
+.left view{
+  width: 100rpx;
+  height: 100rpx;
+  color:#1296db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left view image{
+  width: 80rpx;
+  height: 80rpx;
 }

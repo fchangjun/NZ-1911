@@ -30,11 +30,17 @@
 </view>
 <!-- bottombtn -->
 <view class='bottom-btn'>
- <view>首页</view>
- <view>购物车</view>
- <view>加入购物车</view>
+  <view class='left'>
+  <view>
+    <image src='/res/tabbar/home_sel.png'></image>
+  </view>
+  <view>
+    <image src='/res/tabbar/shopcart_sel.png'></image>
+  </view>
+  </view>
+ <view class='right' bindtap="toggleModal">加入购物车</view>
 </view>
 <!-- 模态框模板 -->
-<template is='shopCartModal' data="{{ showModal }}"></template>
+<template is='shopCartModal' data="{{ showModal,info,imgServer,range ,pickerValue}}"></template>
 </view>
 <!-- 使用模板 -->

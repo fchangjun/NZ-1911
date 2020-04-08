@@ -6,3 +6,72 @@
   bottom: 0;
   background: rgba(0,0,0,.3);
 }
+.shopCartModal .info{
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 750rpx;
+  height: 45vh;
+}
+
+/* 加入购物车 */
+.info .add-btn{
+  width: 750rpx;
+  height: 80rpx;
+  color: #fff;
+  background: #1296db;
+  text-align: center;
+  line-height: 80rpx;
+  position: absolute;
+  bottom: 0;
+}
+/* goods相关面熟 */
+.info .top{
+  padding: 30rpx;
+  display: flex;
+  /* background: red; */
+  height: 200rpx;
+  border-bottom:2rpx solid #ccc ;
+}
+.top image{
+  width: 180rpx;
+  height: 180rpx;
+  border: 1px solid #cccc;
+}
+.top>view{
+  margin-left:30rpx ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stock>text:nth-child(1){
+  font-size: 20px;
+  color:green;
+}
+.stock>text:nth-child(2){
+  margin-left:30rpx;
+  font-size: 13px;
+  color:#ccc;
+}
+
+/* 数量选择 */
+.sel-num{
+  display: flex;
+  font-weight: 200;
+  /* background: red; */
+  justify-content: space-between;
+  padding:30rpx ;
+}
+.sel-num>view:nth-child(1){
+  width: 200rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.sel-num>view:nth-child(2){
+  width: 200rpx;
+  height: 80rpx;
+  border: 1px solid #1296db;
+  line-height: 80rpx;
+  text-align: center;
+}

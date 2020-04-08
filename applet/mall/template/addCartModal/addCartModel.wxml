@@ -1,7 +1,33 @@
 
 <template name='shopCartModal'>
-<view class='shopCartModal' wx:if="{{showModal}}">
-购物车弹框
-
+<view class='shopCartModal' 
+wx:if="{{showModal}}"
+catchtap="toggleModal"
+>
+<view class='info' catchtap="son">
+<!-- goods 描述 -->
+<view class='top'>
+  <image  src='{{imgServer+info.goodsImgPath[0]}}'></image>
+  <view>
+    <text>{{info.name}}</text>
+    <view class='stock'>
+        <text>￥{{info.price}}</text>
+        <text> 库存：{{info.stock}}</text>
+    </view>
+  </view>
+</view>
+<!-- 选择数量 -->
+<picker range="{{range}}" 
+  bindchange="pickerSel"
+  value='{{pickerValue}}'
+>
+  <view class='sel-num'>
+    <view>选择数量：</view>
+    <view>{{range[pickerValue]}}</view>
+  </view>
+</picker>
+<!-- 加入购物车 -->
+<view class='add-btn'>加入购物车</view>
+</view>
 </view>
 </template>
