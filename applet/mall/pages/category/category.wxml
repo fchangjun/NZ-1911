@@ -18,6 +18,22 @@
   <!-- 每一个类别对应一屏幕 -->
   <view wx:for='{{categorys}}' wx:key='index' >
     {{item.kindName}}
+    <!-- 每一个类别的列表展示 -->
+
+    <view wx:if ="{{item.list.length===0}}" class='product-list'>
+      暂无数据
+    </view>
+    <view wx:else class='product-list'>
+    <!--每一个类别里的商品 -->
+      <view wx:for ='{{item.list}}' wx:key='index' class='product-item'
+      bindtap="goDetail"
+      data-id = "{{item._id}}"
+      >
+        <image mode ='widthFix' src="{{imgServer+item.goodsImgPath[0]}}"></image>
+        <text>{{item.name}}</text>
+        <text>{{item.price}}</text>
+      </view>
+    </view>
   </view>
  </view>
 </view>

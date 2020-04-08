@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/shopcart/shopcart",
     "pages/my/my",
-    "pages/web/wep"
+    "pages/web/wep",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

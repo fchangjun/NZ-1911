@@ -32,3 +32,17 @@
 .animation{
   transition: all 0.7s ease-in-out;
 }
+/* 产品列表 */
+.product-list{
+  background: red;
+  display: flex;
+}
+.product-list .product-item{
+  width: 30%;
+  height: 300rpx;
+  border: 1px solid green;
+}
+.product-item image{
+  width: 100%;
+ 
+}
