@@ -1,66 +1,21 @@
-// pages/category/category.js
+const categoryApi  = require('../../api/categoryApi')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data:{
+    categorys:[],
+    selIndex:0,
+    selCategoryId:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(){
+    this.getCategoryList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 获取类别列表
+  async getCategoryList(){
+    let {code,list,msg} =await categoryApi.getCategoryList() 
+   this.setData({categorys:list})
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 侧边栏的点击事件
+  selectNav(e){
+    let{index,categoryId} = e.currentTarget.dataset
+    this.setData({selCategoryId:categoryId,selIndex:index})
   }
 })

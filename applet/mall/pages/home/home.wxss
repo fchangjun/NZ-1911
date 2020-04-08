@@ -5,14 +5,23 @@ swiper{
   width: 750rpx;
   height: 400rpx;
 }
+swiper image{
+   width: 100%;
+   height: 100%;
+}
 
+.list>view>image{
+  width: 750rpx;
+  height: 350rpx;
+}
 /* 产品列表 */
 .productList{
   display: flex;
 }
 .productList>view{
-  width: 200rpx;
-  height: 200rpx;
+  width: 350rpx;
+  height: 350rpx;
+  font-size: 14px;
 }
 .productList image{
   width: 200rpx;

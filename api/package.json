@@ -1,0 +1,27 @@
+{
+  "name": "koa-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exportDb": "node script/exportDb.js",
+    "importDb": "node script/importDb.js",
+    "home": "node homeApi/index.js",
+    "admin": "node adminApi/indexjs",
+    "homeDoc": "node script/homeDoc.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apidoc": "^0.20.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-parameter": "^3.0.1",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
+    "mongoose": "^5.9.5"
+  }
+}

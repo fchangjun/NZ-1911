@@ -1,2 +1,24 @@
-<!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class='container category'>
+<!-- 导航 -->
+<view class="nav">
+  <view wx:for='{{categorys}}' wx:key='index'
+    bindtap="selectNav"
+    data-index='{{index}}'
+    data-category-id ='{{item._id}}'
+    class ="{{selIndex === index?'sel':''}}"
+  >
+    {{item.kindName}}
+  </view>
+</view>
+<!-- 产品列表 -->
+<view class='product-wrapper'>
+ <view class='prodcut-container animation' 
+  style="transform:translateY({{-100*selIndex}}vh);"
+ >
+  <!-- 每一个类别对应一屏幕 -->
+  <view wx:for='{{categorys}}' wx:key='index' >
+    {{item.kindName}}
+  </view>
+ </view>
+</view>
+</view>
