@@ -1,5 +1,5 @@
 class ShopCartCtrl{
-  // 获取购物车数局
+  // 获取购物车数据
   getData(){
     return wx.getStorageSync('shopcart')||[]
   }
@@ -79,5 +79,41 @@ class ShopCartCtrl{
      })
     return {price,count}
   }
+  // 数量增加
+  increase(id,count = 1){
+    let  data = this.getData()
+    let index = this.isExist(id) 
+    data[index].count+=count 
+    this.setData(data)
+  }
+  // 熟练减少  数量-1 不能减到0 
+  decrease(id,count=1){
+    let data = this.getData() 
+    let index = this.isExist(id)
+    if(data[index].count>1){
+      data[index].count -= count
+    this.setData(data)
+    }
+  }
+  // 删除某一条数据
+  delete(id){
+    let data = this.getData() 
+    let result = data.filter((item)=>{
+      if(item._id === id){
+        return false 
+      }else{
+        return true 
+      }
+    })
+    this.setData(result)
+  }
+  //选中的所有数据
+  getSelectList(){
+    let data = this.getData() 
+    let result = data.filter((item)=>{
+      return item.selected
+    })
+    return result
+  } 
 }
 module.exports =new ShopCartCtrl()

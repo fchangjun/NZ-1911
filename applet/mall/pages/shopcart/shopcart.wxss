@@ -1,4 +1,10 @@
 /* pages/shopcart/shopcart.wxss */
+.nodata{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .shopcart{
   padding-bottom:350rpx ;
 }

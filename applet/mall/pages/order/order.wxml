@@ -1,0 +1,57 @@
+<!-- 这里是订单详情页 -->
+<view class='order container'>
+<!-- 地址选择 -->
+<view bindtap="selAddress" class='address'>
+  <van-icon name="location-o"  />
+  <view class='desc'>
+    <text>{{address.userName}}  {{address.telNumber}}</text>
+    <text> {{address.provinceName}} {{address.cityName}}{{addressCountyName}} {{address.detailInfo}}</text>
+  </view>
+  <van-icon name="arrow"  />
+</view>
+<!-- 商品列表 -->
+<view class='order-list'>
+ <view class = 'order-list-item' wx:for='{{list}}' wx:key='index'>
+    <van-card
+    num="{{item.count}}"
+    price="{{item.price}}.00"
+    desc="{{item.desc}}"
+    title="{{item.name}}"
+    thumb="{{ imgServer+item.goodsImg }}"
+  />
+ </view>
+</view>
+<!-- 总价格 -->
+<view class='allInfo'>
+ <view class='price'> 
+  <text>商品的总金额:</text>
+  <text>￥{{price}}</text>
+ </view>
+ <view class='count'> 
+  <text>商品的总数量:</text>
+  <text>{{count}}</text>
+ </view>
+</view>
+<!-- 提交订单 -->
+<view class='submit-order'>
+  <view> 
+    合计 : <text >${{price}}</text>
+  </view>
+  <view>
+    提交订单
+  </view>
+</view>
+</view>
+
+
+<!--
+分析
+1.购物车点击结算 跳转到订单详情页  v
+  a.选中商品数量大于0 才做结算
+2.在订单详情页做修改   v
+   a.显示订单内的商品信息  （显示购物车中显示的那些）
+   b.给买家留言 x
+   c.选择地址
+3.下单付款
+    下单付款之后 将买到的数据购物车中删除
+ -->

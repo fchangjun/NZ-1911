@@ -11,6 +11,9 @@ Page({
     selectAllState:false
   },
   onLoad(){
+    // this.getData()
+  },
+  onShow(){
     this.getData()
   },
   // 获取购物车数据
@@ -21,6 +24,7 @@ Page({
   },
   // 删除商品的回调
   delete(e){
+    let {id} = e.currentTarget.dataset
     // instance 滑块组件的实例
     let {instance} = e.detail
     console.log('删掉我了',e)
@@ -29,7 +33,9 @@ Page({
       message: '你确定要删除嘛'
     }).then(() => {
       // on close
+      shopCartCtrl.delete(id)
       instance.close()
+      this.getData()
     });
   },
   // 单选
@@ -45,5 +51,23 @@ Page({
     shopCartCtrl.selectAll(selectAllState)
     this.getData()
     this.setData({selectAllState})
+  },
+  // 商品数量增加
+  increaseCount(e){
+    let {id} = e.currentTarget.dataset
+    shopCartCtrl.increase(id)
+    this.getData()
+  },
+  // 商品减少
+  decreaseCount(e){
+    let {id} = e.currentTarget.dataset
+    shopCartCtrl.decrease(id)
+    this.getData()
+  },
+  // 结算按钮
+  onClickButton(){
+    wx.navigateTo({
+      url: '/pages/order/order',
+    })
   }
 })

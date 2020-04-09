@@ -1,9 +1,11 @@
-<view class='container shopcart'>
+<view class='container shopcart' wx:if='{{list.length !==0}}'>
 <!-- 提示框组件 -->
 <van-dialog id="van-dialog" />
 <!-- 购物车列表-->
 <view class='shopcart-list' wx:for='{{list}}' wx:key='index'>
   <van-swipe-cell right-width="{{ 65 }}"
+  async-close
+  data-id = '{{item._id}}'
   bind:close="delete"
   > 
    <!--显示的内容 -->
@@ -23,8 +25,14 @@
         thumb="{{imgServer+item.goodsImg }}"
       >
         <view slot="footer">
-          <van-button size="mini">-</van-button>
-          <van-button size="mini">+</van-button>
+          <van-button size="mini"
+            bindtap="decreaseCount"
+            data-id="{{item._id}}"
+          >-</van-button>
+          <van-button size="mini" 
+            bindtap="increaseCount"
+            data-id ='{{item._id}}'
+          >+</van-button>
         </view>
       </van-card>
     </view>
@@ -34,6 +42,7 @@
 </view>
 <!-- 结算 -->
 <van-submit-bar
+  disabled="{{count===0}}"
   price="{{ price*100 }}"
   button-text="结算"
   bind:submit="onClickButton"
@@ -44,10 +53,10 @@
      全选/反选{{count}}
      </van-checkbox>
   </view>
-  <view slot="tip">
-    您的收货地址不支持同城送, <text>修改地址</text>
-  </view>
 </van-submit-bar>
+</view>
+<view class="nodata">
+ 暂无数据,滚去剁手！！！
 </view>
 <!-- 
 1.显示购物车数据

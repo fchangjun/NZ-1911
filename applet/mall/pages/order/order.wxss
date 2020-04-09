@@ -1,0 +1,82 @@
+/* pages/order/order.wxss */
+/* 地市栏 */
+.order{
+  background: #eee;
+  font-weight: 300;
+}
+.address{
+  background: #fff;
+  padding: 20rpx;
+  display: flex;
+  width: 750rpx;
+  height: 200rpx;
+  border-bottom:1px solid #ccc ;
+  margin-bottom: 30rpx;
+  /* background: skyblue; */
+}
+.address .desc{
+  width: 580rpx;
+  /* background: red; */
+  display: flex;
+  padding: 30rpx;
+  flex-direction: column;
+  justify-content: space-around;
+}
+/* 订单列表 */
+.order-list{
+  margin-top: 30rpx 0rpx ;
+  background: #fff;
+  padding: 30rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.order-list-item{
+  width: 90%;
+  border: 1px solid #ccc;
+}
+/* 汇总信息 */
+.allInfo{
+  margin-bottom: 120rpx;
+
+  background: #fff;
+  padding: 30rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  
+}
+.price,.count{
+  display: flex;
+  justify-content: space-between;
+}
+/* 订单按钮 */
+.submit-order{
+  border-top: 1px solid #eee;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.submit-order>view:nth-child(1){
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 50rpx;
+}
+.submit-order text{
+  color: green;
+  font-weight: 500;
+}
+.submit-order>view:nth-child(2){
+  width: 280rpx; 
+  height: 100rpx;
+  background: #1296db;
+  color:#fff;
+  text-align: center;
+  line-height: 100rpx;
+  font-weight:500 ;
+}
