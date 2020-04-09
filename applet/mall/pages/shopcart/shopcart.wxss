@@ -1,1 +1,27 @@
 /* pages/shopcart/shopcart.wxss */
+.shopcart{
+  padding-bottom:350rpx ;
+}
+/* 商品卡片容器 */
+.card{
+  border-top:1px solid #ccc ;
+  display: flex;
+}
+.card .checkBox{
+  width: 80rpx;
+  display: flex;
+  justify-content: center;
+}
+.card .goodsInfo{
+  flex: 1;
+}
+/* 滑块 */
+.del{
+  color: #fff;
+  width: 65px;
+  height: 100%;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

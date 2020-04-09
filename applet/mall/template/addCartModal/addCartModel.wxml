@@ -27,7 +27,7 @@ catchtap="toggleModal"
   </view>
 </picker>
 <!-- 加入购物车 -->
-<view class='add-btn'>加入购物车</view>
+<view class='add-btn' bindtap="addShopCart">加入购物车</view>
 </view>
 </view>
 </template>

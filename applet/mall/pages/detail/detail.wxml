@@ -35,7 +35,7 @@
     <image src='/res/tabbar/home_sel.png'></image>
   </view>
   <view>
-    <image src='/res/tabbar/shopcart_sel.png'></image>
+    <image src='/res/tabbar/shopcart_sel.png' bindtap="goShopCart"></image>
   </view>
   </view>
  <view class='right' bindtap="toggleModal">加入购物车</view>

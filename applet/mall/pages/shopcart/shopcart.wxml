@@ -1,2 +1,63 @@
-<!--pages/shopcart/shopcart.wxml-->
-<text>pages/shopcart/shopcart.wxml</text>
+<view class='container shopcart'>
+<!-- 提示框组件 -->
+<van-dialog id="van-dialog" />
+<!-- 购物车列表-->
+<view class='shopcart-list' wx:for='{{list}}' wx:key='index'>
+  <van-swipe-cell right-width="{{ 65 }}"
+  bind:close="delete"
+  > 
+   <!--显示的内容 -->
+   <van-cell-group>
+    <view class='card'>
+    <!-- 复选框 -->
+      <van-checkbox class='checkBox' value="{{item.selected}}" shape="square" bind:change="onChange" data-id='{{item._id}}'/>
+    <!-- 商品卡片 -->
+      <van-card
+        class='goodsInfo'
+        tag="折扣"
+        num="{{item.count}}"
+        price="{{item.price}}"
+        origin-price="998.00"
+        desc="{{item.desc}}"
+        title="{{item.name}}"
+        thumb="{{imgServer+item.goodsImg }}"
+      >
+        <view slot="footer">
+          <van-button size="mini">-</van-button>
+          <van-button size="mini">+</van-button>
+        </view>
+      </van-card>
+    </view>
+    </van-cell-group>
+    <view slot="right" class='del'>删除</view>
+  </van-swipe-cell>
+</view>
+<!-- 结算 -->
+<van-submit-bar
+  price="{{ price*100 }}"
+  button-text="结算"
+  bind:submit="onClickButton"
+  tip="{{ true }}"
+>
+  <view>
+     <van-checkbox  value="{{selectAllState}}" shape="square" bind:change="onChangeAll">
+     全选/反选{{count}}
+     </van-checkbox>
+  </view>
+  <view slot="tip">
+    您的收货地址不支持同城送, <text>修改地址</text>
+  </view>
+</van-submit-bar>
+</view>
+<!-- 
+1.显示购物车数据
+2.数量增加 
+3.数量减少
+4.删除
+5.选中一个 
+6.全部选中
+7.显示选中的总数量
+8.显示选中的总价格
+9.下单
+
+ -->

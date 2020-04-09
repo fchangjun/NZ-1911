@@ -1,5 +1,6 @@
 const goodsApi = require('../../api/goodsApi')
 const {config} = getApp()
+const shopCartCtr = require('../shopcart/shopcartCtr')
 Page({
   data:{
     pickerValue:0,
@@ -41,7 +42,19 @@ Page({
     console.log(e)
   },
   //用来阻断事件的冒泡
-  son(){}
+  son(){},
+  // 添加购物车 
+  addShopCart(){
+    let {info,pickerValue,range} = this.data
+   shopCartCtr.add(info,range[pickerValue])
+   this.toggleModal()
+  },
+  // 跳转到购物车
+  goShopCart(){
+    wx.switchTab({
+      url: '/pages/shopcart/shopcart',
+    })
+  }
 })
 /*
 根据商品id 获取商品的数据

@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/shopcart/shopcart",
     "pages/category/category",
     "pages/detail/detail",
     "pages/home/home",
-    "pages/shopcart/shopcart",
     "pages/my/my",
     "pages/web/wep"
   ],
@@ -42,6 +42,15 @@
       }
     ]
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
+  }
 }

@@ -1,66 +1,49 @@
-// pages/shopcart/shopcart.js
+import  Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+const  shopCartCtrl = require('./shopcartCtr')
+const {config} = getApp()
+console.log(Dialog)
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data:{
+    price:0,
+    count:0,
+    imgServer:config.imgServer,
+    list:[],
+    selectAllState:false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(){
+    this.getData()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 获取购物车数据
+  getData(){
+    let list = shopCartCtrl.getData()
+    let  {price,count}= shopCartCtrl.getSelCountPrice()
+    this.setData({list,price,count})
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  // 删除商品的回调
+  delete(e){
+    // instance 滑块组件的实例
+    let {instance} = e.detail
+    console.log('删掉我了',e)
+    Dialog.confirm({
+      title: '警告',
+      message: '你确定要删除嘛'
+    }).then(() => {
+      // on close
+      instance.close()
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  // 单选
+  onChange(e){
+    let {id} = e.currentTarget.dataset 
+    console.log(e)
+    shopCartCtrl.selectOne(id)
+    this.getData()
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 全选
+  onChangeAll(){
+    let selectAllState = !this.data.selectAllState 
+    shopCartCtrl.selectAll(selectAllState)
+    this.getData()
+    this.setData({selectAllState})
   }
 })
