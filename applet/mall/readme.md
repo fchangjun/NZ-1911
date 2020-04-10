@@ -188,3 +188,11 @@ https://www.jianshu.com/p/fee85363776f
 
 ### api 接口
 https://documenter.getpostman.com/view/10570004/SzYW4foC?version=latest
+
+### 小程序登录 
+1. 获取code 
+2. 调用后端的api 传递code  后端返回 token 。。。
+3. 前端验证登录态
+### 小程序支付
+1. 调用自己后端写的下单接口 后端返回5个参数（时间戳 随机字符串 加密算法 加密字符串 package）
+2. 通过下单接口返回的参数调用wx.requestPayment

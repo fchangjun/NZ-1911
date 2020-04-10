@@ -2,8 +2,15 @@
 <!-- 用户信息 -->
 <view class='userInfo'>
   <view wx:if='{{token}}'>用户id:{{uid}}</view>
-  <view wx:else bindtap='goLogin'> 请去登录</view>
+  <view wx:else > 
+    <button bindtap='goLogin'>账号登录</button>
+    <button bindtap='goWxLogin'>授权登录</button>
+  </view>
 </view>
+<view class='avator'>
+<open-data class='avator' type="userAvatarUrl"></open-data>
+</view>
+<open-data type="userNickName"></open-data>
 <view class='order'>
   <view bindtap="goOrderList" data-type='-2'>全部</view>
   <view bindtap="goOrderList" data-type='-1'>待付款</view>

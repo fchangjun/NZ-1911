@@ -1,3 +1,4 @@
 <view>
-<button bindtap="login">小程序授权登录</button>
+<button open-type="getUserInfo" bindgetuserinfo="login" >小程序授权登录</button>
+
 </view>

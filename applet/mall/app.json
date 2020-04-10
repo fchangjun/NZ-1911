@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/my/my",
     "pages/wxlogin/wxlogin",
     "pages/category/category",
     "pages/order/order",
-    "pages/my/my",
     "pages/shopcart/shopcart",
     "pages/detail/detail",
     "pages/home/home",

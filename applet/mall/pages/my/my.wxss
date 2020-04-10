@@ -11,3 +11,9 @@
   border: 1px solid red;
 
 }
+.avator{
+  height: 250rpx;
+  width: 250rpx;
+  border-radius:125rpx;
+  overflow: hidden;
+}

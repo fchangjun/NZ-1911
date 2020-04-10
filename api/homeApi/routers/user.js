@@ -31,13 +31,13 @@ router.post('/wxlogin',async (ctx)=>{
     // 微信id 已经存在
     let {address,phone,balance,_id,userName} = isExist
     let token = jsonWebToken.sign( {address,phone,balance,_id,userName},secret,{expiresIn:"1d"})
-    ctx.body ={code:0,msg:'登录成功',token}
+    ctx.body ={code:0,msg:'登录成功',token,uid:_id}
   }else{
     let  insertR = await user.insertMany({openid,session_key})
     let userInfo = await user.findOne({openid,session_key})
     let {address,phone,balance,_id,userName} = userInfo
     let token = jsonWebToken.sign( {address,phone,balance,_id,userName},secret,{expiresIn:"1d"})
-    ctx.body ={code:0,msg:'登录成功',token}
+    ctx.body ={code:0,msg:'登录成功',token,uid:_id}
   }
  
 })
