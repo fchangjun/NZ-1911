@@ -115,5 +115,13 @@ class ShopCartCtrl{
     })
     return result
   } 
+  // 下单之后更新购物车数据 将下过单的删除 
+  rmOrderGoods(){
+    let data = this.getData()
+    let result = data.filter((item)=>{
+       return !item.selected
+    })
+    this.setData(result)
+  }
 }
 module.exports =new ShopCartCtrl()

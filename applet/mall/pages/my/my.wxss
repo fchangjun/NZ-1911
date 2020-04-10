@@ -1,1 +1,13 @@
 /* pages/my/my.wxss */
+
+.order{
+  width: 750rpx;
+  border: #eee;
+  display: flex;
+}
+.order view{
+  width: 150rpx;
+  height: 150rpx;
+  border: 1px solid red;
+
+}

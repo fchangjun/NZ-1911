@@ -1,0 +1,18 @@
+<view class ='container orderlist'>
+<!-- 标签页 -->
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title='全部'></van-tab>
+  <van-tab title="待付款"></van-tab>
+  <van-tab title="代发货"></van-tab>
+  <van-tab title="待收货"></van-tab>
+   <van-tab title="已完成"></van-tab>
+</van-tabs>
+<!-- 订单列表 -->
+<view class='list'>
+ <view wx:for="{{list}}" wx:key='index'>
+   订单号:{{item._id}}
+   数量:{{item.allCount}}
+   名字:{{item.name}}
+ </view>
+</view>
+</view>

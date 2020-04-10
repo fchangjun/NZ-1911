@@ -22,6 +22,7 @@ class Axios{
         method:method,
         data:data,
         header:{
+          "Authorization":"Bearer "+wx.getStorageSync('userInfo').token,
           "content-type":contentType
           // 注意上传格式   默认是json
         },

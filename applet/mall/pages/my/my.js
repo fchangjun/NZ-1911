@@ -12,5 +12,12 @@ Page({
     wx.redirectTo({
       url: '/pages/login/login',
     })
+  },
+  // 跳转到订单列表 
+  goOrderList(e){
+    let {type} =e.currentTarget.dataset
+    wx.reLaunch({
+      url: '/pages/orderlist/orderlist?type='+type,
+    })
   }
 })

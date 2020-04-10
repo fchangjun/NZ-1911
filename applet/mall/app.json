@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/category/category",
     "pages/order/order",
     "pages/my/my",
     "pages/shopcart/shopcart",
-    "pages/category/category",
     "pages/detail/detail",
     "pages/home/home",
     "pages/web/wep",
     "pages/login/login",
-    "pages/Reg/reg"
+    "pages/Reg/reg",
+    "pages/orderlist/orderlist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -55,6 +56,8 @@
     "van-card": "@vant/weapp/card/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   }
 }

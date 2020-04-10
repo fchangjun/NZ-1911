@@ -4,6 +4,14 @@
   <view wx:if='{{token}}'>用户id:{{uid}}</view>
   <view wx:else bindtap='goLogin'> 请去登录</view>
 </view>
+<view class='order'>
+  <view bindtap="goOrderList" data-type='-2'>全部</view>
+  <view bindtap="goOrderList" data-type='-1'>待付款</view>
+  <view bindtap="goOrderList" data-type='-0'>代发货</view>
+  <view bindtap="goOrderList" data-type='1'>待收货</view>
+  <view bindtap="goOrderList" data-type='2'>完成</view>
+</view>
+
 <!-- 功能列表
 1. 订单查询
 2. 联系客服

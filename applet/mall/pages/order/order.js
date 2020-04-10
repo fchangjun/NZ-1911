@@ -1,4 +1,5 @@
 const shopCartCtr = require('../shopcart/shopcartCtr')
+const  orderApi  = require('../../api/orderApi')
 const {config} = getApp()
 Page({
   data:{
@@ -26,8 +27,24 @@ Page({
      },
    })
   },
+  // 支付逻辑
+  goPay(){
+    wx.showModal({
+      title:"请支付",
+      content:"测试功能模拟支付",
+      cancelColor: 'cancelColor',
+      success(res){
+        if(res.confirm){
+          // 确认支付跳转到我的页面 
+          wx.reLaunch({
+            url: '/pages/my/my',
+          })
+        }
+      }
+    })
+  },
   // 下单
-  sendOrder(){
+  async sendOrder(){
     // 判断用户是否已经登录 
     let {token} = wx.getStorageSync('userInfo')
     if(token){
@@ -51,7 +68,14 @@ Page({
       "address":addressDetail,
       "phone":address.telNumber
       }
-      console.log(obj)
+      let {code }  =await orderApi.createOrder(obj)
+      if(code === 0){
+        // 去支付
+        this.goPay()
+        // 将购物车里下单的数据清除
+        shopCartCtr.rmOrderGoods()
+      }
+ 
     }else{
       wx.showModal({
         title: '下单失败',
