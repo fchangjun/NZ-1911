@@ -1,0 +1,3 @@
+<view>
+<button bindtap="login">小程序授权登录</button>
+</view>

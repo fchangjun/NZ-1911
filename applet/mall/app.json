@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/wxlogin/wxlogin",
     "pages/category/category",
     "pages/order/order",
     "pages/my/my",

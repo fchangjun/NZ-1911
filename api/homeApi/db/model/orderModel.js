@@ -13,6 +13,7 @@ const odrersSchema = Schema({
    }],required:true,select:false},
   uid:{type:Schema.Types.ObjectId,ref:'users',required:true},
   allPrice:{type:Number,default:0},
+  image:{type:String,default:''},
   allCount:{type:Number,default:0},
   phone:{type:String,default:''},
   address:{type:String,default:''},

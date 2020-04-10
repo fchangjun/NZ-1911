@@ -10,9 +10,17 @@
 <!-- 订单列表 -->
 <view class='list'>
  <view wx:for="{{list}}" wx:key='index'>
-   订单号:{{item._id}}
-   数量:{{item.allCount}}
-   名字:{{item.name}}
+   <van-card
+    num="{{item.allCount}}"
+    price="{{item.allPrice}}"
+    desc="{{item.desc}}"
+    title="订单号:{{item._id}}"
+    thumb="{{ imgServer+item.image }}"
+  >
+    <view slot="footer"> 
+       {{['待付款','代发货','待收货','已完成'][item.state+1]}}
+    </view>
+  </van-card>
  </view>
 </view>
 </view>

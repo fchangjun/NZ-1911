@@ -1,6 +1,8 @@
 const orderApi = require('../../api/orderApi')
+const {config} = getApp()
 Page({
   data:{
+    imgServer:config.imgServer,
     active:0,
     list:[]
   },
@@ -11,7 +13,7 @@ Page({
     console.log(active)
     this.setData({active})
     // 获取数据
-    // this.getList(type)
+    this.getList(type)
   },
   onChange(e){
     let index = e.detail.index 

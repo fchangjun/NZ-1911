@@ -13,9 +13,9 @@ module.exports={
     return axios.post(url,{userName,passWord})
   },
   // 小程序登录
-  wxLoign(){
-    let url =apiServer+'/kind'
-    return axios.get(url)
+  wxLoign(code){
+    let url =apiServer+'/user/wxlogin'
+    return axios.post(url,{code})
   },
 
 }

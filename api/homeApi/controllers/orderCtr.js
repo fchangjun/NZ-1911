@@ -17,8 +17,9 @@ class Order {
     allPrice += Number(item.count)*Number(item.price)
   return item
  })
+ let image = goodsList[0].image
  let desc =goodsList[0].name+'等'
- let  insertR = await order.insertMany({uid,allPrice,allCount,phone,address,desc,goodsList})
+ let  insertR = await order.insertMany({uid,allPrice,allCount,phone,address,desc,goodsList,image})
  if(!insertR){ ctx.throw(401,'下单失败')}
  ctx.body={code:0,msg:"下单成功,请前往付款"}
  }
@@ -28,7 +29,7 @@ class Order {
     let {uid} = ctx.params
     let {state} = ctx.request.query
     let select = {uid}
-    if(state){ select.state =state}
+    if(state != -2){ select.state =state}
     console.log(state)
     let list = await order.find(select)
     // console.log(list)
