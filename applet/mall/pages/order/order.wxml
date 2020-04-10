@@ -37,7 +37,7 @@
   <view> 
     合计 : <text >${{price}}</text>
   </view>
-  <view>
+  <view bindtap="sendOrder">
     提交订单
   </view>
 </view>

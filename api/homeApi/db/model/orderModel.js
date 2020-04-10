@@ -6,16 +6,20 @@ const odrersSchema = Schema({
      type:[{
      _id:{type:Schema.Types.ObjectId,select:false},
      goodsId:{type:Schema.Types.ObjectId,ref:'goods',required:true},
-     count:{type:Number,default:0}
-   }],required:true},
+     count:{type:Number,default:0},
+     price:{type:Number,default:0},
+     name:{type:String,default:''},
+     image:{type:String,default:''},
+   }],required:true,select:false},
   uid:{type:Schema.Types.ObjectId,ref:'users',required:true},
-  provice:{type:String,default:''},
-  city:{type:String,default:''},
-  country:{type:String,default:''},
-  detail:{type:String,default:''},
-  postCode:{type:String,default:''},
   allPrice:{type:Number,default:0},
-  state:{type:Number,enum:[-1,0,1,2],default:-1}
+  allCount:{type:Number,default:0},
+  phone:{type:String,default:''},
+  address:{type:String,default:''},
+  userName:{type:String,default:''},
+  desc:{type:String,default:''},
+  state:{type:Number,enum:[-1,0,1,2],default:-1}, //未付款 待发货  待收获 已完成 
+  createTime:{type:Date,default: new Date().getTime()}
 
 })
 let orderModel = model("orders",odrersSchema)

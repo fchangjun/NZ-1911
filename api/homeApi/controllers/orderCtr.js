@@ -6,15 +6,19 @@ class Order {
   ctx.verifyParams({
     goodsList:{type:"array",required:true},
     uid:{type:"string",required:true},
-    provice:{type:"string",required:true},
-    city:{type:"string",required:true},
-    country:{type:"string",required:true},
-    detail:{type:"string",required:true},
-    postCode:{type:"string",required:true},
-    allPrice:{type:'number',required:true}
+    address:{type:"string",required:true},
+    phone:{type:"string",required:true}
   })
- let {goodsList,uid,provice,city,country,detail,postCode,allPrice} = ctx.request.body
- let  insertR = await order.insertMany({goodsList,uid,provice,city,country,detail,postCode,allPrice})
+ let {goodsList,uid,address,phone} = ctx.request.body
+ let allPrice = 0
+ let allCount =0 
+ goodsList.map((item)=>{
+    allCount+=Number(item.count)
+    allPrice += Number(item.count)*Number(item.price)
+  return item
+ })
+ let desc =goodsList[0].name+'等'
+ let  insertR = await order.insertMany({uid,allPrice,allCount,phone,address,desc,goodsList})
  if(!insertR){ ctx.throw(401,'下单失败')}
  ctx.body={code:0,msg:"下单成功,请前往付款"}
  }
@@ -22,7 +26,11 @@ class Order {
  async findOneByUid(ctx){
     ctx.verifyParams({uid:{type:"string",required:true}})
     let {uid} = ctx.params
-    let list = await order.find({uid})
+    let {state} = ctx.request.query
+    let select = {uid}
+    if(state){ select.state =state}
+    console.log(state)
+    let list = await order.find(select)
     // console.log(list)
     if(!list){ ctx.throw(401,"查询失败")}
     ctx.body={code:0,msg:"查询ok",list}
@@ -31,7 +39,7 @@ class Order {
   async findOne(ctx){
     ctx.verifyParams({_id:{type:"string",required:true}})
     let {_id} = ctx.params
-    let list = await order.find({_id}).populate('goodsList.goodsId','price name path')
+    let list = await order.find({_id}).select('+goodsList')
     // console.log(list)
     if(!list){ ctx.throw(401,"查询失败")}
     ctx.body={code:0,msg:"查询ok",detail:list[0]}

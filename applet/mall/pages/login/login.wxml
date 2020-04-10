@@ -1,0 +1,9 @@
+<view class='container login'> 
+  <view>
+  账号:<input bindinput="inputUser"/>
+  </view>
+  <view>
+  密码:<input bindinput="inputPass"/>
+  </view>
+  <button bindtap="login">登录</button>
+</view>

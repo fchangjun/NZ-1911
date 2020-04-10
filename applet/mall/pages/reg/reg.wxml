@@ -1,0 +1,9 @@
+<view class='container reg'> 
+  <view>
+  账号:<input bindinput="inputUser"/>
+  </view>
+  <view>
+  密码:<input bindinput="inputPass"/>
+  </view>
+  <button bindtap="reg">注册</button>
+</view>

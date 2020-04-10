@@ -1,2 +1,13 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class='my container'>
+<!-- 用户信息 -->
+<view class='userInfo'>
+  <view wx:if='{{token}}'>用户id:{{uid}}</view>
+  <view wx:else bindtap='goLogin'> 请去登录</view>
+</view>
+<!-- 功能列表
+1. 订单查询
+2. 联系客服
+3. 修改地址
+4. 优惠券 
+ -->
+</view>

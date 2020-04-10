@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/shopcart/shopcart",
     "pages/order/order",
+    "pages/my/my",
+    "pages/shopcart/shopcart",
     "pages/category/category",
     "pages/detail/detail",
     "pages/home/home",
-    "pages/my/my",
-    "pages/web/wep"
+    "pages/web/wep",
+    "pages/login/login",
+    "pages/Reg/reg"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -12,8 +12,9 @@ class UserCtr{
     let userInfo =await  user.findOne({userName,passWord}).populate('address')
     console.log(userInfo)
     if(!userInfo){ ctx.throw(404,'用户名或密码错误')}
-    // let token = jsonWebToken.sign({userInfo},secret,{expiresIn:"1d"})
-    ctx.body={code:0,msg:'登录成功',_id:userInfo._id,userInfo}
+    let {address,phone,balance,_id} = userInfo
+    let token = jsonWebToken.sign( {address,phone,balance,_id,userName},secret,{expiresIn:"1d"})
+    ctx.body={code:0,msg:'登录成功',token,uid:_id,userName}
   }
 
   async reg(ctx){
