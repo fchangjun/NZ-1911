@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const path = require('path')
 
 
-let dbhost = '127.0.0.1'
+let dbhost = '127.0.0.1' //换成线上服务器的ip
 let dbname = 'yimei'
 let dbdirectory = path.join(__dirname,'../dbtest',dbname)
 // 数据库备份

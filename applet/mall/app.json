@@ -9,7 +9,7 @@
     "pages/home/home",
     "pages/web/wep",
     "pages/login/login",
-    "pages/Reg/reg",
+    "pages/reg/reg",
     "pages/orderlist/orderlist"
   ],
   "window": {

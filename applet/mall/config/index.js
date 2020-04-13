@@ -1,4 +1,4 @@
 module.exports={
-  apiServer:'http://localhost:3002',
-  imgServer:"http://localhost:3002"
+  apiServer:'https://www.lrfc.vip/yimei',//'http://localhost:3002',
+  imgServer:'https://www.lrfc.vip/yimei/'//"http://localhost:3002"
 }
