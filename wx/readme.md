@@ -23,7 +23,7 @@ wx自己玩
 周公解梦 星座奇缘 （星座配配对）每日歌曲 星座运势查询 天气查询 话费查询
 wx 官方提供的消息回复功能 是固定写死的 无法添加一些业务逻辑
 
-#### 验证服务器的安全性
+#### 确定接受公众号消息的服务器 (验证服务器的安全性)
 https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Access_Overview.html
 1. 填写服务器信息
 2. 开发者提交信息后，微信服务器将发送GET请求到填写的服务器地址URL上，GET请求携带参数如下表所示 
@@ -33,4 +33,11 @@ https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Access_Overvi
  * 将token、timestamp、nonce三个参数进行字典序排序 
  * 将三个参数字符串拼接成一个字符串进行sha1加密 
  * 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
-  
+
+#### 接受公众号发送的消息
+当普通微信用户向公众账号发消息时，微信服务器将(POST)消息的(XML)数据包到开发者填写的(URL)上。
+1. 接受普通的消息 文本 语音 图片 .....
+2. 事件消息 关注事件 取消关注
+3. 菜单栏的点击事件
+
+#### 回复消息
