@@ -41,3 +41,26 @@ https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Access_Overvi
 3. 菜单栏的点击事件
 
 #### 回复消息
+回复xml 数据格式 文本音乐图片 ....
+
+
+### 调用微信公众号提供的功能接口
+#### 获取调用接口的唯一凭证 access_token 
+```
+https请求方式: GET https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+```
+* 网络请求 get方法
+* 参数 APPID APPSECRET
+
+#### access_token 缓存处理
+* access_token 有调用限制 1天2000次 
+* access_token 有效期2小时7200
+* 将access_token 保存到本地 2小时 使用的时候如果本地有 直接用本地的  如果本地没有再去请求网络的 存入本地
+* radius memchache ... 缓存库 ->存一个本地文件
+#### 创建自定义菜单
+```
+http请求方式：POST（请使用https协议） https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+``` 
+* 服务器器端请求 post方法
+* 需要一个叫ACCESS_TOKEN
+* 自定义菜单的数据包
