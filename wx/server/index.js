@@ -1,40 +1,38 @@
 const express = require('express')
 const app = express()
-const {deleteMenu,searchMenu,createMenu} = require('./api/index')
+const {getTicket} = require('./api/index')
 const {getToken} = require('./utils/token/index')
-console.log('getToken',getToken)
-const{responseText,responseMusic} = require('./responseMsg')
-// 解析xml数据格式
-const bodyParser = require('body-parser');
-require('body-parser-xml')(bodyParser);
-app.use(bodyParser.xml());
-// 接受用户发送额数据
-app.post('/nz1911',(req,res)=>{
-  let {xml} = req.body 
-  console.log(xml)
-  let {ScanCodeInfo} =xml 
-  if(ScanCodeInfo){
-    console.log(JSON.stringify(ScanCodeInfo))
+const randomstring = require("randomstring");
+const  {APPID} = require('./config/index')
+const path  = require('path')
+//指定模板目录
+app.set(path.join(__dirname,'./views'),'views')
+//使用ejs 模板引擎
+app.set('view engine','ejs')  
+// 列子
+app.get('/test',(req,res)=>{
+ //渲染一个模板 
+ res.render('hehe',{name:'韩梅梅',age:16})
+})
+
+app.get('/iwantsay',async (req,res)=>{
+  let obj={
+    appId:APPID,
+    timestamp:0,
+    nonceStr:0,
+    signature:0
   }
+  // timestamp 是以s为单位的时间戳
+  obj.timestamp =parseInt((new Date()).getTime()/1000) 
+  // nonceStr 16位随机字符串
+  obj.nonceStr = randomstring.generate(16);
+  let url ='http://qstest.natapp1.cc/iwantsay'
+  // signature 需要由 timestamp nonceStr 以及h5页面的url 和 ticket 进行加密处理
+  let token =await getToken()
+  let {ticket} = await getTicket(token)
+  console.log('ticket',ticket)
+  res.render('hehe',obj)
 })
-// 删除自定义菜单
-app.get('/deletemenu',async (req,res)=>{
-  let token = await getToken()
- let reuslt = await deleteMenu(token)
- res.send(reuslt.data)
-})
-// 查询自定义菜单
-app.get('/searchmenu',async (req,res)=>{
-  let token = await getToken()
-  let result = await searchMenu(token)
-  res.send(result.data)
- })
- // 创建自定义菜单
-app.get('/createmenu',async (req,res)=>{
-  let token = await getToken()
-  let reuslt = await createMenu(token)
-  res.send(reuslt.data)
- })
 app.listen(80,()=>{
   console.log('server start')
 })

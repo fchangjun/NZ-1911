@@ -65,11 +65,17 @@ const {APPID,APPSECRET} = require('../config/index')
     //    console.log(res.data)
     //  })
   }
+  // 获取jsapi_ticker
+  function getTicket(access_token){
+    let url =`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${access_token}&type=jsapi`
+    return axios.get(url)
+  }
   module.exports={
     getAccessToken,
     createMenu,
     deleteMenu,
-    searchMenu
+    searchMenu,
+    getTicket
   }
 
 // getAccessToken().then((data)=>{
