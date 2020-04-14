@@ -5,7 +5,8 @@
 */
 const fs = require('fs')
 const path = require('path')
-const {getAccessToken} = require('../../api/index')
+const {getAccessToken} = require(path.join(__dirname,'../../api/index'))
+console.log('getAccessToken',getAccessToken)
 const File = path.join(__dirname,'./access_token.json')
 // 将token  写入到本地
 /*
@@ -26,19 +27,25 @@ getToken
 用户获取本地保存的token
 */ 
 async function getToken(){
-  let rResult = fs.readFileSync(File,'utf8')
-  let {data,expires} = JSON.parse(rResult)
-  //判断过期时间
-  if((new Date().getTime())-expires<=700000){
-    console.log('没过期')
-    return data.access_token
-  }else{
-    console.log('过期了')
+  // 捕获第一次文件没有的错误
+  try { 
+    let rResult = fs.readFileSync(File,'utf8')
+    let {data,expires} = JSON.parse(rResult)
+    //判断过期时间
+    if((new Date().getTime())-expires<=700000){
+      console.log('没过期')
+      return data.access_token
+    }else{
+      console.log('过期了')
+      let token  = await writeToken()
+      return token
+    }
+  } catch (error) {
     let token  = await writeToken()
     return token
   }
 }
-
-getToken().then((res)=>{
-  console.log(res)
-})
+module.exports={getToken}
+// getToken().then((res)=>{
+//   console.log(res)
+// })
