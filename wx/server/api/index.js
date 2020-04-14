@@ -40,8 +40,8 @@ const {APPID,APPSECRET} = require('../config/index')
         },
         {	
           "type":"view",
-          "name":"跳转百度",
-          "url":"https://www.baidu.com"
+          "name":"想对你说",
+          "url":"http://qstest.natapp1.cc/iwantsay"
        }
 
       ]

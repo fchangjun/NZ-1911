@@ -4,11 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="http://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
-  <title>Document</title>
+  <title>I want to say</title>
+  <style>
+    
+    img{
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-   <h3>你好帅</h3>
- 
+   <img src="<%-img%>" alt="">
+  <!-- <button id='btn1'>分享到朋友圈</button>
+  <button id='btn2'>扫一扫</button>
+  <button id='btn3'>开始录音</button>
+  <button id='btn4'>停止录音</button>
+  <button id='btn5'>播放录音</button> -->
 <script>
   wx.config({
     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -16,8 +26,75 @@
     timestamp:'<%-timestamp%>', // 必填，生成签名的时间戳
     nonceStr: '<%-nonceStr%>', // 必填，生成签名的随机串
     signature: '<%-signature%>',// 必填，签名
-    jsApiList: [] // 必填，需要使用的JS接口列表
+    jsApiList: ['checkJsApi','updateTimelineShareData','scanQRCode','startRecord','stopRecord','playVoice'] // 必填，需要使用的JS接口列表
   });
+  wx.ready(function(){
+  //  回调内部表示所有api都可以用
+
+  wx.updateTimelineShareData({ 
+      title: 'I WANT SAY', // 分享标题
+      link: 'http://qstest.natapp1.cc/iwantsay', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3386247472,87720242&fm=26&gp=0.jpg', // 分享图标
+      success: function () {
+        // 设置成功
+      }
+    })
+  // }); 
+  // document.getElementById('btn1').addEventListener('click',()=>{
+  //   wx.ready(function () {      //需在用户可能点击分享按钮前就先调用
+  //   wx.updateTimelineShareData({ 
+  //         title: '是道德的沦丧，还是人性的扭曲请看....', // 分享标题
+  //         link: 'http://qstest.natapp1.cc/iwantsay', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+  //         imgUrl: 'https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=2003702389,3122598433&fm=74&app=80&f=JPEG&size=f121,140?sec=1880279984&t=7000a1407539d222068209f3ac9e6ce9', // 分享图标
+  //         success: function () {
+  //           // 设置成功
+  //         }
+  //       })
+  //     }); 
+  // })
+  //扫一扫
+  document.getElementById('btn2').addEventListener('click',()=>{
+    wx.scanQRCode({
+      needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+      scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+      success: function (res) {
+        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+        alert(result)
+      }
+    });
+  })
+  let localId = null
+  // 开始录音
+  document.getElementById('btn3').addEventListener('click',()=>{
+    wx.startRecord()
+  })
+  // 停止录音
+  document.getElementById('btn4').addEventListener('click',()=>{
+    wx.stopRecord({
+      success: function (res) {
+         localId = res.localId;
+      }
+  });
+  // 播放录音
+  document.getElementById('btn5').addEventListener('click',()=>{
+    if(!localId){
+      alert('请先录音')
+      return false
+    }
+    wx.playVoice({
+      localId: localId // 需要播放的音频的本地ID，由stopRecord接口获得
+    });
+  });
+  
+})
+  
+
+});
+  wx.error(function(res){
+   alert('err')
+  // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+  alert(res)
+});
 
 </script>
 </body>
