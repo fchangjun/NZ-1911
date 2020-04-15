@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+	<style>
+		button{
+			width: 200px;
+			height: 100px;
+		}
+	</style>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+		  //调用原生功能的模块加载完毕 plus 对象准备完毕 
+		  
+		  // 获取设备信息 
+		  document.getElementById('btn1').addEventListener('click',()=>{
+			  plus.device.getInfo({
+				  success:function(res){
+					  console.log(JSON.stringify(res))
+				  }
+			  });
+		  })
+		  // 打电话
+		  document.getElementById('btn2').addEventListener('click',()=>{
+		  	plus.device.dial('10010',true)
+		  })
+		  //扫码
+		  let barcode =null
+		  document.getElementById('btn3').addEventListener('click',()=>{
+		  	// 1.创建扫码控件
+			// 2.将控件添加到当前的webview 
+			// 3.启动控件 
+			// 4.扫码结束的回调
+			
+			if(!barcode){
+					barcode = plus.barcode.create('barcode', [plus.barcode.QR], {
+						top:'0',
+						left:'0',
+						width: '100%',
+						height: '100%',
+						position: 'static'
+					});
+					// 扫码成功的回调
+					barcode.onmarked = (type,result)=>{
+						console.log('扫码结束',type,result)
+						barcode.close()
+					};
+					// 将扫码控件添加到webview 上
+					plus.webview.currentWebview().append(barcode);
+				}	
+			barcode.start();
+		  })
+   		});
+   		
+    </script>
+</head>
+<body>
+<button type="button"  id='btn1'>获取设备信息</button>
+<button type="button"  id='btn2'>打电话</button>
+<button type="button"  id='btn3'>扫码</button>
+</body>
+</html>
