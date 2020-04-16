@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+/*
+bind 是什么的方法 函数的方法
+改变this的指向
+对于函数来说 谁执行的函数 this 指向的就是谁
+*/
+var a = 3 
+var obj ={
+  a:4,
+  // fun:test
+}
+Function.prototype.myCall=function(context){
+  console.log('实现的bind方法')
+  console.log(context) //传递的对象
+  console.log(this)    // 执行bind函数的方法
+  context = context||window  //如果参数不传默认指向window对象
+  context.fun = this 
+  context.fun()
+}
+
+function test(){
+ console.log('这里是test方法test',this.a)
+}
+
+test.myCall(obj)
+// test.mybind(null)
+// test.mybind()
+// test()
+
+// bind实现原理  改变一个函数的this指向
+// 将函数放在 目标对象的内部作为内部方法就行
+</script>
+</body>
+</html>

@@ -74,4 +74,66 @@
     * 用Consumer组件里渲染一个函数
     * 函数的参数就是在父组件提供的 数据
     * 在函数里返回要渲染的jsx
+19. 改变this指向
+ 将函数放入到目标对象的内部
+20. react有哪些生命周期
+    初始化 
+        getInitialState 
+        getDefaultProps 
+
+        contrustor 构造函数
+    挂载
+        componentWillMount 
+        componentDidMount  
+    更新 
+        componetWillUpdate 
+        componentDidUpdate 
+    销毁
+        componentWillUnmont
+    数据改变 
+        componentWillReceiveProps 
+        shouldComponentUpdate 
+    
+21. react中常用哪些生命周期，都用来干什么 
+        contrustor 初始化数据
+        componentDidMount 来做副作用（网络请求）
+        componentWillUnmont 擦屁股 销毁全局监听计时器 。。。
+        shouldComponentUpdate  控制render函数是否执行
+22. fiber相关 分片
+  * react中副作用放在哪个生命周期里
+       componentDidMount  
+  * 副作用为什么不放在componentWillMount里
+  * 生命周期有哪些变化
+  * react15版本和16版本渲染机制有哪些差异
+  * 是否听说过同步渲染和异步渲染
+  * 了解过react fiber
+  * react新增哪些生命周期
+
+  react 15版本之前渲染方式是同步渲染  导致页面的卡顿
+  16版本之后渲染核心引入fiber 异步渲染 
+  fiber 将一个时间超长任务分段 解决页面卡顿问题
+  
+  fiber 组件的渲染分成了2个阶段  z
+   
+   第一个阶段：可以被其他优先级高任务打断 render之前的都可以被打断 
+   打断之后就会重新执行
+    componentWillMount  17版本废弃
+    componponetWillReceiveProps  17版本废弃
+    componentWillUpdate   17版本废弃
+    getDerivedStateFromProps  数据变化的时候触发
+    getSnapshopBeforeUpdate   更新前触发
+    shouldComponentUpdate
+   第二阶段 ：不会被打断 render 之后的生命周期都是第二阶段
+
+[知乎](https://zhuanlan.zhihu.com/p/26027085)
+  1个组件 0.01s 
+  2000个组件 20s
+ 
+
+25. 在react中做过哪些优化
+
+
+
+
+
 18. 全局状态管理
