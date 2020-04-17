@@ -185,5 +185,17 @@
    被高阶组件处理的过的组件 一般在props里获取数据
 
    可以通过高阶组件封装公有代码 路由拦截器  路由懒加载 react-loadable From.create 
-   withRouter 
+   withRouter
+
+37. 虚拟dom 
+    本质是一个对象 该对象和dom元素有相同的结构
+    createElement 
+    jsx
+38. diff 算法  
+    数据发生改变 引起虚拟dom改变  对比修改前后2次虚拟dom 寻找出差异点 根据差异点更新真实dom
+    原始 diff算法 复杂度 O(n^3)  
+    react 优化的diff算法 O(n) 
+    1. tree Diff
+    2. component Diff
+    3. element Diff
 项目

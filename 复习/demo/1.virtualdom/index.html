@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+2424
+<div id='app'>current
+  <p>测试案例</p>
+  <button id='btn'>diff</button>
+</div>
+<script type='module'>
+  import {renderDom,createElement,render} from './src/VirtualDom.js'
+  import {diff} from './src/diff.js'
+  import patch from './src/patch.js'
+  let vDom1 = createElement('ul',{id:'u1',class:'u1'},[
+    createElement('li',{class:'item'},['周杰伦']),
+    createElement('li',{class:'item'},['周杰']),
+    createElement('li',{class:'item'},['周'])
+  ])
+
+  let rDom1 = render(vDom1)
+  renderDom(rDom1,document.getElementById('app'))
+
+  // renderDom(vDom2,document.getElementById('app'))
+ 
+  // patch(render(dom1),diffResult)
+  
+  // let dom = render(Component)
+  // console.log(Component)
+  // console.log(dom)
+
+  function test(){
+    let vDom2 = createElement('ul',{class:'u1',id:'u1',data:1},['hehe'])
+    console.log('虚拟dom1',vDom1)
+    console.log('虚拟dom2',vDom2)
+    let diffResult = diff(vDom1,vDom2)
+    console.log('diff结果',diffResult)
+    patch(rDom1,diffResult)
+  }
+  document.getElementById('btn').addEventListener('click',test)
+</script>
+</body>
+</html>
