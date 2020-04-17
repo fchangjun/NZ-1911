@@ -32,9 +32,11 @@
 函数组件 无状态组件 木偶组件 ui组件
 类组件 有状态组件  智能组件 功能组件
 
-受控组件
+受控组件 
+表单的value 被state 值控制 直接无法修改
+通过setState进行修改
 非受控组件
-高阶组件
+通过ref 获取表单的数据
 
 9. react数据承载类型
  props 来自于组件外部 在组件内部智能使用不能修改 
@@ -136,6 +138,52 @@
     <PureComponet>
 25. 了解过hooks  
     增强函数组件，让函数组件可以使用类组件的功能（状态和生命周期）
-路由
-全局状态管理
+    useState  给函数组件赋予state的功能
+    useEffect 给函数组件赋予生命周期的功能  1vs3 挂载 更新 销毁
+    userContext  在函数组件里获取上下文
+
+26. 路由
+   * hash（哈希） 和历史路由的区别
+   * 路由的实现原理  
+     * 监听地址栏的改变
+     * 根据地址栏的改变渲染组件
+   * 线上hash路由和历史路由的区别 刷新之后会404
+   重定向 精准匹配  万里挑一  高阶组件  路由传参 声明导航 和编程导航 路由对象 
+   push replace go goback goforwd 嵌套路由
+27. 全局状态管理
+   * 你在什么地方用过全局状态管理 （多组件共享状态 一个组件发生改变其他组件跟着变）
+   * 怎么使用的全局状态管理 全局状态管理的使用流程
+     * 创建全局状态管理对象 store 
+     * 创建reducer 
+        reducer 本质是一个纯函数 接受修改前的数据 和actions参数 
+        在函数的内部根据 action 对修改前的数据进行修改 返回新新数据
+     * 将store对象和reducer 进行关联
+     * 在页面上通过 Store的getState 获取全局状态值
+     * 用户在组件里触发 actionCreator的方法 创建action 通过dispath 发送给reducer
+     * 在需要更新的组件里做subscribe监听 控制组件重新渲染
+28. 什么叫纯函数
+    输出只由输入决定
+29. 使用全局状态管理的时候，应该注意什么
+    在reducer  不能修改原数据  导致页面不更新
+30. 不能修改原数据的解决方式是什么 
+    深拷贝 JSON.stringIfy JSON.Parse() 自己去递归遍历  immutable
+    浅拷贝 Object.assign()  ...
+31. react-redux  mobx Flux ...
+32. 是否了解过react-redux 的实现原理
+    通过hoc 和context 对redux 使用进行优化
+    connect(mapStateToprops,mapDispathToProps)
+33. 你在使用全局状态管理的时候如何处理异步问题 
+    异步中间件 redux-thunk redux-sage  redux-promise ...
+34. 全局状态管理中将网络请求放在那里 
+    1. 放在组件
+    2. 放在actions （vue就叫action react中actionCreator）
+35. 异步请求放在actions里的好处
+    1.便于统一管理请求 减少冗余代码
+    2.时间旅行 准备检测到数据的变化
+36. 听过hoc ？ 项目中如何做代码优化 ？ hoc都在哪写地方使用
+   高阶组件本身就是一个函数 接受一个组价你作为参数 返回一个新的组件
+   被高阶组件处理的过的组件 一般在props里获取数据
+
+   可以通过高阶组件封装公有代码 路由拦截器  路由懒加载 react-loadable From.create 
+   withRouter 
 项目

@@ -1,27 +1,16 @@
-import React, { Component } from 'react';
-// import Add from './Add'
-// import UseState from './UseState'
-// import UseEffectDemo from './UseEffect'
-import UseContextDemo from './UseContext'
-import {ColorContext} from './ColorContext'
-class Box extends Component {
-  state = { show:true }
+import React, { Component,PureComponent } from 'react';
+class Box extends PureComponent {
+  state = { age:1 }
   render() { 
+    console.log('render')
     return (
-    <ColorContext.Provider value='hehe'>
-    <div>
-      <h1>Box</h1>
-      {/* <button onClick={()=>{
-        this.setState({show:!this.state.show})
-      }}>显示/隐藏</button> */}
-      <hr/>
-      {/* <Add></Add> */}
-      {/* <UseState></UseState> */}
-      {/* {this.state.show||<UseEffectDemo></UseEffectDemo>} */}
-      
-      <UseContextDemo></UseContextDemo>
-    </div>
-    </ColorContext.Provider>
+      <div>
+        {this.state.age}
+        <button onClick={()=>{
+          this.setState({age:1})
+        }}> 改变</button>
+        <h1>Box</h1>
+      </div>
       );
   }
 }
