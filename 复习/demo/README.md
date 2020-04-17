@@ -134,7 +134,8 @@
 24. 在react组件渲染中做过哪些优化
     shouldComponetUpdate  控制组件是否重新render
     <PureComponet>
-
+25. 了解过hooks  
+    增强函数组件，让函数组件可以使用类组件的功能（状态和生命周期）
 路由
 全局状态管理
 项目

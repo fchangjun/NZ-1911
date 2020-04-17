@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import Son1 from './Son1'
+// import Add from './Add'
+// import UseState from './UseState'
+// import UseEffectDemo from './UseEffect'
+import UseContextDemo from './UseContext'
+import {ColorContext} from './ColorContext'
 class Box extends Component {
-  constructor(){
-    super()
-    // console.log('box 初始化',1)
-  }
-  
+  state = { show:true }
   render() { 
-    // console.log('box渲染',2)
     return (
+    <ColorContext.Provider value='hehe'>
     <div>
       <h1>Box</h1>
-      <Son1></Son1>
+      {/* <button onClick={()=>{
+        this.setState({show:!this.state.show})
+      }}>显示/隐藏</button> */}
+      <hr/>
+      {/* <Add></Add> */}
+      {/* <UseState></UseState> */}
+      {/* {this.state.show||<UseEffectDemo></UseEffectDemo>} */}
+      
+      <UseContextDemo></UseContextDemo>
     </div>
+    </ColorContext.Provider>
       );
-  }
-  componentDidMount(){
-    // console.log('box 挂载',3)
   }
 }
  
