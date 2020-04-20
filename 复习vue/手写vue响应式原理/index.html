@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src='./vue.js'></script>
+  <script src="./observer.js"></script>
+  <script src="./dep.js"></script>
+  <script src="./watcher.js"></script>
+  <script src="./complier.js"></script>
+  <script src="./complierUtils.js"></script>
+</head>
+<body>
+  <div id="app">
+   {{name}}
+   <button @click="setName">changeName</button>
+</div>
+<script>
+new Vue({
+    data() {
+        return {
+            msg: '呃呃呃呃呃',
+            name: '呵呵哒',
+            a: {
+                b: 'bbbbb'
+            }
+        }
+    },
+    methods: {
+        setName() {
+            this.name = '李雷雷';
+        }
+    },
+    created() {
+        this.msg = '呵呵哒';
+        console.log('实例初始化完成')
+    },
+    mounted() {
+        console.log('DOM挂载完成')
+    }
+}).$mount('#app'); // 此处通过el属性绑定也是没有任何问题的
+</script>
+</body>
+</html>

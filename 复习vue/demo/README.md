@@ -124,12 +124,40 @@
     * 前后端交互交互
     * 兼容 1px 2px 3px  ios 有一个回弹阻尼（在根元素上吞噬touchMove）
     https://blog.csdn.net/weixin_30764771/article/details/98900070 
-    * 数据变页面不变 
+    * 数据变页面不变  数据劫持 -> vue.set ->getter sertter ->响应式原理
     * 使用keep-alive 跳转回来 页面位置回到顶部
-    * watch监听不到数据改变
-    * nextTick
-20. vue中如何解决跨域问题，有什么确定，如何改进。
-21. vue的响应式原理是指什么
+    * watch监听不到数据改变 动态路由发生改变之后组件是缓存的 watch 监听路由 组件内的守卫
+    * nextTick -> 生命周期 和组件渲染来 数据变化 页面变化 这一个异步的过程
+20. 如何解决跨域问题，有什么确定，如何改进。
+    * 使用postman接口是ok状态
+    * cors    jsonp
+    * 代理 webpack http-proxy-middlewere 
+    ```
+      '/hehe':{
+        target:'目标路径',
+        changeOrigin : true,
+        pathReWrite:{
+          "^/hehe":''
+        }
+      }
+    ```
+    * 线上使用nginx 代理
+    * 用原生js的时候 遇到跨域问题怎么解决？ 
+      * 自己本地搭建一个服务器做转发
+      * 自己用webpack搭建脚手架工具
+    * 服务端请求没有跨域问题
+21. vue的响应式原理是指什么 
+    * 简单版 object.definePropty getter setter 
+     1. data 里的数据被 object.definePropty 有getter 和setter 数据获取的触发getter 数据修改修改的时候触发setter 当修改数据的时候会触发setter 促使页面更新
+    * 复杂版
+    object.definePropty  getter  setter  
+    observer  数据劫持 object.definePropty 
+    dep watcher notify 发布订阅
+    1. 组件或者实例被初始化的时候 data里的数据 会被observer进行数据劫持 进行递归遍历用object.definePropty对数据进行处理，data里的数据就有getter和setter
+    2. data里的数据 在页面绑定（使用数据 触发getter）就在dep 里添加wather监听（更新元素的方法）
+    3. 数据修改的的时候 通过set 调用dep类里的notify方法 通知wahter更新界面
+    4. 基于发布订阅模式
+
 22. 阐述一下vue中组件如何通信
 23. vue.set() 函数有什么用
 24. vue.nextTick() 函数作用
@@ -139,3 +167,14 @@
    2.  运行解析获取的首页文件 并逐步渲染 首页
    3.  加载对应的资源
    4.  vue react 开始进行计算  渲染组件
+27. 3 和2 版本的区别  object.definePropty  变成了proxy
+  
+
+  ##
+  {
+    name:'韩me灭'，
+    age:16,
+    obj:{
+
+    }
+  }
