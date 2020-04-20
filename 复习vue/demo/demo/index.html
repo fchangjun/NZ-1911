@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+   let agent =navigator.userAgent
+   console.log(agent)
+   if(agent.indexOf('iPhone')!==-1){
+     console.log('移动端')
+     window.location.href='./h5.html'
+   }else{
+     console.log('pc端')
+   }
+  </script>
+</head>
+<body>
+  <h1>pc</h1>
+</body>
+</html>

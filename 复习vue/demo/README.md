@@ -60,17 +60,74 @@
     一套页面pc可以看 h5页面也可以看 pad也可以看  bootstrap ->栅格系统 ->媒体查询 
     限制 pc的页面元素 要和移动基本类似  适合官网纯页面展示
 
-    pc是一套代码 移动h5是一套代码
+    pc是一套代码 移动h5是一套代码 通过navigator.userAgent 判断是移动端设备和pc浏览器设备
 
+    pc端适配 0  容器宽度不变是最小尺寸 产生滚动条 min-width 百分比缩放 max-width 容器保持最大尺寸不变 两端产生留白
+    移动端适配：弹性盒布局+rem
+    
+    rem淘宝flexible方案
 11. vuex 是什么？ 如何使用？
-12. vue-router有哪几种导航钩子
+    全局状态管理 1.多组件共享状态  2.一个组件改变其他组件跟着改变
+    state mutation action  getter module 辅助函数
+    * vuex里的异步问题 将异步放入actions  
+    * 异步action优点  统一管理网络请求 便于检测事件旅行
+    * mapState mapGetters 和值相关 映射到computed 里
+    * mapActions mapMutation 和方法相关映射到methods
+12. vue-router有哪几种导航钩子，路由守卫 路由拦截器
+    * 全局前置守卫
+    * 全局解析守卫
+    * 全局后置守卫
+    * 路由独享守卫
+    * 组件内的守卫
+      * 组件进入
+      * 组件更新
+      * 组件离开
 13. 计算属性的缓存和方法调用的区别
-14. vue等单页面应用及其优缺点，如何改进
+   计算属性由缓存型 只有相关的属性发生改变才会引起计算属性的重新计算
+   方法 只要数据变了 就会重新执行
+14. vue等单页面spa应用及其优缺点，如何改进
+    优点 1.组件化开发 组件复用开发效率高
+        2.页面跳转流畅
+    缺点 1. 首屏加载过慢
+        2. seo优化不好
 15. vue.js的两个核心是什么？
+     1. 组件化  2.数据驱动
 16. 列举一下vue的生命周期 与使用场景
+    4 8 2 1
+    创建
+    beforeCreate 
+    created    网络请求
+    挂载 
+    beforeMount  网络请求
+    mounted 网络请求  初始化操作
+    更新 
+    beforeUpdate   死循环
+    updated
+    销毁
+    beforeDestory  擦屁股
+    destoryed 
+    缓存
+    activeted   激活触发
+    deactived   失活触发
 17. webapp 与 app有什么区别
+     app c/s
+     webapp b/s 
+     * 你项目中做过app嘛？如何做的
+     * 原生开发 咱不会  混编开发 5+ Dcould 的H5plus apicloud cordova
+     * 原生安卓 原生ios  我们写页面 写完页面源码给原生
+     * 调用过哪些硬件的功能
 18. 列举vuex 中的辅助函数
-19. vue中遇到过什么问题
+19. vue中遇到过什么问
+    * 点击300 延迟
+    https://blog.csdn.net/qq_34986769/article/details/62046696
+    * v-if和ref
+    * 前后端交互交互
+    * 兼容 1px 2px 3px  ios 有一个回弹阻尼（在根元素上吞噬touchMove）
+    https://blog.csdn.net/weixin_30764771/article/details/98900070 
+    * 数据变页面不变 
+    * 使用keep-alive 跳转回来 页面位置回到顶部
+    * watch监听不到数据改变
+    * nextTick
 20. vue中如何解决跨域问题，有什么确定，如何改进。
 21. vue的响应式原理是指什么
 22. 阐述一下vue中组件如何通信
