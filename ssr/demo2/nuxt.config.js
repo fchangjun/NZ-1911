@@ -30,7 +30,11 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui'
+    '@/plugins/antd-ui',
+    '@/plugins/vue-notifications',
+    '@/plugins/bug',
+    '@/plugins/ctx-hehe',
+    { src: '@/plugins/this_ctx', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

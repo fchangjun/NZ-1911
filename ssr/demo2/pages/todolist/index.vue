@@ -1,0 +1,23 @@
+<template>
+  <div>
+     <h4>这里是todolist</h4>
+     <hr>
+     <h5>count</h5>
+     <p>numm:{{$store.state.count}}</p>
+     <p>double:{{$store.getters.double}}</p>
+     <button @click="$store.dispatch('changeCountSync',5)">action改变数量</button>
+     <button @click="$store.commit('changeCount',4)">commit改变数量</button>
+     <hr> 
+     <h5>模块age</h5>
+    <p>name:{{$store.state.hehe.name}}</p>
+    <button @click="$store.commit('hehe/changeName','二大爷')">commit改变数量</button>
+  </div>
+</template>
+<script>
+export default {
+
+  created(){
+    console.log('todolist',this)
+  }
+}
+</script>
