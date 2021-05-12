@@ -13,7 +13,7 @@
     "jquery": "^3.4.1"
   },
   "dependencies": {
-    "nodemailer": "^6.4.2",
+    "nodemailer": "^6.4.16",
     "swiper": "^5.3.1"
   }
 }
